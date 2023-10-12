@@ -5,7 +5,7 @@
 #include "Class.h"
 using namespace std;
 
-Class(string classCode, char weekday, float startHour, float duration, char type) {
+Class::Class(string classCode, char weekday, float startHour, float duration, char type) {
     this->classCode = classCode;
     this->weekday = weekday;
     this->startHour = startHour;
