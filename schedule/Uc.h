@@ -6,7 +6,7 @@
 #define UNISCHEDULE_UC_H
 
 #include <string>
-#include <vector>
+#include <list>
 #include "Class.h"
 
 using namespace std;
@@ -14,18 +14,12 @@ using namespace std;
 class Uc {
 private:
     string ucCode;
-    vector<Class> classes;
+    list<Class> classes;
 
 public:
-    Uc(string ucCode) {
-        this->ucCode = ucCode;
-    }
-    string getUcCode() {
-        return ucCode;
-    }
-    void addClass(Class class_) {
-        classes.push_back(class_);
-    }
+    Uc(string ucCode);
+    string getUcCode();
+    void addClass(Class class_);
 };
 
 #endif //UNISCHEDULE_UC_H

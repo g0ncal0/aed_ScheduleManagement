@@ -18,14 +18,7 @@ private:
     float duration;
 
 public:
-    Class(string classCode, char weekday, float startHour, float duration, char type) {
-        this->classCode = classCode;
-        this->weekday = weekday;
-        this->startHour = startHour;
-        this->duration = duration;
-        this->type = type;
-    }
-
+    Class(string classCode, char weekday, float startHour, float duration, char type);
 
 };
 
