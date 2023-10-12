@@ -10,7 +10,7 @@
 
 
 void parse(){
-    std::ifstream classes("classes.csv");
+    std::ifstream classes("../parser/classes.csv");
     std::string line;
 
     if (!classes.is_open()) {
