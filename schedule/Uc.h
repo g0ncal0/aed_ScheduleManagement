@@ -13,15 +13,15 @@ using namespace std;
 
 class Uc {
 private:
-    string UcCode;
+    string ucCode;
     vector<Class> classes;
 
 public:
-    Uc(string UcCode) {
-        this->UcCode = UcCode;
+    Uc(string ucCode) {
+        this->ucCode = ucCode;
     }
     string getUcCode() {
-        return UcCode;
+        return ucCode;
     }
     void addClass(Class class_) {
         classes.push_back(class_);
