@@ -8,13 +8,14 @@
 #include <sstream>
 #include <vector>
 
-int main(){
+
+void parse(){
     std::ifstream classes("classes.csv");
     std::string line;
 
     if (!classes.is_open()) {
         std::cout << "not ok";
-        return 1;
+        return;
     }
     std::vector<std::vector<std::string>> theList;
 
@@ -36,4 +37,9 @@ int main(){
         std::cout << "/n";
     }
 
+}
+
+int main(){
+    parse();
+    return 0;
 }
