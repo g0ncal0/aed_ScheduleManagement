@@ -13,6 +13,6 @@ Uc::Uc(string ucCode) {
 string Uc::getUcCode() {
     return ucCode;
 }
-void Uc::addClass(Class class_) {
-    classes.push_back(class_);
+void Uc::addClassCode(ClassCode classcode) {
+    classes.push_back(classcode);
 }

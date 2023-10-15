@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Student::Student(std::string studentCode, std::string name) {
+Student::Student(int studentCode, std::string name) {
     this->studentCode = studentCode;
     this->name = name;
 }

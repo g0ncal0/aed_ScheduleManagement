@@ -7,19 +7,19 @@
 
 #include <string>
 #include <list>
-#include "Class.h"
+#include "ClassCode.h"
 
 using namespace std;
 
 class Uc {
 private:
     string ucCode;
-    list<Class> classes;
+    list<ClassCode> classes;
 
 public:
     Uc(string ucCode);
     string getUcCode();
-    void addClass(Class class_);
+    void addClassCode(ClassCode classcode)
 };
 
 #endif //UNISCHEDULE_UC_H

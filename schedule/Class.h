@@ -11,14 +11,13 @@ using namespace std;
 
 class Class {
 private:
-    string classCode;
     char weekday;
     char type;
     float startHour;
     float duration;
 
 public:
-    Class(string classCode, char weekday, float startHour, float duration, char type);
+    Class(char weekday, float startHour, float duration, char type);
 
 };
 
