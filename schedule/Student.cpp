@@ -6,11 +6,28 @@
 
 using namespace std;
 
-Student::Student(std::string studentCode, std::string name) {
+Student::Student(int studentCode, std::string name) {
     this->studentCode = studentCode;
     this->name = name;
 }
 
-string Student::getName() {
+string Student::getName() const {
     return name;
 }
+
+bool Student::operator<(const Student &other) const {
+    return studentCode < other.studentCode;
+}
+
+int Student::getStudentCode() const {
+    return studentCode;
+}
+
+void Student::addClass(Class* class_) {
+    classes.push_back(class_);
+}
+
+void Student::removeClass(Class* class_) {
+    classes.remove(class_);
+}
+

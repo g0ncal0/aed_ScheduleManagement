@@ -1,6 +1,13 @@
 #include <iostream>
 
+
+#include "History.h"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    History test = History();
+
+    test.addHistory(Activity(1, "added some student"));
+    std::cout << test.lastActivity().getCode();
+
     return 0;
 }

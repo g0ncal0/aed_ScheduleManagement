@@ -6,17 +6,25 @@
 #define UNISCHEDULE_STUDENT_H
 
 #include <string>
+#include "Class.h"
+#include <list>
 
 using namespace std;
 
 class Student {
 private:
-    string studentCode;
+    int studentCode;
     string name;
-    //definir como fazer a lista das turmas inscritas
+    list<Class*> classes;
+
+
 public:
-    Student(string studentCode, string name);
-    string getName();
+    Student(int studentCode, string name);
+    string getName() const ;
+    bool operator<(const Student& other) const;
+    int getStudentCode() const ;
+    void addClass(Class* class_);
+    void removeClass(Class* class_);
 };
 
 
