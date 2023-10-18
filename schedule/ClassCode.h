@@ -14,7 +14,7 @@ class ClassCode {
 private:
     std::string classCode;
     list<Class> classes;
-    list<Student*> students;
+    list<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
 
 public:
     ClassCode(std::string classCode);

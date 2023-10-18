@@ -10,11 +10,11 @@
 
 class History {
 private:
-    std::stack<Activity> history;
+    std::stack<Activity*> history;
 
 public:
     History();
-    void addHistory(Activity activity);
+    void addHistory(Activity* activity);
     Activity lastActivity();
 };
 

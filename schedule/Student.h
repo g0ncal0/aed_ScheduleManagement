@@ -8,6 +8,7 @@
 #include <string>
 #include "Class.h"
 #include <list>
+#include "Uc.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Student {
 private:
     int studentCode;
     string name;
-    list<Class*> Classes;
+    list<pair<Uc,Class*>> Classes;
 
 
 public:
