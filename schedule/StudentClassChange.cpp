@@ -13,4 +13,5 @@ StudentClassChange::StudentClassChange(int code, std::string description, Studen
 
 void StudentClassChange::revertChanges(){
     // Revert the changes
+
 }

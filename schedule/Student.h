@@ -15,12 +15,15 @@ class Student {
 private:
     int studentCode;
     string name;
-    list<Class*> Classes;
+    list<Class*> classes;
 
 
 public:
     Student(int studentCode, string name);
     string getName();
+    int getStudentCode();
+    void addClass(Class* class_);
+    void removeClass(Class* class_);
 };
 
 

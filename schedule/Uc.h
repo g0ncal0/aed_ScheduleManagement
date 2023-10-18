@@ -19,7 +19,7 @@ private:
 public:
     Uc(string ucCode);
     string getUcCode();
-    void addClassCode(ClassCode classcode)
+    void addClassCode(ClassCode classcode);
 };
 
 #endif //UNISCHEDULE_UC_H

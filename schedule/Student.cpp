@@ -14,3 +14,16 @@ Student::Student(int studentCode, std::string name) {
 string Student::getName() {
     return name;
 }
+
+int Student::getStudentCode() {
+    return studentCode;
+}
+
+void Student::addClass(Class* class_) {
+    classes.push_back(class_);
+}
+
+void Student::removeClass(Class* class_) {
+    classes.remove(class_);
+}
+
