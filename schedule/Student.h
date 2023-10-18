@@ -16,7 +16,7 @@ class Student {
 private:
     int studentCode;
     string name;
-    list<pair<Uc,Class*>> Classes;
+    list<pair<Uc*,Class*>> Classes;
 
 
 public:
