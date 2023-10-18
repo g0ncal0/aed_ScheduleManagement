@@ -21,7 +21,11 @@ private:
 
 public:
     Student(int studentCode, string name);
-    string getName();
+    string getName() const ;
+    bool operator<(const Student& other) const;
+    int getStudentCode() const ;
+    void addClass(Class* class_);
+    void removeClass(Class* class_);
 };
 
 

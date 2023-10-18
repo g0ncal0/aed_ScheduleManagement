@@ -15,7 +15,6 @@ private:
 public:
     Student* getStudent(int id);
     void addStudent(Student* student);
-
 };
 
 

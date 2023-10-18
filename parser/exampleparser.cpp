@@ -9,11 +9,11 @@
 #include <vector>
 
 
-void parse(){
+void parse() {
     std::ifstream classes("../parser/classes.csv");
     std::string line;
 
-    if (!classes.is_open()) {
+    if (!classes.is_open()){
         std::cout << "not ok";
         return;
     }
@@ -32,14 +32,14 @@ void parse(){
     classes.close();
     for (auto &lin : theList) {
         for(auto &el : lin){
-            std::cout << el;
+            std::cout << el << " ";
         }
-        std::cout << "/n";
+        std::cout << std::endl;
     }
 
 }
 
-int main(){
+int main() {
     parse();
     return 0;
 }
