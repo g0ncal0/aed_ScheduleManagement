@@ -18,6 +18,7 @@ private:
 
 public:
     Class(char weekday, float startHour, float duration, char type);
+    void print() const;
 
 };
 

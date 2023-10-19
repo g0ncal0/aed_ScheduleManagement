@@ -6,6 +6,7 @@
 #define UNISCHEDULE_UC_H
 
 #include "ClassCode.h"
+#include <iostream>
 #include <string>
 #include <list>
 
@@ -50,6 +51,13 @@ public:
     ClassCode getFirstClassCode() const {
         return classes.front();
     }
+
+    void print() const {
+       std::cout << ucCode << std::endl;
+       for (ClassCode classCode : classes) {
+           classCode.print();
+       }
+   }
 };
 
 #endif //UNISCHEDULE_UC_H

@@ -20,6 +20,7 @@ void AllUcs::addUc(Uc uc) {
 
 void AllUcs::print() const {
     for (Uc uc: ucs) {
-        std::cout << uc.getUcCode() << std::endl;
+        uc.print();
+        std::cout << '\n';
     }
 }

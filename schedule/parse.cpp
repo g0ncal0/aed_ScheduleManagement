@@ -52,6 +52,8 @@ AllUcs parse_classes() {
     std::string line;
 
     AllUcs ucs;
+    std::string trash;
+    getline(classes, trash);
 
     if (!classes.is_open()) {
         std::cout << "not ok";

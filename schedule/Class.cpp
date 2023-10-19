@@ -3,11 +3,16 @@
 //
 
 #include "Class.h"
-using namespace std;
+#include <iostream>
+//using namespace std;
 
 Class::Class( char weekday, float startHour, float duration, char type) {
     this->weekday = weekday;
     this->startHour = startHour;
     this->duration = duration;
     this->type = type;
+}
+
+void Class::print() const {
+    std::cout << "      " << weekday << ' ' << startHour << ' ' << duration << ' ' << type << std::endl;
 }
