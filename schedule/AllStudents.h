@@ -13,9 +13,8 @@ private:
     set<Student*> students;
 
 public:
-    Student* getStudent(int id);
+    static Student* getStudent(int id) const ;
     void addStudent(Student* student);
 };
-
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

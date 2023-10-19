@@ -4,7 +4,8 @@
 
 #include "AllStudents.h"
 
-Student* AllStudents::getStudent(int id) {
+
+Student* AllStudents::getStudent(int id) const {
     auto iterator = std::find_if(students.begin(), students.end(), [id](const Student* student){
         return student->getStudentCode() == id;
     });
@@ -12,6 +13,10 @@ Student* AllStudents::getStudent(int id) {
     return nullptr;
 }
 
+
 void AllStudents::addStudent(Student *student) {
     students.insert(student);
 }
+
+
+
