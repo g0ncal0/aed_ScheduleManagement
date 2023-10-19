@@ -16,3 +16,7 @@ string Uc::getUcCode() {
 void Uc::addClassCode(ClassCode classcode) {
     classes.push_back(classcode);
 }
+
+bool Uc::operator<(const Uc& other) const {
+    return ucCode < other.ucCode;
+}
