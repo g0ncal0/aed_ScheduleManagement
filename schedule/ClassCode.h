@@ -9,17 +9,20 @@
 #include "Class.h"
 #include <list>
 #include "Student.h"
+//#include "ClassCode.h"
 
 class ClassCode {
 private:
     std::string classCode;
-    list<Class> classes;
-    list<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
+    std::list<Class> classes;
+    //list<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
 
 public:
     ClassCode(std::string classCode);
     void addClass(Class class_);
-    void addStudent(Student* student);
+    //void addStudent(Student* student);
+    std::string getClassCode() const;
+    Class getFirstClass() const;
 };
 
 

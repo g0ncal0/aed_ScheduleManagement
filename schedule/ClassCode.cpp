@@ -12,6 +12,14 @@ void ClassCode::addClass(Class class_) {
     classes.push_back(class_);
 }
 
-void ClassCode::addStudent(Student *student) {
+/*void ClassCode::addStudent(Student *student) {
     students.push_back(student);
+}*/
+
+std::string ClassCode::getClassCode() const {
+    return classCode;
+}
+
+Class ClassCode::getFirstClass() const {
+    return classes.front();
 }

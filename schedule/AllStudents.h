@@ -10,10 +10,10 @@
 
 class AllStudents {
 private:
-    set<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
+    std::set<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
 
 public:
-    static Student* getStudent(int id) const ;
+    Student* getStudent(int id) const ;
     void addStudent(Student* student);
 };
 

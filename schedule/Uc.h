@@ -5,21 +5,22 @@
 #ifndef UNISCHEDULE_UC_H
 #define UNISCHEDULE_UC_H
 
+#include "ClassCode.h"
 #include <string>
 #include <list>
-#include "ClassCode.h"
 
-using namespace std;
+//using namespace std;
 
 class Uc {
 private:
-    string ucCode;
-    list<ClassCode> classes;
+    std::string ucCode;
+    std::list<ClassCode> classes;
 
 public:
-    Uc(string ucCode);
-    string getUcCode();
-    void addClassCode(ClassCode classcode);
+    Uc(std::string ucCode);
+    std::string getUcCode();
+    void addClassCode(ClassCode classCode);
+    ClassCode getFirstClassCode() const;
     bool operator<(const Uc& other) const;
 };
 

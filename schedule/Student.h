@@ -9,19 +9,21 @@
 #include "Class.h"
 #include <list>
 #include "Uc.h"
+#include "ClassCode.h"
+#include <utility>
 
-using namespace std;
+//using namespace std;
 
 class Student {
 private:
     int studentCode;
-    string name;
-    list<pair<Uc*,Class*>> Classes;
+    std::string name;
+    std::list<std::pair<Uc*,Class*>> classes;
 
 
 public:
-    Student(int studentCode, string name);
-    string getName() const ;
+    Student(int studentCode, std::string name);
+    std::string getName() const ;
     bool operator<(const Student& other) const;
     int getStudentCode() const ;
     void addClass(Class* class_);
