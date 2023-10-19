@@ -19,7 +19,7 @@ private:
 
 public:
     StudentClassChange(int code, std::string description, Student *student, Class *old, Class *current);
-    void revertChanges() override;
+    //void revertChanges() override;
 };
 
 

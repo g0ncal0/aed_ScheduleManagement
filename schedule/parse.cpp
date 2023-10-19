@@ -5,7 +5,7 @@
 #include <set>
 #include "parse.h"
 
-using namespace std;
+//using namespace std;
 
 void parse() {
     parse_classes();
@@ -63,7 +63,7 @@ AllUcs parse_classes() {
         std::replace(line.begin(), line.end(), ',', ' ');
         std::istringstream iss(line);
 
-        string classCode, ucCode, weekday, type;
+        std::string classCode, ucCode, weekday, type;
         float startHour, duration;
 
         iss >> classCode >> ucCode >> weekday >> startHour >> duration >> type;

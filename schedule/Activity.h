@@ -17,7 +17,7 @@ public:
     int getCode();
     std::string getDescription();
 
-    virtual void revertChanges();
+    //virtual void revertChanges();
 };
 
 

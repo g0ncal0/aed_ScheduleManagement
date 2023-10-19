@@ -4,7 +4,7 @@
 
 #include "AllUcs.h"
 
-using namespace std;
+//using namespace std;
 
 void AllUcs::addUc(Uc uc) {
     auto aux = ucs.begin();
@@ -20,6 +20,6 @@ void AllUcs::addUc(Uc uc) {
 
 void AllUcs::print() const {
     for (Uc uc: ucs) {
-        cout << uc.getUcCode() << endl;
+        std::cout << uc.getUcCode() << std::endl;
     }
 }

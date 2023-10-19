@@ -18,11 +18,25 @@ private:
     //list<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
 
 public:
-    ClassCode(std::string classCode);
+   /* ClassCode(std::string classCode);
     void addClass(Class class_);
     //void addStudent(Student* student);
     std::string getClassCode() const;
-    Class getFirstClass() const;
+    Class getFirstClass() const;*/
+
+   ClassCode(std::string classCode) {
+       this->classCode = classCode;
+   }
+   void addClass(Class class_) {
+       classes.push_back(class_);
+   }
+   std::string getClassCode() const {
+       return classCode;
+   }
+
+   Class getFirstClass() const {
+       return classes.front();
+   }
 };
 
 

@@ -11,6 +11,7 @@ int main() {
     std::cout << test.lastActivity().getCode();*/
 
     AllUcs ucs = parse_classes();
+    ucs.print();
 
     return 0;
 }
