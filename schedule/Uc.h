@@ -20,6 +20,7 @@ public:
     Uc(string ucCode);
     string getUcCode();
     void addClassCode(ClassCode classcode);
+    bool operator<(const Uc& other) const;
 };
 
 #endif //UNISCHEDULE_UC_H

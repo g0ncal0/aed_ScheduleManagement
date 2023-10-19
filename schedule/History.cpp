@@ -4,13 +4,13 @@
 
 #include "History.h"
 
-void History::addHistory(Activity activity) {
+void History::addHistory(Activity* activity) {
     history.push(activity);
 }
 
 
 History::History() {
-    history.push(Activity(0, "Start of History"));
+    history.push(new Activity(0, "Start of History"));
 }
 
 Activity History::lastActivity() {
