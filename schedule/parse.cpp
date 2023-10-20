@@ -93,21 +93,29 @@ AllStudents parse_students(AllUcs ucs){
     std::string trash;
     getline(classes, trash);
 
+    int i = 0;
     while (getline(classes,line))
     {
-        std::replace(line.begin(), line.end(), ',', ' ');
         std::istringstream iss(line);
 
-        std::string studentname, uccode, classcode;
-        int studentcode;
+        std::string stcode, studentname, uccode, classcode;
 
 
-        iss >> studentcode >> studentname >> uccode >> classcode;
-
+        getline(iss, stcode, ',');
+        getline(iss, studentname, ',');
+        getline(iss, uccode, ',');
+        getline(iss, classcode, '\r');
+        int studentcode = std::stoi(stcode);
         Student* s = students.addStudent(studentcode, studentname);
-        ucs.getUc(uccode)->getClassCode(classcode)->addStudent(s);
         Uc* u = ucs.getUc(uccode);
         ClassCode* c = ucs.getUc(uccode)->getClassCode(classcode);
+
+        if(u == nullptr || c == nullptr){
+            std::cout << "FOUND IT";
+            continue;
+        }
+
+        c->addStudent(s);
         s->addClass(u, c);
     }
 }

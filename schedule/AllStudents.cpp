@@ -14,6 +14,10 @@ Student* AllStudents::getStudent(int id) const {
 }
 
 Student* AllStudents::addStudent(int studentCode, std::string name){
+    Student* found = getStudent(studentCode);
+    if(found != nullptr){
+        return found;
+    }
     Student* r = new Student(studentCode, name);
     students.insert(r);
     return r;
