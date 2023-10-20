@@ -26,6 +26,7 @@ public:
     int getStudentCode() const ;
     void addClass(Class* class_);
     void removeClass(Class* class_);
+    void printSchedule();
 };
 
 

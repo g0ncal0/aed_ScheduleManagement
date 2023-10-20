@@ -18,7 +18,10 @@ private:
 
 public:
     Class(char weekday, float startHour, float duration, char type);
-
+    char getWeekday() const;
+    float getStartHour() const;
+    char getType() const;
+    float getDuration() const;
 };
 
 #endif //UNISCHEDULE_CLASS_H

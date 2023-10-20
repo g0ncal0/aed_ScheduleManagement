@@ -31,3 +31,11 @@ void Student::removeClass(Class* class_) {
     classes.remove(class_);
 }
 
+
+void Student::printSchedule(){
+    for(pair<Uc*,Class*> c : Classes){
+
+    }
+}
+
+

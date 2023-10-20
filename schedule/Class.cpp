@@ -11,3 +11,14 @@ Class::Class( char weekday, float startHour, float duration, char type) {
     this->duration = duration;
     this->type = type;
 }
+
+char Class::getWeekday() const {
+    return weekday;
+}
+float Class::getStartHour() const{
+    return startHour;
+}
+
+char Class::getType() const{
+    return type;
+}
