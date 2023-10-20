@@ -3,12 +3,9 @@
 
 #include "History.h"
 #include "parse.h"
+#include "Operation.h"
 
 int main() {
-    /*History test = History();
-
-    test.addHistory(Activity(1, "added some student"));
-    std::cout << test.lastActivity().getCode();*/
 
     AllUcs ucs = parse_classes();
     ucs.print();
@@ -16,5 +13,8 @@ int main() {
     AllStudents students = parse_students(ucs);
     students.print();
 
+    Operation op = Operation(students);
+    op.Operate();
+    // We can get the current student with op.getCurrentStudent();
     return 0;
 }

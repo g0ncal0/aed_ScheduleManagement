@@ -2,7 +2,7 @@
 // Created by Rodrigo Miranda on 19/10/2023.
 //
 
-#include "Login.h"
+#include "Operation.h"
 #include "AllStudents.h"
 #include <iostream>
 
@@ -10,7 +10,7 @@ const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), cre
 const std::string USER_PERMISSIONS = "An admin can ";
 
 
-Login::Login() {
+Operation::Operation(AllStudents& students) {
     char answer;
     while(answer != 's' && answer != 'n') {
         std::cout << "Are you a student? s/n" << std::endl;
@@ -31,8 +31,12 @@ Login::Login() {
                 std::cout << "Invalid input. Please enter a valid positive integer." << std::endl;
             }
         }while(!isValidCode);
-        Student* findStudent = new Student(20, "Test");//AllStudents::getStudent(studentCode);
-        if(findStudent != nullptr) student = findStudent;
+        Student* findStudent = students.getStudent(studentCode);
+
+        if(findStudent != nullptr){
+            student = findStudent;
+        }
+
         std::string message = student == nullptr ? "Sucesso!" : "Não te encontramos na base de dados.";
         std::cout << message << std::endl;
     }else {
@@ -41,10 +45,10 @@ Login::Login() {
     }
 }
 
-bool Login::is_Administrator() const {return isAdmin;}
+bool Operation::is_Administrator() const {return isAdmin;}
 
 
-void Login::WhatCanIdo() {
+void Operation::WhatCanIdo() {
     if(isAdmin){
         std::cout << ADMIN_PERMISSIONS;
     }else{
@@ -52,7 +56,11 @@ void Login::WhatCanIdo() {
     }
 }
 
-void Login::Operate(){
+void Operation::Operate(){
+    if(student == nullptr && !isAdmin){
+        std::cout << "YOU ARE NOT ALLOWED IN!";
+        return;
+    }
     std::cout << "Opperation to apply: ";
     int answer;
     std::cin >> answer;
@@ -64,4 +72,8 @@ void Login::Operate(){
                 break;
         }
     }
+}
+
+Student* Operation::getCurrentStudent() {
+    return student;
 }
