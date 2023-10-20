@@ -7,6 +7,7 @@
 
 #include "Unitary.h"
 #include <set>
+#include <algorithm>
 
 class AllStudents {
 private:
