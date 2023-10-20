@@ -7,7 +7,7 @@
 
 #include <string>
 
-using namespace std;
+//using namespace std;
 
 class Class {
 private:
@@ -22,6 +22,7 @@ public:
     float getStartHour() const;
     char getType() const;
     float getDuration() const;
+    void print() const;
 };
 
 #endif //UNISCHEDULE_CLASS_H

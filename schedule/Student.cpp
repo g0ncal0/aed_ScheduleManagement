@@ -23,6 +23,8 @@ int Student::getStudentCode() const {
     return studentCode;
 }
 
+
+
 void Student::addClass(Class* class_) {
     classes.push_back(class_);
 }
@@ -37,5 +39,4 @@ void Student::printSchedule(){
 
     }
 }
-
 

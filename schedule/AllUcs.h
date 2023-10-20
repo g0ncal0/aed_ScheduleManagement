@@ -7,17 +7,18 @@
 
 #include "Uc.h"
 #include <set>
+#include <iostream>
 
-using namespace std;
+//using namespace std;
 
 class AllUcs {
 private:
-    std::set<Uc> ucs;
+    std::list<Uc> ucs;
 
 public:
     void addUc(Uc uc);
-    Uc* getUc(string ucCode);
-
+    Uc* getUc(std::string ucCode);
+    void print() const;
 };
 
 

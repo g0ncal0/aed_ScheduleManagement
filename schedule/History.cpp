@@ -14,5 +14,5 @@ History::History() {
 }
 
 Activity History::lastActivity() {
-    return history.top();
+    return *(history.top());
 }
