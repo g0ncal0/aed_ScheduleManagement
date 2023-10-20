@@ -37,12 +37,20 @@ void Student::removeClass(Class* class_) {
 
 
 void Student::printSchedule(){
-    for(pair<Uc*,ClassCode*> c : classes){
+    for(pair<Uc*, ClassCode*> c : classes){
         //printSchedule(c);
     }
 }
 
-std::list<std::pair<Uc*,ClassCode*>> Student::getAllClasses(){
+std::list<std::pair<Uc*, ClassCode*>> Student::getAllClasses(){
     return classes;
+}
+
+std::pair<Uc*, ClassCode*> Student::getFirstClass() const {
+    return classes.front();
+}
+
+void Student::addClass(std::pair<Uc*, ClassCode*> class_) {
+    classes.push_back(class_);
 }
 

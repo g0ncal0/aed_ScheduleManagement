@@ -11,12 +11,12 @@
 
 class AllStudents {
 private:
-    std::set<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
+    std::set<Student> students;
 
 public:
-    Student* getStudent(int id) const ;
-    void addStudent(Student* student);
-    Student* addStudent(int studentCode, std::string name);
+    void addStudent(Student student);
+    void addStudent(int studentCode, std::string name);
+    Student* getStudent(int id) const;
     void print();
 };
 

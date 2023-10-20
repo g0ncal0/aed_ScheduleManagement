@@ -9,7 +9,7 @@
 Uc::Uc(std::string ucCode) {
     this->ucCode = ucCode;
 }
-std::string Uc::getUcCode() {
+std::string Uc::getUcCode() const {
     return ucCode;
 }
 void Uc::addClassCode(ClassCode classCode) {
@@ -25,8 +25,8 @@ void Uc::addClassCode(ClassCode classCode) {
     }
 }
 
-ClassCode* Uc::getClassCode(std::string classcode){
-    for(ClassCode &el : classes){
+ClassCode* Uc::getClassCode(std::string classcode) const{
+    for(ClassCode el : classes){
         if(el.getClassCode() == classcode){
             return &el;
         }

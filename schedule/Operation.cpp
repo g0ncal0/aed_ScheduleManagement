@@ -30,6 +30,7 @@ Operation::Operation(AllStudents& students) {
                 std::cout << "Invalid input. Please enter a valid positive integer." << std::endl;
             }
         }while(!isValidCode);
+
         Student* findStudent = students.getStudent(studentCode);
 
         if(findStudent != nullptr){

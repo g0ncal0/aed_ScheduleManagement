@@ -29,9 +29,11 @@ public:
     bool operator<(const Student& other) const;
     int getStudentCode() const;
     void addClass(Uc* uc, ClassCode* class_);
+    void addClass(std::pair<Uc*, ClassCode*> class_);
+    std::pair<Uc*, ClassCode*> getFirstClass() const;
     void removeClass(Class* class_);
     void printSchedule();
-    std::list<std::pair<Uc*,ClassCode*>> getAllClasses();
+    std::list<std::pair<Uc*, ClassCode*>> getAllClasses();
 };
 
 class Class {
@@ -76,11 +78,11 @@ private:
 public:
     Uc(std::string ucCode);
 
-    std::string getUcCode();
+    std::string getUcCode() const;
     void addClassCode(ClassCode classCode);
 
     bool operator<(const Uc& other) const;
-    ClassCode* getClassCode(std::string classcode);
+    ClassCode* getClassCode(std::string classcode) const;
     ClassCode getFirstClassCode() const;
 
     void print() const;

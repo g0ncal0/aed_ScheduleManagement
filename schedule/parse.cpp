@@ -4,6 +4,7 @@
 
 #include <set>
 #include "parse.h"
+#include <iostream>
 
 //using namespace std;
 
@@ -85,7 +86,7 @@ AllUcs parse_classes() {
 }
 
 
-AllStudents parse_students(AllUcs ucs){
+AllStudents parse_students(const AllUcs& ucs){
     std::ifstream classes("students_classes.csv");
     std::string line;
 
@@ -98,24 +99,37 @@ AllStudents parse_students(AllUcs ucs){
     {
         std::istringstream iss(line);
 
-        std::string stcode, studentname, uccode, classcode;
+        std::string stCode, studentName, ucCode, classCode;
+
+        getline(iss, stCode, ',');
+        getline(iss, studentName, ',');
+        getline(iss, ucCode, ',');
+        getline(iss, classCode, '\r');
+        int studentCode = std::stoi(stCode);
+
+        /*Student student(studentCode, studentName);
+        const Uc& uc = ucs.getUc(ucCode);
+        std::cout << "AQUI2\n" << ucCode << std::endl;
+        uc.print();
+        const ClassCode& classC = uc.getClassCode(classCode); //erro segmentation fault
+        student.addClass(uc, classC);
+
+        students.addStudent(student);
+
+        std::cout << "AQUI\n";*/
 
 
-        getline(iss, stcode, ',');
-        getline(iss, studentname, ',');
-        getline(iss, uccode, ',');
-        getline(iss, classcode, '\r');
-        int studentcode = std::stoi(stcode);
-        Student* s = students.addStudent(studentcode, studentname);
-        Uc* u = ucs.getUc(uccode);
-        ClassCode* c = ucs.getUc(uccode)->getClassCode(classcode);
 
-        if(u == nullptr || c == nullptr){
+        /*Student s = students.addStudent(studentCode, studentName);
+        Uc* u = ucs.getUc(ucCode);
+        ClassCode* c = ucs.getUc(ucCode)->getClassCode(classCode);*/
+
+        /*if(u == nullptr || c == nullptr){
             std::cout << "FOUND IT";
             continue;
         }
 
         c->addStudent(s);
-        s->addClass(u, c);
+        s->addClass(u, c);*/
     }
 }
