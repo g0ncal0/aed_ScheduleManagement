@@ -4,7 +4,6 @@
 
 #include "AllUcs.h"
 
-//using namespace std;
 
 void AllUcs::addUc(Uc uc) {
     auto aux = ucs.begin();
@@ -17,6 +16,16 @@ void AllUcs::addUc(Uc uc) {
     }
 
 }
+
+Uc* AllUcs::getUc(std::string ucCode){
+    for(Uc &u : ucs){
+        if(u.getUcCode() == ucCode){
+            return &u;
+        }
+    }
+    return nullptr;
+}
+
 
 void AllUcs::print() const {
     for (Uc uc: ucs) {

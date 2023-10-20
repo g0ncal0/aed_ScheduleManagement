@@ -48,7 +48,7 @@ char typeToChar(const std::string& type) {
 }
 
 AllUcs parse_classes() {
-    std::ifstream classes("../parser/classes.csv");
+    std::ifstream classes("classes.csv");
     std::string line;
 
     AllUcs ucs;
@@ -82,4 +82,32 @@ AllUcs parse_classes() {
     classes.close();
 
     return ucs;
+}
+
+
+AllStudents parse_students(AllUcs ucs){
+    std::ifstream classes("students_classes.csv");
+    std::string line;
+
+    AllStudents students;
+    std::string trash;
+    getline(classes, trash);
+
+    while (getline(classes,line))
+    {
+        std::replace(line.begin(), line.end(), ',', ' ');
+        std::istringstream iss(line);
+
+        std::string studentname, uccode, classcode;
+        int studentcode;
+
+
+        iss >> studentcode >> studentname >> uccode >> classcode;
+
+        Student* s = students.addStudent(studentcode, studentname);
+        ucs.getUc(uccode)->getClassCode(classcode)->addStudent(s);
+        Uc* u = ucs.getUc(uccode);
+        ClassCode* c = ucs.getUc(uccode)->getClassCode(classcode);
+        s->addClass(u, c);
+    }
 }

@@ -1,37 +1,39 @@
 //
 // Created by Filipe Correia on 19/10/2023.
 //
-#include "Class.h"
+
 #include <list>
 #include <iostream>
+#include "utilities.h"
 
-bool compare_class (const Class& first, const Class& second)
+
+bool compare_class (const std::pair<Uc*,Class*>& first, const std::pair<Uc*,Class*>& second)
 {
-    if(first.getWeekday() < second.getWeekday()){
+    if(first.second->getWeekday() < second.second->getWeekday()){
         return true;
     }
-    if(first.getWeekday() == second.getWeekday()){
-        if(first.getStartHour() < second.getStartHour()){
+    if(first.second->getWeekday() == second.second->getWeekday()){
+        if(first.second->getStartHour() < second.second->getStartHour()){
             return true;
         }
     }
     return false;
 }
 
-list<Class> order_classes(list<Class> classes){
-    classes.sort(compare_class);
+std::list<std::pair<Uc*,Class*>> order_classes(std::list<std::pair<Uc*,Class*>> classes){
+    //classes.sort(compare_class);
     return classes;
 }
 
 
-void printSchedule(list<Class> classes){
+void printSchedule(std::list<std::pair<Uc*,Class*>> classes){
     classes = order_classes(classes);
     char weekday = -1;
     for(auto el : classes){
-        if(el.getWeekday() != weekday){
-            weekday = el.getWeekday();
+        if(el.second->getWeekday() != weekday){
+            weekday = el.second->getWeekday();
             std::cout << "DAY " << weekday;
         }
-        cout << el.getStartHour() << el.getDuration();
+        std::cout << "Starting: " << el.second->getStartHour() << " | Duration: " << el.second->getDuration() << "\n";
     }
 }

@@ -2,7 +2,8 @@
 // Created by goncalo on 12-10-2023.
 //
 
-#include "Student.h"
+#include "Unitary.h"
+#include "utilities.h"
 
 using namespace std;
 
@@ -25,18 +26,23 @@ int Student::getStudentCode() const {
 
 
 
-void Student::addClass(Class* class_) {
-    classes.push_back(class_);
+void Student::addClass(Uc* uc, ClassCode* class_) {
+    classes.push_back(pair<Uc*, ClassCode*>(uc, class_));
 }
 
 void Student::removeClass(Class* class_) {
-    classes.remove(class_);
+    // HAS TO BE BETTER IMPLEMENTED: Find the pair whose class uses that class and remove that pair
+    // classes.remove(class_);
 }
 
 
 void Student::printSchedule(){
-    for(pair<Uc*,Class*> c : Classes){
-
+    for(pair<Uc*,ClassCode*> c : classes){
+        //printSchedule(c);
     }
+}
+
+std::list<std::pair<Uc*,ClassCode*>> Student::getAllClasses(){
+    return classes;
 }
 

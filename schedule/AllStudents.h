@@ -5,7 +5,7 @@
 #ifndef UNISCHEDULE_ALLSTUDENTS_H
 #define UNISCHEDULE_ALLSTUDENTS_H
 
-#include "Student.h"
+#include "Unitary.h"
 #include <set>
 
 class AllStudents {
@@ -15,6 +15,8 @@ private:
 public:
     Student* getStudent(int id) const ;
     void addStudent(Student* student);
+    Student* addStudent(int studentCode, std::string name);
+    void print();
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

@@ -13,5 +13,8 @@ int main() {
     AllUcs ucs = parse_classes();
     ucs.print();
 
+    AllStudents students = parse_students(ucs);
+    students.print();
+
     return 0;
 }

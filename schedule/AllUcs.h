@@ -5,7 +5,7 @@
 #ifndef UNISCHEDULE_ALLUCS_H
 #define UNISCHEDULE_ALLUCS_H
 
-#include "Uc.h"
+#include "Unitary.h"
 #include <set>
 #include <iostream>
 

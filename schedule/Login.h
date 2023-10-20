@@ -6,7 +6,7 @@
 #define UNISCHEDULE_LOGIN_H
 
 
-#include "Student.h"
+#include "Unitary.h"
 
 class Login {
 private:
@@ -16,6 +16,8 @@ private:
 public:
      Login();
      bool is_Administrator() const;
+     void Operate();
+     void WhatCanIdo();
 
 };
 

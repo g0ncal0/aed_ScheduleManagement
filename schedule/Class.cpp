@@ -2,7 +2,7 @@
 // Created by goncalo on 12-10-2023.
 //
 
-#include "Class.h"
+#include "Unitary.h"
 #include <iostream>
 //using namespace std;
 
@@ -23,6 +23,11 @@ float Class::getStartHour() const{
 char Class::getType() const {
     return type;
 }
+
+float Class::getDuration() const{
+    return duration;
+}
+
 
 void Class::print() const {
     std::cout << weekday << ' ' << startHour << ' ' << duration << ' ' << type << std::endl;
