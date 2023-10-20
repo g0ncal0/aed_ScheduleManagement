@@ -30,5 +30,5 @@ float Class::getDuration() const{
 
 
 void Class::print() const {
-    std::cout << weekday << ' ' << startHour << ' ' << duration << ' ' << type << std::endl;
+    std::cout << "      " << weekday << ' ' << startHour << ' ' << duration << ' ' << type << std::endl;
 }

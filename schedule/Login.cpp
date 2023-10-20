@@ -3,8 +3,6 @@
 //
 
 #include "Login.h"
-#include "AllStudents.h"
-#include <iostream>
 
 const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), create new UCs (2), assign Classes to UCs (3), . \nFor more information, you can also list all the information.\n To see all students, insert 20. To see all classes in a UC, insert 21. To see all Ucs, insert 22.";
 const std::string USER_PERMISSIONS = "An admin can ";
