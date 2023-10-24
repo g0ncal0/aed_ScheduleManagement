@@ -86,7 +86,7 @@ AllUcs parse_classes() {
 }
 
 
-AllStudents parse_students(const AllUcs& ucs){
+AllStudents parse_students(AllUcs& ucs){
     std::ifstream classes("students_classes.csv");
     std::string line;
 
@@ -107,16 +107,15 @@ AllStudents parse_students(const AllUcs& ucs){
         getline(iss, classCode, '\r');
         int studentCode = std::stoi(stCode);
 
-        /*Student student(studentCode, studentName);
-        const Uc& uc = ucs.getUc(ucCode);
-        std::cout << "AQUI2\n" << ucCode << std::endl;
-        uc.print();
-        const ClassCode& classC = uc.getClassCode(classCode); //erro segmentation fault
+        Student student(studentCode, studentName);
+        Uc& uc = ucs.getUc(ucCode);
+        //std::cout << "AQUI2\n" << ucCode << std::endl;
+        //uc.print();
+        ClassCode& classC = uc.getClassCode(classCode); //erro segmentation fault
         student.addClass(uc, classC);
-
         students.addStudent(student);
 
-        std::cout << "AQUI\n";*/
+        //std::cout << "AQUI\n";
 
 
 
@@ -132,4 +131,7 @@ AllStudents parse_students(const AllUcs& ucs){
         c->addStudent(s);
         s->addClass(u, c);*/
     }
+
+    classes.close();
+    return students;
 }

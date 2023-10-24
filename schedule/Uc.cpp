@@ -25,10 +25,10 @@ void Uc::addClassCode(ClassCode classCode) {
     }
 }
 
-ClassCode* Uc::getClassCode(std::string classcode) const{
-    for(ClassCode el : classes){
-        if(el.getClassCode() == classcode){
-            return &el;
+ClassCode& Uc::getClassCode(std::string classCode) {
+    for(ClassCode &el : classes){
+        if(el.getClassCode() == classCode){
+            return el;
         }
     }
 }

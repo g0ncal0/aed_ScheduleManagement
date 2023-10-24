@@ -32,7 +32,8 @@ void ClassCode::print() const {
         class_.print();
     }
 }
-std::list<Student*> ClassCode::getStudents() const{
+
+/*std::list<Student&> ClassCode::getStudents() {
     return students;
-}
+}*/
 

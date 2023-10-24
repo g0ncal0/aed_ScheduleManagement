@@ -6,7 +6,7 @@
 #include <algorithm>
 
 
-Student* AllStudents::getStudent(int id) const{
+Student& AllStudents::getStudent(int id) const{
 /*    Student student(id, "");
     auto it = students.find(student);
     if (it != students.end()) {
@@ -19,7 +19,7 @@ Student* AllStudents::getStudent(int id) const{
         return student->getStudentCode() == id;
     });
     if(iterator != students.end()) return *iterator;*/
-    return nullptr;
+    //return nullptr;
 }
 
 void AllStudents::addStudent(int studentCode, std::string name){
@@ -28,22 +28,26 @@ void AllStudents::addStudent(int studentCode, std::string name){
 }
 
 void AllStudents::addStudent(Student student) {
-    /*auto it = students.find(student);
+    auto it = students.find(student);
     if (it == students.end())
         students.insert(student);
 
-    Student student1 = getStudent(student.getStudentCode());
-    student1.addClass(student.getFirstClass());
-    students.erase(it);
-    students.insert(student1);*/
+    else {
+        Student student1 = *it;//getStudent(student.getStudentCode());
+        student1.addClass(student.getFirstClass());
+        students.erase(it);
+        students.insert(student1);
+    }
 
-    students.insert(student);
+    //students.insert(student);
 }
 
 
 void AllStudents::print() {
     for(auto s : students){
+        std::cout << s.getStudentCode() << ' ' << s.getName() << std::endl;
         s.printSchedule();
+        std::cout << std::endl;
     }
 }
 

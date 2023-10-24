@@ -10,8 +10,9 @@ int main() {
     AllUcs ucs = parse_classes();
     ucs.print();
 
-    //AllStudents students = parse_students(ucs);
-    //students.print();
+    AllStudents students;
+    students = parse_students(ucs);
+    students.print();
 
     //Operation op = Operation(students);
     //op.Operate();

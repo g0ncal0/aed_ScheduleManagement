@@ -1,11 +1,10 @@
 //
-// Created by goncalo on 18-10-2023.
+// Created by goncalo on 24-10-2023.
 //
 
-#include "AllUcs.h"
+#include "Uni.h"
 
-
-void AllUcs::addUc(Uc uc) {
+void Uni::addUc(Uc uc) {
     auto aux = ucs.begin();
     while ((aux!=ucs.end()) && (aux->getUcCode()!=uc.getUcCode())) aux++;
 
@@ -17,18 +16,23 @@ void AllUcs::addUc(Uc uc) {
 
 }
 
-Uc& AllUcs::getUc(std::string ucCode){
+Uc* Uni::getUc(std::string ucCode){
     for(Uc &u : ucs){
         if(u.getUcCode() == ucCode){
-            return u;
+            return &u;
         }
     }
+    return nullptr;
 }
 
 
-void AllUcs::print() const {
+void Uni::printUcs() const {
     for (Uc uc: ucs) {
         uc.print();
         std::cout << '\n';
     }
+}
+
+void Uni::parseUcs() {
+    ucs = parse_classes();
 }

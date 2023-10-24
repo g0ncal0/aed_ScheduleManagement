@@ -21,19 +21,19 @@ class Student {
 private:
     int studentCode;
     std::string name;
-    std::list<std::pair<Uc*,ClassCode*>> classes;
+    std::list<std::pair<Uc&,ClassCode&>> classes;
 
 public:
     Student(int studentCode, std::string name);
     std::string getName() const;
     bool operator<(const Student& other) const;
     int getStudentCode() const;
-    void addClass(Uc* uc, ClassCode* class_);
-    void addClass(std::pair<Uc*, ClassCode*> class_);
-    std::pair<Uc*, ClassCode*> getFirstClass() const;
-    void removeClass(Class* class_);
+    void addClass(Uc& uc, ClassCode& class_);
+    void addClass(std::pair<Uc&, ClassCode&> class_);
+    std::pair<Uc&, ClassCode&> getFirstClass() const;
+    void removeClass(Class& class_);
     void printSchedule();
-    std::list<std::pair<Uc*, ClassCode*>> getAllClasses();
+    std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
 };
 
 class Class {
@@ -65,7 +65,7 @@ public:
     std::string getClassCode() const ;
     Class getFirstClass() const;
     void print() const;
-    std::list<Student*> getStudents() const;
+    std::list<Student&> getStudents();
 };
 
 
@@ -82,7 +82,7 @@ public:
     void addClassCode(ClassCode classCode);
 
     bool operator<(const Uc& other) const;
-    ClassCode* getClassCode(std::string classcode) const;
+    ClassCode& getClassCode(std::string classCode);
     ClassCode getFirstClassCode() const;
 
     void print() const;

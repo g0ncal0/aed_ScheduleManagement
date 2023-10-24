@@ -17,6 +17,6 @@
 
 void parse();
 AllUcs parse_classes();
-AllStudents parse_students(const AllUcs& ucs);
+AllStudents parse_students(AllUcs& ucs);
 
 #endif //UNISCHEDULE_PARSE_H

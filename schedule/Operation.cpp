@@ -31,11 +31,11 @@ Operation::Operation(AllStudents& students) {
             }
         }while(!isValidCode);
 
-        Student* findStudent = students.getStudent(studentCode);
+        /*Student* findStudent = students.getStudent(studentCode);
 
         if(findStudent != nullptr){
             student = findStudent;
-        }
+        }*/
 
         std::string message = student == nullptr ? "Sucesso!" : "Não te encontramos na base de dados.";
         std::cout << message << std::endl;
