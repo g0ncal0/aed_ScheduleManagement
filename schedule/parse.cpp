@@ -6,8 +6,6 @@
 #include "parse.h"
 #include <iostream>
 
-//using namespace std;
-
 void parse() {
     parse_classes();
 }
@@ -94,7 +92,6 @@ AllStudents parse_students(AllUcs& ucs){
     std::string trash;
     getline(classes, trash);
 
-    int i = 0;
     while (getline(classes,line))
     {
         std::istringstream iss(line);
@@ -109,27 +106,9 @@ AllStudents parse_students(AllUcs& ucs){
 
         Student student(studentCode, studentName);
         Uc& uc = ucs.getUc(ucCode);
-        //std::cout << "AQUI2\n" << ucCode << std::endl;
-        //uc.print();
-        ClassCode& classC = uc.getClassCode(classCode); //erro segmentation fault
+        ClassCode& classC = uc.getClassCode(classCode);
         student.addClass(uc, classC);
         students.addStudent(student);
-
-        //std::cout << "AQUI\n";
-
-
-
-        /*Student s = students.addStudent(studentCode, studentName);
-        Uc* u = ucs.getUc(ucCode);
-        ClassCode* c = ucs.getUc(ucCode)->getClassCode(classCode);*/
-
-        /*if(u == nullptr || c == nullptr){
-            std::cout << "FOUND IT";
-            continue;
-        }
-
-        c->addStudent(s);
-        s->addClass(u, c);*/
     }
 
     classes.close();

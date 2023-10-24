@@ -14,8 +14,6 @@
 #include "AllUcs.h"
 #include "AllStudents.h"
 
-
-void parse();
 AllUcs parse_classes();
 AllStudents parse_students(AllUcs& ucs);
 

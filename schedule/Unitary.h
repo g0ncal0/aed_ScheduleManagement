@@ -56,14 +56,14 @@ class ClassCode {
 private:
     std::string classCode;
     std::list<Class> classes;
-    std::list<Student*> students; // We don't want to store the students in this list. Solely the pointer to the student.
+    std::list<Student*> students;
 
 public:
     ClassCode(std::string classCode);
-    void addStudent(Student *student);
+    void addStudent(Student* student);
     void addClass(Class class_);
     std::string getClassCode() const ;
-    Class getFirstClass() const;
+    Class& getFirstClass();
     void print() const;
     std::list<Student&> getStudents();
 };
@@ -87,13 +87,5 @@ public:
 
     void print() const;
 };
-
-
-
-
-
-
-
-
 
 #endif //UNISCHEDULE_UNITARY_H

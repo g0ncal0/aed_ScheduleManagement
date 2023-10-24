@@ -6,14 +6,14 @@
 
 #include "Unitary.h"
 
-void ClassCode::addStudent(Student *student) {
-    students.push_back(student);
-}
-
-
 ClassCode::ClassCode(std::string classCode) {
     this->classCode = classCode;
 }
+
+void ClassCode::addStudent(Student* student) {
+    students.push_back(student);
+}
+
 void ClassCode::addClass(Class class_) {
     classes.push_back(class_);
 }
@@ -21,7 +21,7 @@ std::string ClassCode::getClassCode() const {
     return classCode;
 }
 
-Class ClassCode::getFirstClass() const {
+Class& ClassCode::getFirstClass() {
     return classes.front();
 }
 

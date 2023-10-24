@@ -33,15 +33,18 @@ void AllStudents::addStudent(Student student) {
         students.insert(student);
 
     else {
-        Student student1 = *it;//getStudent(student.getStudentCode());
+        Student student1 = *it;
         student1.addClass(student.getFirstClass());
         students.erase(it);
         students.insert(student1);
+
+        for (auto pair : student1.getAllClasses()) {
+            ClassCode& c = pair.second;
+
+        }
     }
 
-    //students.insert(student);
 }
-
 
 void AllStudents::print() {
     for(auto s : students){
