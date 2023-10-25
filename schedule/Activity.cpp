@@ -7,6 +7,7 @@
 Activity::Activity(int code, std::string description) {
     this->code = code;
     this->description = description;
+    this->changeMade = false;
 }
 
 int Activity::getCode() {

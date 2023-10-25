@@ -7,15 +7,18 @@
 
 #include "Activity.h"
 #include <stack>
+#include <queue>
 
 class History {
 private:
     std::stack<Activity*> history;
+    std::queue<Activity*> requests;
 
 public:
     History();
-    void addHistory(Activity* activity);
+    void addRequest(Activity* request);
     Activity lastActivity();
+    void removeActivity();
 };
 
 

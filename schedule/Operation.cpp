@@ -6,7 +6,7 @@
 #include "Operation.h"
 
 const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), create new UCs (2), assign Classes to UCs (3), . \nFor more information, you can also list all the information.\n To see all students, insert 20. To see all classes in a UC, insert 21. To see all Ucs, insert 22.";
-const std::string USER_PERMISSIONS = "An admin can ";
+const std::string USER_PERMISSIONS = "A student can make a request to add a class (1), remove a class (2) and switch classes(3).";
 
 
 Operation::Operation(AllStudents& students) {
@@ -31,11 +31,11 @@ Operation::Operation(AllStudents& students) {
             }
         }while(!isValidCode);
 
-        /*Student* findStudent = students.getStudent(studentCode);
+        Student* findStudent = students.getStudent(studentCode);
 
         if(findStudent != nullptr){
             student = findStudent;
-        }*/
+        }
 
         std::string message = student == nullptr ? "Sucesso!" : "Não te encontramos na base de dados.";
         std::cout << message << std::endl;
@@ -62,13 +62,41 @@ void Operation::Operate(){
         return;
     }
     std::cout << "Opperation to apply: ";
+    WhatCanIdo();
     int answer;
-    std::cin >> answer;
-
+    bool isValidAnswer = false;
+    do {
+        std::cin >> answer;
+        if(isdigit(answer) && answer >= 1 && answer <= 3) isValidAnswer = true;
+        else{
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida
+            std::cout << "Invalid input. Enter an integer between 1 and 3." << std::endl;
+        }
+    }while(!isValidAnswer);
     if(isAdmin){
         switch(answer){
-            case 0:
-                WhatCanIdo();
+            case 1:
+                createStudent();
+                break;
+            case 2:
+                createUc();
+                break;
+            case 3:
+                assignClassToUc();
+                break;
+        }
+    }
+    else {
+        switch(answer) {
+            case 1:
+                addClass();
+                break;
+            case 2:
+                removeClass();
+                break;
+            case 3:
+                switchClass();
                 break;
         }
     }

@@ -13,7 +13,7 @@
 class Operation {
 private:
     bool isAdmin;
-    bool loggedin = false;
+    bool loggedIn = false;
     Student* student;
 
 public:

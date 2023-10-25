@@ -6,7 +6,7 @@
 #include <algorithm>
 
 
-Student& AllStudents::getStudent(int id) const{
+Student* AllStudents::getStudent(int id) const{
 /*    Student student(id, "");
     auto it = students.find(student);
     if (it != students.end()) {
