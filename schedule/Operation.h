@@ -8,20 +8,22 @@
 
 #include "Unitary.h"
 #include "AllStudents.h"
+#include "History.h"
 #include <limits>
 
 class Operation {
 private:
-    bool isAdmin;
-    bool loggedIn = false;
+    bool isAdmin, acceptRequest = false, loggedIn = false;
     Student* student;
+    History history;
 
 public:
      Operation(AllStudents& students);
      bool is_Administrator() const;
-     void Operate();
-     void WhatCanIdo();
-     Student* getCurrentStudent();
+     void operate() const;
+     void whatCanIDo() const;
+     bool analyzeRequest();
+    Student* getCurrentStudent();
 
 };
 

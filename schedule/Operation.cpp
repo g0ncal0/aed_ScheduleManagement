@@ -10,7 +10,7 @@ const std::string USER_PERMISSIONS = "A student can make a request to add a clas
 
 
 Operation::Operation(AllStudents& students) {
-    char answer;
+    char answer = 0;
     while(answer != 's' && answer != 'n') {
         std::cout << "Are you a student? s/n" << std::endl;
         std::cin >> answer;
@@ -22,8 +22,7 @@ Operation::Operation(AllStudents& students) {
         std::cout << "What is your student code?" << std::endl;
         bool isValidCode = false;
         do {
-            std::cin >> studentCode;
-            if(!std::cin.fail() && studentCode > 0) isValidCode = true;
+            if(std::cin >> studentCode && !std::cin.fail() && studentCode > 0) isValidCode = true;
             else {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida
@@ -37,7 +36,7 @@ Operation::Operation(AllStudents& students) {
             student = findStudent;
         }
 
-        std::string message = student == nullptr ? "Sucesso!" : "Não te encontramos na base de dados.";
+        std::string message = (student == nullptr) ? "Sucesso!" : "Não te encontramos na base de dados.";
         std::cout << message << std::endl;
     }else {
         isAdmin = true;
@@ -48,26 +47,31 @@ Operation::Operation(AllStudents& students) {
 bool Operation::is_Administrator() const {return isAdmin;}
 
 
-void Operation::WhatCanIdo() {
+void Operation::whatCanIDo() const {
     if(isAdmin){
-        std::cout << ADMIN_PERMISSIONS;
+        std::cout << ADMIN_PERMISSIONS << std::endl;
     }else{
-        std::cout << USER_PERMISSIONS;
+        std::cout << USER_PERMISSIONS << std::endl;
     }
 }
 
-void Operation::Operate(){
+bool Operation::analyzeRequest() {
+    Activity* request = history.lastRequest();
+    std::cout << request->getDescription() << std::endl;
+    // a partir daqui, chama-se uma das funções que o filipe está a criar para o admin decidir se aceitar
+}
+
+void Operation::operate() const {
     if(student == nullptr && !isAdmin){
         std::cout << "YOU ARE NOT ALLOWED IN!";
         return;
     }
     std::cout << "Opperation to apply: ";
-    WhatCanIdo();
+    whatCanIDo();
     int answer;
     bool isValidAnswer = false;
     do {
-        std::cin >> answer;
-        if(isdigit(answer) && answer >= 1 && answer <= 3) isValidAnswer = true;
+        if(std::cin >> answer && answer >= 1 && answer <= 3) isValidAnswer = true;
         else{
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida

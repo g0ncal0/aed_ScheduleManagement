@@ -12,7 +12,7 @@ History::History() {
     history.push(new Activity(0, "Start of History"));
 }
 
-Activity History::lastActivity() {
+Activity History::lastActivity() const{
     if(!history.empty()) return *(history.top());
 }
 
@@ -22,4 +22,18 @@ void History::removeActivity() {
         delete toRemove;
         history.pop();
     }
+}
+
+Activity* History::lastRequest() const {
+    return requests.front();
+}
+
+void History::requestAccepted() {
+    Activity* accepted = requests.front();
+    history.push(accepted);
+    requests.pop();
+}
+
+void History::requestDenied() {
+    requests.pop();
 }

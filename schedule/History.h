@@ -17,8 +17,12 @@ private:
 public:
     History();
     void addRequest(Activity* request);
-    Activity lastActivity();
     void removeActivity();
+    void requestAccepted();
+    void requestDenied();
+    Activity lastActivity() const;
+    Activity* lastRequest() const;
+
 };
 
 
