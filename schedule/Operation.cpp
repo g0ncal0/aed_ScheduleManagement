@@ -30,7 +30,7 @@ Operation::Operation(AllStudents& students) {
             }
         }while(!isValidCode);
 
-        Student* findStudent = students.getStudent(studentCode);
+        Student* findStudent = students.getStudentPtr(studentCode);
 
         if(findStudent != nullptr){
             student = findStudent;

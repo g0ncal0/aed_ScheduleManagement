@@ -15,7 +15,11 @@ private:
     AllStudents students;
 
 public:
-
+    Uni(AllUcs ucs, AllStudents students);
+    void print_all_ucs() const;
+    void print_all_students() const;
+    void info();
+    void print_schedule_student() const;
 };
 
 
