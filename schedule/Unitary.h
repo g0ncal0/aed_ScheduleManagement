@@ -56,16 +56,16 @@ class ClassCode {
 private:
     std::string classCode;
     std::list<Class> classes;
-    std::list<Student*> students;
+    std::list<int> students;
 
 public:
     ClassCode(std::string classCode);
-    void addStudent(Student* student);
+    void addStudent(int studentCode);
     void addClass(Class class_);
     std::string getClassCode() const ;
     Class& getFirstClass();
     void print() const;
-    std::list<Student&> getStudents();
+    std::list<Student> getStudents();
 };
 
 

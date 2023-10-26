@@ -78,7 +78,7 @@ void Operation::operate() const {
             std::cout << "Invalid input. Enter an integer between 1 and 3." << std::endl;
         }
     }while(!isValidAnswer);
-    if(isAdmin){
+    /*if(isAdmin){
         switch(answer){
             case 1:
                 createStudent();
@@ -103,9 +103,10 @@ void Operation::operate() const {
                 switchClass();
                 break;
         }
-    }
+    }*/
 }
 
+/*
 Student* Operation::getCurrentStudent() {
     return student;
-}
+}*/

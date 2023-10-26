@@ -10,8 +10,8 @@ ClassCode::ClassCode(std::string classCode) {
     this->classCode = classCode;
 }
 
-void ClassCode::addStudent(Student* student) {
-    students.push_back(student);
+void ClassCode::addStudent(int studentCode) {
+    students.push_back(studentCode);
 }
 
 void ClassCode::addClass(Class class_) {
