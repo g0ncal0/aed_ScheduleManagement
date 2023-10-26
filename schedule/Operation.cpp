@@ -66,43 +66,47 @@ void Operation::operate(){
         std::cout << "YOU ARE NOT ALLOWED IN!";
         return;
     }
-    std::cout << "Opperation to apply: ";
+    std::cout << "Operation to apply: ";
     whatCanIDo();
     int answer;
     bool isValidAnswer = false;
     do {
-        if(std::cin >> answer && answer >= 1 && answer <= 3) isValidAnswer = true;
+        if(std::cin >> answer && answer >= 1 && ((isAdmin && answer <= 4) || (!isAdmin && answer <= 3))) {
+            if(isAdmin && answer <= 4) isValidAnswer = true;
+            else if(!isAdmin && answer <= 3) isValidAnswer = true;
+        }
         else{
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida
-            std::cout << "Invalid input. Enter an integer between 1 and 3." << std::endl;
+            std::cout << "Invalid input. Please enter an integer between 1 and " << (isAdmin ? "4." : "3.") << std::endl;
         }
     }while(!isValidAnswer);
     if(isAdmin){
         switch(answer){
             case 1:
-                createStudent();
+                //createStudent();
                 break;
             case 2:
-                createUc();
+                //createUc();
                 break;
             case 3:
-                assignClassToUc();
+                //assignClassToUc();
                 break;
             case 4:
                 acceptRequest() ? history.requestAccepted() : history.requestDenied();
+                break;
         }
     }
     else {
         switch(answer) {
             case 1:
-                addClass();
+                //addClass();
                 break;
             case 2:
-                removeClass();
+                //removeClass();
                 break;
             case 3:
-                switchClass();
+                //switchClass();
                 break;
         }
     }

@@ -10,11 +10,11 @@ Activity::Activity(int code, std::string description) {
     this->changeMade = false;
 }
 
-int Activity::getCode() {
+int Activity::getCode() const {
     return code;
 }
 
-std::string Activity::getDescription() {
+std::string Activity::getDescription() const{
     return description;
 }
 
