@@ -12,11 +12,11 @@ History::History() {
     history.push(new Activity(0, "Start of History"));
 }
 
-Activity History::lastActivity() const{
+Activity History::lastHistory() const {
     if(!history.empty()) return *(history.top());
 }
 
-void History::removeActivity() {
+void History::removeHistory() {
     if(!history.empty()) {
         auto toRemove = history.top();
         delete toRemove;

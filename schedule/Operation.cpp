@@ -5,7 +5,7 @@
 
 #include "Operation.h"
 
-const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), create new UCs (2), assign Classes to UCs (3), . \nFor more information, you can also list all the information.\n To see all students, insert 20. To see all classes in a UC, insert 21. To see all Ucs, insert 22.";
+const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), create new UCs (2), assign Classes to UCs (3) and check students' requests (4) . \nFor more information, you can also list all the information.\n To see all students, insert 20. To see all classes in a UC, insert 21. To see all Ucs, insert 22.";
 const std::string USER_PERMISSIONS = "A student can make a request to add a class (1), remove a class (2) and switch classes(3).";
 
 
@@ -55,13 +55,13 @@ void Operation::whatCanIDo() const {
     }
 }
 
-bool Operation::analyzeRequest() {
+bool Operation::acceptRequest() {
     Activity* request = history.lastRequest();
     std::cout << request->getDescription() << std::endl;
     // a partir daqui, chama-se uma das funções que o filipe está a criar para o admin decidir se aceitar
 }
 
-void Operation::operate() const {
+void Operation::operate(){
     if(student == nullptr && !isAdmin){
         std::cout << "YOU ARE NOT ALLOWED IN!";
         return;
@@ -89,6 +89,8 @@ void Operation::operate() const {
             case 3:
                 assignClassToUc();
                 break;
+            case 4:
+                acceptRequest() ? history.requestAccepted() : history.requestDenied();
         }
     }
     else {

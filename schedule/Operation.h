@@ -13,16 +13,16 @@
 
 class Operation {
 private:
-    bool isAdmin, acceptRequest = false, loggedIn = false;
+    bool isAdmin, loggedIn = false;
     Student* student;
     History history;
 
 public:
      Operation(AllStudents& students);
      bool is_Administrator() const;
-     void operate() const;
+     void operate();
      void whatCanIDo() const;
-     bool analyzeRequest();
+     bool acceptRequest();
     Student* getCurrentStudent();
 
 };

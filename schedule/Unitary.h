@@ -84,7 +84,6 @@ public:
     bool operator<(const Uc& other) const;
     ClassCode& getClassCode(std::string classCode);
     ClassCode getFirstClassCode() const;
-
     void print() const;
 };
 

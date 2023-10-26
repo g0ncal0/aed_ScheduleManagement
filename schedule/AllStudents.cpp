@@ -40,7 +40,6 @@ void AllStudents::addStudent(Student student) {
 
         for (auto pair : student1.getAllClasses()) {
             ClassCode& c = pair.second;
-
         }
     }
 
