@@ -112,6 +112,7 @@ void Operation::operate(){
     }
 }
 
+/*
 Student* Operation::getCurrentStudent() {
     return student;
-}
+}*/

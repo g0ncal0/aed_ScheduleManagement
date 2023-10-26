@@ -27,6 +27,7 @@ int Student::getStudentCode() const {
 
 
 void Student::addClass(Uc& uc, ClassCode& class_) {
+    class_.addStudent(studentCode);
     classes.push_back(pair<Uc&, ClassCode&>(uc, class_));
 }
 
