@@ -39,6 +39,7 @@ Operation::Operation(AllStudents& students) {
         }while(!isValidCode);
         const Student* findStudent = students.getStudent(studentCode);
 
+
         if(findStudent != nullptr){
             student = findStudent;
         }

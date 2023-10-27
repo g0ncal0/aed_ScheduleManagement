@@ -37,7 +37,7 @@ void AllStudents::addStudent(Student student) {
 
 }
 
-void AllStudents::print() {
+void AllStudents::print() const {
     for(auto s : students){
         std::cout << s.getStudentCode() << ' ' << s.getName() << std::endl;
         s.printSchedule();

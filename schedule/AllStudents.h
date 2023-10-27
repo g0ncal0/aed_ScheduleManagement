@@ -17,7 +17,8 @@ public:
     void addStudent(Student student);
     void addStudent(int studentCode, std::string name);
     const Student* getStudent(int id) const;
-    void print();
+    void print() const;
+
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

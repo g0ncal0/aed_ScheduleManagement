@@ -4,15 +4,17 @@
 #include "History.h"
 #include "parse.h"
 #include "Operation.h"
+#include "Uni.h"
 
 int main() {
 
     AllUcs ucs = parse_classes();
-    ucs.print();
+    AllStudents students = parse_students(ucs);
+    Uni uni = Uni(ucs, students);
+    //uni.print_all_ucs();
+    //uni.print_all_students();
+    //uni.info();
 
-    AllStudents students;
-    students = parse_students(ucs);
-    students.print();
 
     Operation op = Operation(students);
     op.operate();

@@ -65,7 +65,7 @@ public:
     std::string getClassCode() const ;
     Class& getFirstClass();
     void print() const;
-    std::list<Student> getStudents();
+    std::list<int> getStudents() const;
 };
 
 
