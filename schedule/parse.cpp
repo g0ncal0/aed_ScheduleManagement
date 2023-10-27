@@ -29,9 +29,7 @@ char weekdayToChar(const std::string& weekday) {
     else if (weekday == "Saturday") {
         return '5';
     }
-    else {
-        return '6';
-    }
+    return '6';
 }
 
 char typeToChar(const std::string& type) {

@@ -14,8 +14,8 @@ int main() {
     students = parse_students(ucs);
     students.print();
 
-    //Operation op = Operation(students);
-    //op.Operate();
+    Operation op = Operation(students);
+    op.operate();
     // We can get the current student with op.getCurrentStudent();
     return 0;
 }

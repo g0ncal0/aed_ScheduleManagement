@@ -19,7 +19,6 @@ std::string Activity::getDescription() const{
 }
 
 
-
 StudentClassChange::StudentClassChange(int code, std::string description, Student* student, Class* old, Class* current) : Activity(code, description) {
     this->student = student;
     this->old = old;

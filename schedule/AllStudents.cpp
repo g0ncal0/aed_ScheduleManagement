@@ -6,20 +6,12 @@
 #include <algorithm>
 
 
-Student* AllStudents::getStudent(int id) const{
-/*    Student student(id, "");
-    auto it = students.find(student);
-    if (it != students.end()) {
-        return *it;
-    }
-    Student studentNull = Student(0, "");
-    return studentNull;*/
-
-    /*auto iterator = std::find_if(students.begin(), students.end(), [id](const Student* student){
-        return student->getStudentCode() == id;
+const Student* AllStudents::getStudent(int id) const{
+    auto it = std::find_if(students.begin(), students.end(), [id](const Student& student){
+        return student.getStudentCode() == id;
     });
-    if(iterator != students.end()) return *iterator;*/
-    //return nullptr;
+    if(it != students.end()) return &(*it);
+    return nullptr;
 }
 
 void AllStudents::addStudent(int studentCode, std::string name){
@@ -29,6 +21,7 @@ void AllStudents::addStudent(int studentCode, std::string name){
 
 void AllStudents::addStudent(Student student) {
     auto it = students.find(student);
+
     if (it == students.end())
         students.insert(student);
 
@@ -37,7 +30,6 @@ void AllStudents::addStudent(Student student) {
         student1.addClass(student.getFirstClass());
         students.erase(it);
         students.insert(student1);
-
         for (auto pair : student1.getAllClasses()) {
             ClassCode& c = pair.second;
         }
@@ -52,5 +44,4 @@ void AllStudents::print() {
         std::cout << std::endl;
     }
 }
-
 

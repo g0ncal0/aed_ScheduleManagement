@@ -10,11 +10,19 @@ const std::string USER_PERMISSIONS = "A student can make a request to add a clas
 
 
 Operation::Operation(AllStudents& students) {
-    char answer = 0;
-    while(answer != 's' && answer != 'n') {
+    char answer;
+    bool isValidInput = false;
+    while (!isValidInput) {
         std::cout << "Are you a student? s/n" << std::endl;
         std::cin >> answer;
         answer = tolower(answer);
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
+
+        if (answer == 's' || answer == 'n') {
+            isValidInput = true; // A entrada é válida, sai do loop
+        } else {
+            std::cout << "Invalid input. Please enter 's' or 'n'." << std::endl; // Mensagem de erro
+        }
     }
     if(answer == 's') {
         isAdmin = false;
@@ -29,15 +37,12 @@ Operation::Operation(AllStudents& students) {
                 std::cout << "Invalid input. Please enter a valid positive integer." << std::endl;
             }
         }while(!isValidCode);
-
-        Student* findStudent = students.getStudent(studentCode);
+        const Student* findStudent = students.getStudent(studentCode);
 
         if(findStudent != nullptr){
             student = findStudent;
         }
-
-        std::string message = (student == nullptr) ? "Sucesso!" : "Não te encontramos na base de dados.";
-        std::cout << message << std::endl;
+        if(student == nullptr) std::cout << "Não te encontramos na base de dados." << std::endl;
     }else {
         isAdmin = true;
         student = nullptr;

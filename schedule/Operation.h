@@ -11,10 +11,11 @@
 #include "History.h"
 #include <limits>
 
+
 class Operation {
 private:
     bool isAdmin, loggedIn = false;
-    Student* student;
+    const Student* student;
     History history;
 
 public:

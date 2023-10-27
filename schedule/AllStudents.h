@@ -16,7 +16,7 @@ private:
 public:
     void addStudent(Student student);
     void addStudent(int studentCode, std::string name);
-    Student* getStudent(int id) const;
+    const Student* getStudent(int id) const;
     void print();
 };
 
