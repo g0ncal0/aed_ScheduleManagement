@@ -16,12 +16,12 @@ Operation::Operation(AllStudents& students) {
         std::cout << "Are you a student? s/n" << std::endl;
         std::cin >> answer;
         answer = tolower(answer);
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (answer == 's' || answer == 'n') {
             isValidInput = true; // A entrada é válida, sai do loop
         } else {
-            std::cout << "Invalid input. Please enter 's' or 'n'." << std::endl; // Mensagem de erro
+            std::cout << "Invalid input. Please enter 's' or 'n'." << std::endl;
         }
     }
     if(answer == 's') {
@@ -42,7 +42,7 @@ Operation::Operation(AllStudents& students) {
         if(findStudent != nullptr){
             student = findStudent;
         }
-        if(student == nullptr) std::cout << "Não te encontramos na base de dados." << std::endl;
+        if(student == nullptr) std::cout << "It seems that we don't have that student code in our Database." << std::endl;
     }else {
         isAdmin = true;
         student = nullptr;
@@ -53,11 +53,7 @@ bool Operation::is_Administrator() const {return isAdmin;}
 
 
 void Operation::whatCanIDo() const {
-    if(isAdmin){
-        std::cout << ADMIN_PERMISSIONS << std::endl;
-    }else{
-        std::cout << USER_PERMISSIONS << std::endl;
-    }
+    std::cout << (isAdmin ? ADMIN_PERMISSIONS : USER_PERMISSIONS) << std::endl;
 }
 
 bool Operation::acceptRequest() {
@@ -76,14 +72,14 @@ void Operation::operate(){
     int answer;
     bool isValidAnswer = false;
     do {
-        if(std::cin >> answer && answer >= 1 && ((isAdmin && answer <= 4) || (!isAdmin && answer <= 3))) {
-            if(isAdmin && answer <= 4) isValidAnswer = true;
+        if(std::cin >> answer && answer >= 1) {
+            if(isAdmin && (answer <= 4 || (answer >= 20 && answer <= 22))) isValidAnswer = true;
             else if(!isAdmin && answer <= 3) isValidAnswer = true;
         }
         else{
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida
-            std::cout << "Invalid input. Please enter an integer between 1 and " << (isAdmin ? "4." : "3.") << std::endl;
+            std::cout << "Invalid input. Please enter " << (isAdmin ? "a valid integer." : "an integer between 1 and 3.") << std::endl;
         }
     }while(!isValidAnswer);
     if(isAdmin){
@@ -99,6 +95,15 @@ void Operation::operate(){
                 break;
             case 4:
                 acceptRequest() ? history.requestAccepted() : history.requestDenied();
+                break;
+            case 20:
+                //showAllStudents();
+                break;
+            case 21:
+                //showAllClasses();
+                break;
+            case 22:
+                // showAllUcs();
                 break;
         }
     }
