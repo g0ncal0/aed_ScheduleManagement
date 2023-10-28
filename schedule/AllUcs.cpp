@@ -45,3 +45,10 @@ void AllUcs::print_ucs() const {
         std::cout << uc.getUcCode() << '\n';
     }
 }
+
+void AllUcs::list_Occupation_UcCode(std::list<std::pair<int, std::string>>& occupation_UcCode) const {
+    for (const Uc& uc : ucs) {
+        std::pair<int, std::string> pair(uc.ucOccupation(), uc.getUcCode());
+        occupation_UcCode.push_back(pair);
+    }
+}

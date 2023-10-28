@@ -20,6 +20,7 @@ public:
     void print() const;
     void print_students_year(char year) const;
     int studentsInNUcs(int n) const;
+    int yearOccupation(char year) const;
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

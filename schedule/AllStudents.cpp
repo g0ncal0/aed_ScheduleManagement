@@ -60,3 +60,13 @@ int AllStudents::studentsInNUcs(int n) const {
     }
     return res;
 }
+
+int AllStudents::yearOccupation(char year) const {
+    int res = 0;
+    for (const Student& student : students) {
+        if (student.checkYear(year)) {
+            res++;
+        }
+    }
+    return res;
+}

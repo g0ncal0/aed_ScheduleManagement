@@ -67,3 +67,11 @@ void Uc::print_students() const {
         classCode.print_students();
     }
 }
+
+int Uc::ucOccupation() const {
+    int res = 0;
+    for (const ClassCode& classCode : classes) {
+        res += classCode.classOccupation();
+    }
+    return res;
+}

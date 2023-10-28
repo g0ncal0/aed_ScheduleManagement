@@ -95,6 +95,7 @@ public:
     void print() const;
     void print_classes() const;
     void print_students() const;
+    int ucOccupation() const;
 };
 
 #endif //UNISCHEDULE_UNITARY_H

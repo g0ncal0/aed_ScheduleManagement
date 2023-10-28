@@ -7,7 +7,7 @@
 
 #include "Unitary.h"
 #include "parse.h"
-#include <set>
+#include <algorithm>
 
 class Uni {
 private:
@@ -16,6 +16,7 @@ private:
 
     const Uc& consult_uc() const;
     const ClassCode& consult_class(const Uc& uc) const;
+    static bool compare_Occupation_UcCode(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
 
 public:
     Uni(AllUcs ucs, AllStudents students);
@@ -29,6 +30,9 @@ public:
     void print_students_year() const;
     void print_number_students_in_n_ucs() const;
     void print_class_occupation() const;
+    void print_uc_occupation() const;
+    void print_year_occupation() const;
+    void print_ucs_more_students() const;
 };
 
 

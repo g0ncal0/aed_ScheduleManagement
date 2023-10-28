@@ -35,6 +35,11 @@ const ClassCode& Uni::consult_class(const Uc& uc) const {
     return uc.getClassCode(classCode);
 }
 
+bool Uni::compare_Occupation_UcCode(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2) {
+    if (p1.first != p2.first) return p1.first > p2.first;
+    else return p1.second < p2.second;
+}
+
 void Uni::info() {
     std::cout << "What do you want to consult?\n\n";
     std::cout << "1. Schedule of a student\n";
@@ -75,10 +80,13 @@ void Uni::info() {
             print_class_occupation();
             break;
         case 8:
+            print_uc_occupation();
             break;
         case 9:
+            print_year_occupation();
             break;
         case 10:
+            print_ucs_more_students();
             break;
     }
 }
@@ -130,4 +138,26 @@ void Uni::print_class_occupation() const {
     const Uc& uc = consult_uc();
     const ClassCode& classCode = consult_class(uc);
     std::cout << "Occupation of " << uc.getUcCode() << "-" << classCode.getClassCode() << ": " << classCode.classOccupation();
+}
+
+void Uni::print_uc_occupation() const {
+    const Uc& uc = consult_uc();
+    std::cout << "Occupation of " << uc.getUcCode() << ": " << uc.ucOccupation();
+}
+
+void Uni::print_year_occupation() const {
+    std::cout << "What year do you want do consult?\n\n1.\n2.\n3.\n";
+    char year;
+    std::cin >> year;
+    std::cout << "\nOccupation of year " << year << ": " << students.yearOccupation(year);
+}
+
+void Uni::print_ucs_more_students() const {
+    std::list<std::pair<int, std::string>> occupation_UcCode;
+    ucs.list_Occupation_UcCode(occupation_UcCode);
+    occupation_UcCode.sort(compare_Occupation_UcCode);
+    std::cout << "\nList of UCs with the greatest number of students:\n";
+    for (const std::pair<int, std::string>& pair : occupation_UcCode) {
+        std::cout << pair.second << " - " << pair.first << " students\n";
+    }
 }

@@ -21,6 +21,7 @@ public:
     const Uc& getUc(std::string ucCode) const;
     void print() const;
     void print_ucs() const;
+    void list_Occupation_UcCode(std::list<std::pair<int, std::string>>& occupation_UcCode) const;
 };
 
 
