@@ -24,10 +24,9 @@ int Student::getStudentCode() const {
     return studentCode;
 }
 
-
-
 void Student::addClass(Uc& uc, ClassCode& class_) {
-    class_.addStudent(studentCode);
+    class_.addStudent(studentCode, name);
+    //std::cout << studentCode << " " << name << '\n';
     classes.push_back(pair<Uc&, ClassCode&>(uc, class_));
 }
 
@@ -54,5 +53,16 @@ std::pair<Uc&, ClassCode&> Student::getFirstClass() const {
 
 void Student::addClass(std::pair<Uc&, ClassCode&> class_){
     classes.push_back(class_);
+}
+
+bool Student::checkYear(char year) const {
+    for (std::pair<Uc&,ClassCode&> pair : classes) {
+        if (year == pair.second.getClassCode()[0]) return true;
+    }
+    return false;
+}
+
+int Student::numberClasses() const {
+    return classes.size();
 }
 

@@ -9,6 +9,8 @@
 #include <string>
 #include <list>
 #include <iostream>
+#include <set>
+#include <utility>
 
 class Uc;
 class Student;
@@ -33,6 +35,8 @@ public:
     void removeClass(Class& class_);
     void printSchedule() const;
     std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
+    bool checkYear(char year) const;
+    int numberClasses() const;
 };
 
 class Class {
@@ -55,18 +59,20 @@ class ClassCode {
 private:
     std::string classCode;
     std::list<Class> classes;
-    std::list<int> students;
+    std::list<std::pair<int, std::string>> students;
 
 public:
     ClassCode(std::string classCode);
-    void addStudent(int studentCode);
+    void addStudent(int studentCode, std::string name);
     void addClass(Class class_);
     std::string getClassCode() const ;
     Class& getFirstClass();
     void print() const;
     void print_schedule() const;
+    void print_students() const;
     //void print_students(const AllStudents& allStudents) const;
-    std::list<int> getStudents() const;
+    std::list<std::pair<int, std::string>> getStudents() const;
+    int classOccupation() const;
 };
 
 
@@ -88,6 +94,7 @@ public:
     ClassCode getFirstClassCode() const;
     void print() const;
     void print_classes() const;
+    void print_students() const;
 };
 
 #endif //UNISCHEDULE_UNITARY_H

@@ -63,12 +63,16 @@ void Uni::info() {
             print_students_class();
             break;
         case 4:
+            print_students_course();
             break;
         case 5:
+            print_students_year();
             break;
         case 6:
+            print_number_students_in_n_ucs();
             break;
         case 7:
+            print_class_occupation();
             break;
         case 8:
             break;
@@ -98,8 +102,32 @@ void Uni::print_students_class() const {
     const Uc& uc = consult_uc();
     const ClassCode& classCode = consult_class(uc);
     std::cout << "\nStudents of " << uc.getUcCode() << "-" << classCode.getClassCode() << ":\n\n";
-    for (int studentCode : classCode.getStudents()) {
-        const Student* student = students.getStudent(studentCode);
-        std::cout << studentCode << " " << student->getName() << '\n';
-    }
+    classCode.print_students();
+}
+
+void Uni::print_students_course() const {
+    const Uc& uc = consult_uc();
+    std::cout << "\nStudents of " << uc.getUcCode() << ":\n\n";
+    uc.print_students();
+}
+
+void Uni::print_students_year() const {
+    std::cout << "What year do you want do consult?\n\n1.\n2.\n3.\n";
+    char year;
+    std::cin >> year;
+    std::cout << "\nStudents of year " << year << ":\n\n";
+    students.print_students_year(year);
+}
+
+void Uni::print_number_students_in_n_ucs() const {
+    std::cout << "Number minimum of ucs? ";
+    int n;
+    std::cin >> n;
+    std::cout << "Number of students in at least " << n << " UCs: " << students.studentsInNUcs(n);
+}
+
+void Uni::print_class_occupation() const {
+    const Uc& uc = consult_uc();
+    const ClassCode& classCode = consult_class(uc);
+    std::cout << "Occupation of " << uc.getUcCode() << "-" << classCode.getClassCode() << ": " << classCode.classOccupation();
 }

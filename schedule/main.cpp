@@ -15,7 +15,6 @@ int main() {
     //uni.print_all_students();
     //uni.info();
 
-
     //Operation op = Operation(students);
     //op.operate();
     // We can get the current student with op.getCurrentStudent();

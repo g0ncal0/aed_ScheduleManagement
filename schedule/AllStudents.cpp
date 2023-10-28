@@ -45,3 +45,18 @@ void AllStudents::print() const {
     }
 }
 
+void AllStudents::print_students_year(char year) const {
+    for (const Student& student : students) {
+        if (student.checkYear(year)) {
+            std::cout << student.getStudentCode() << " " << student.getName() << '\n';
+        }
+    }
+}
+
+int AllStudents::studentsInNUcs(int n) const {
+    int res = 0;
+    for (const Student& student : students) {
+        if (student.numberClasses() >= n) res++;
+    }
+    return res;
+}

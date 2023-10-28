@@ -25,6 +25,10 @@ public:
     void print_schedule_student() const;
     void print_schedule_class() const;
     void print_students_class() const;
+    void print_students_course() const;
+    void print_students_year() const;
+    void print_number_students_in_n_ucs() const;
+    void print_class_occupation() const;
 };
 
 

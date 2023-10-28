@@ -51,13 +51,19 @@ ClassCode Uc::getFirstClassCode() const {
 
 void Uc::print() const {
     std::cout << ucCode << std::endl;
-    for (ClassCode classCode : classes) {
+    for (const ClassCode& classCode : classes) {
         classCode.print();
     }
 }
 
 void Uc::print_classes() const {
-    for (ClassCode classCode : classes) {
+    for (const ClassCode& classCode : classes) {
         std::cout << classCode.getClassCode() << '\n';
+    }
+}
+
+void Uc::print_students() const {
+    for (const ClassCode& classCode : classes) {
+        classCode.print_students();
     }
 }

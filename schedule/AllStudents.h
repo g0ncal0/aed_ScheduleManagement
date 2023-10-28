@@ -18,7 +18,8 @@ public:
     void addStudent(int studentCode, std::string name);
     const Student* getStudent(int id) const;
     void print() const;
-
+    void print_students_year(char year) const;
+    int studentsInNUcs(int n) const;
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H
