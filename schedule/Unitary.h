@@ -10,7 +10,6 @@
 #include <list>
 #include <iostream>
 
-
 class Uc;
 class Student;
 class ClassCode;
@@ -32,7 +31,7 @@ public:
     void addClass(std::pair<Uc&, ClassCode&> class_);
     std::pair<Uc&, ClassCode&> getFirstClass() const;
     void removeClass(Class& class_);
-    void printSchedule();
+    void printSchedule() const;
     std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
 };
 
@@ -65,6 +64,8 @@ public:
     std::string getClassCode() const ;
     Class& getFirstClass();
     void print() const;
+    void print_schedule() const;
+    //void print_students(const AllStudents& allStudents) const;
     std::list<int> getStudents() const;
 };
 
@@ -83,8 +84,10 @@ public:
 
     bool operator<(const Uc& other) const;
     ClassCode& getClassCode(std::string classCode);
+    const ClassCode& getClassCode(std::string classCode) const;
     ClassCode getFirstClassCode() const;
     void print() const;
+    void print_classes() const;
 };
 
 #endif //UNISCHEDULE_UNITARY_H

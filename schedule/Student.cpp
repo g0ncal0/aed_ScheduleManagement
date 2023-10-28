@@ -37,7 +37,7 @@ void Student::removeClass(Class& class_) {
 }
 
 
-void Student::printSchedule(){
+void Student::printSchedule() const {
     for(pair<Uc&, ClassCode&> c : classes){
         std::cout << "   " << c.first.getUcCode() << "\n" << "  ";
         c.second.print();
@@ -52,7 +52,7 @@ std::pair<Uc&, ClassCode&> Student::getFirstClass() const {
     return classes.front();
 }
 
-void Student::addClass(std::pair<Uc&, ClassCode&> class_) {
+void Student::addClass(std::pair<Uc&, ClassCode&> class_){
     classes.push_back(class_);
 }
 

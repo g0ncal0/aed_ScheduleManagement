@@ -14,12 +14,17 @@ private:
     AllUcs ucs;
     AllStudents students;
 
+    const Uc& consult_uc() const;
+    const ClassCode& consult_class(const Uc& uc) const;
+
 public:
     Uni(AllUcs ucs, AllStudents students);
     void print_all_ucs() const;
     void print_all_students() const;
     void info();
     void print_schedule_student() const;
+    void print_schedule_class() const;
+    void print_students_class() const;
 };
 
 

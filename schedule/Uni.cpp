@@ -17,6 +17,24 @@ void Uni::print_all_students() const {
     students.print();
 }
 
+const Uc& Uni::consult_uc() const {
+    std::cout << "List of UCs:\n\n";
+    ucs.print_ucs();
+    std::cout << "\nPlease enter the UC you want to consult: ";
+    std::string ucCode;
+    std::cin >> ucCode;
+    return ucs.getUc(ucCode);
+}
+
+const ClassCode& Uni::consult_class(const Uc& uc) const {
+    std::cout << "\nList of classes:\n\n";
+    uc.print_classes();
+    std::cout << "\nPlease enter the class you want to consult: ";
+    std::string classCode;
+    std::cin >> classCode;
+    return uc.getClassCode(classCode);
+}
+
 void Uni::info() {
     std::cout << "What do you want to consult?\n\n";
     std::cout << "1. Schedule of a student\n";
@@ -39,8 +57,10 @@ void Uni::info() {
             print_schedule_student();
             break;
         case 2:
+            print_schedule_class();
             break;
         case 3:
+            print_students_class();
             break;
         case 4:
             break;
@@ -63,6 +83,23 @@ void Uni::print_schedule_student() const {
     std::cout << "Please enter the student code: ";
     int studentCode;
     std::cin >> studentCode;
-    Student student = students.getStudent(studentCode);
-    student.printSchedule();
+    const Student* student = students.getStudent(studentCode);
+    student->printSchedule();
+}
+
+void Uni::print_schedule_class() const {
+    const Uc& uc = consult_uc();
+    const ClassCode& classCode = consult_class(uc);
+    std::cout << "\nSchedule of " << uc.getUcCode() << "-" << classCode.getClassCode() << ":\n";
+    classCode.print_schedule();
+}
+
+void Uni::print_students_class() const {
+    const Uc& uc = consult_uc();
+    const ClassCode& classCode = consult_class(uc);
+    std::cout << "\nStudents of " << uc.getUcCode() << "-" << classCode.getClassCode() << ":\n\n";
+    for (int studentCode : classCode.getStudents()) {
+        const Student* student = students.getStudent(studentCode);
+        std::cout << studentCode << " " << student->getName() << '\n';
+    }
 }

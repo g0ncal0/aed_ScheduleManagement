@@ -2,8 +2,6 @@
 // Created by Filipe Correia on 15/10/2023.
 //
 
-
-
 #include "Unitary.h"
 
 ClassCode::ClassCode(std::string classCode) {
@@ -32,6 +30,19 @@ void ClassCode::print() const {
         class_.print();
     }
 }
+
+void ClassCode::print_schedule() const {
+    for (Class class_: classes) {
+        class_.print();
+    }
+}
+
+/*void ClassCode::print_students(const AllStudents& allStudents) const {
+    for (int studentCode : students) {
+        const Student* student = allStudents.getStudent();
+        std::cout << studentCode << " " << student->getStudentCode() << '\n';
+    }
+}*/
 
 std::list<int> ClassCode::getStudents() const{
     return students;

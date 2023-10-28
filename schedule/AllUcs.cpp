@@ -25,10 +25,23 @@ Uc& AllUcs::getUc(std::string ucCode){
     }
 }
 
+const Uc& AllUcs::getUc(std::string ucCode) const {
+    for(const Uc &u : ucs){
+        if(u.getUcCode() == ucCode){
+            return u;
+        }
+    }
+}
 
 void AllUcs::print() const {
     for (Uc uc: ucs) {
         uc.print();
         std::cout << '\n';
+    }
+}
+
+void AllUcs::print_ucs() const {
+    for (Uc uc: ucs) {
+        std::cout << uc.getUcCode() << '\n';
     }
 }

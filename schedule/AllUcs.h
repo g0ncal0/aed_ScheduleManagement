@@ -18,7 +18,9 @@ private:
 public:
     void addUc(Uc uc);
     Uc& getUc(std::string ucCode);
+    const Uc& getUc(std::string ucCode) const;
     void print() const;
+    void print_ucs() const;
 };
 
 

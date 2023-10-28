@@ -33,6 +33,14 @@ ClassCode& Uc::getClassCode(std::string classCode) {
     }
 }
 
+const ClassCode& Uc::getClassCode(std::string classCode) const {
+    for(const ClassCode &el : classes){
+        if(el.getClassCode() == classCode){
+            return el;
+        }
+    }
+}
+
 bool Uc::operator<(const Uc& other) const {
     return ucCode < other.ucCode;
 }
@@ -45,5 +53,11 @@ void Uc::print() const {
     std::cout << ucCode << std::endl;
     for (ClassCode classCode : classes) {
         classCode.print();
+    }
+}
+
+void Uc::print_classes() const {
+    for (ClassCode classCode : classes) {
+        std::cout << classCode.getClassCode() << '\n';
     }
 }
