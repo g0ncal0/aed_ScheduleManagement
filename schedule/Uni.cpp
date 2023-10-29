@@ -35,9 +35,44 @@ const ClassCode& Uni::consult_class(const Uc& uc) const {
     return uc.getClassCode(classCode);
 }
 
+void Uni::students_class(const ClassCode& classCode, std::list<std::pair<int, std::string>>& studentsInClass) const {
+    for (int studentCode : classCode.getStudents()) {
+        const Student* student = students.getStudent(studentCode);
+        std::pair<int, std::string> pair(studentCode, student->getName());
+        studentsInClass.push_back(pair);
+    }
+}
+
+void Uni::students_course(const Uc& uc, std::list<std::pair<int, std::string>>& studentsInCourse) const {
+    const std::list<ClassCode>& classes = uc.getClasses();
+    for (ClassCode classCode : classes) {
+        students_class(classCode, studentsInCourse);
+    }
+}
+
+void Uni::sort_print_students(std::list<std::pair<int, std::string>>& l_students, int aux) const {
+    if (aux == 1) {
+        l_students.sort();
+        for (std::pair<int, std::string> pair : l_students) {
+            std::cout << pair.first << " " << pair.second << '\n';
+        }
+    }
+    else {
+        l_students.sort(compare_students_name);
+        for (std::pair<int, std::string> pair : l_students) {
+            std::cout << pair.second << " " << pair.first << '\n';
+        }
+    }
+}
+
 bool Uni::compare_Occupation_UcCode(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2) {
     if (p1.first != p2.first) return p1.first > p2.first;
     else return p1.second < p2.second;
+}
+
+bool Uni::compare_students_name(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2) {
+    if (p1.second != p2.second) return p1.second < p2.second;
+    else return p1.first < p2.first;
 }
 
 void Uni::info() {
@@ -109,22 +144,37 @@ void Uni::print_schedule_class() const {
 void Uni::print_students_class() const {
     const Uc& uc = consult_uc();
     const ClassCode& classCode = consult_class(uc);
+    std::list<std::pair<int, std::string>> studentsInClass;
+    students_class(classCode, studentsInClass);
+    std::cout << "\nIn what order do you want to sort the information?\n1.By student code\n2.By student name\n";
+    int aux;
+    std::cin >> aux;
     std::cout << "\nStudents of " << uc.getUcCode() << "-" << classCode.getClassCode() << ":\n\n";
-    classCode.print_students();
+    sort_print_students(studentsInClass, aux);
 }
 
 void Uni::print_students_course() const {
     const Uc& uc = consult_uc();
+    std::list<std::pair<int, std::string>> studentsInCourse;
+    students_course(uc, studentsInCourse);
+    std::cout << "\nIn what order do you want to sort the information?\n1.By student code\n2.By student name\n";
+    int aux;
+    std::cin >> aux;
     std::cout << "\nStudents of " << uc.getUcCode() << ":\n\n";
-    uc.print_students();
+    sort_print_students(studentsInCourse, aux);
 }
 
 void Uni::print_students_year() const {
     std::cout << "What year do you want do consult?\n\n1.\n2.\n3.\n";
     char year;
     std::cin >> year;
+    std::list<std::pair<int, std::string>> studentsInYear;
+    students.students_year(year, studentsInYear);
+    std::cout << "\nIn what order do you want to sort the information?\n1.By student code\n2.By student name\n";
+    int aux;
+    std::cin >> aux;
     std::cout << "\nStudents of year " << year << ":\n\n";
-    students.print_students_year(year);
+    sort_print_students(studentsInYear, aux);
 }
 
 void Uni::print_number_students_in_n_ucs() const {

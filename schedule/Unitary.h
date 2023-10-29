@@ -59,19 +59,21 @@ class ClassCode {
 private:
     std::string classCode;
     std::list<Class> classes;
-    std::list<std::pair<int, std::string>> students;
+    //std::list<std::pair<int, std::string>> students;
+    std::list<int> students;
 
 public:
     ClassCode(std::string classCode);
-    void addStudent(int studentCode, std::string name);
+    //void addStudent(int studentCode, std::string name);
+    void addStudent(int studentCode);
     void addClass(Class class_);
     std::string getClassCode() const ;
     Class& getFirstClass();
     void print() const;
     void print_schedule() const;
     void print_students() const;
-    //void print_students(const AllStudents& allStudents) const;
-    std::list<std::pair<int, std::string>> getStudents() const;
+    //std::list<std::pair<int, std::string>> getStudents() const;
+    std::list<int> getStudents() const;
     int classOccupation() const;
 };
 
@@ -92,6 +94,7 @@ public:
     ClassCode& getClassCode(std::string classCode);
     const ClassCode& getClassCode(std::string classCode) const;
     ClassCode getFirstClassCode() const;
+    const std::list<ClassCode>& getClasses() const;
     void print() const;
     void print_classes() const;
     void print_students() const;

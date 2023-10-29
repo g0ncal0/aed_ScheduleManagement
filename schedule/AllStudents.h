@@ -17,8 +17,8 @@ public:
     void addStudent(Student student);
     void addStudent(int studentCode, std::string name);
     const Student* getStudent(int id) const;
+    void students_year(char year, std::list<std::pair<int, std::string>>& studentsInYear) const;
     void print() const;
-    void print_students_year(char year) const;
     int studentsInNUcs(int n) const;
     int yearOccupation(char year) const;
 };

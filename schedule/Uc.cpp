@@ -49,6 +49,10 @@ ClassCode Uc::getFirstClassCode() const {
     return classes.front();
 }
 
+const std::list<ClassCode>& Uc::getClasses() const {
+    return classes;
+}
+
 void Uc::print() const {
     std::cout << ucCode << std::endl;
     for (const ClassCode& classCode : classes) {

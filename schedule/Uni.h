@@ -16,7 +16,11 @@ private:
 
     const Uc& consult_uc() const;
     const ClassCode& consult_class(const Uc& uc) const;
+    void students_class(const ClassCode& classCode, std::list<std::pair<int, std::string>>& studentsInClass) const;
+    void students_course(const Uc& uc, std::list<std::pair<int, std::string>>& studentsInYear) const;
+    void sort_print_students(std::list<std::pair<int, std::string>>& l_students, int aux) const;
     static bool compare_Occupation_UcCode(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
+    static bool compare_students_name(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
 
 public:
     Uni(AllUcs ucs, AllStudents students);

@@ -8,9 +8,9 @@ ClassCode::ClassCode(std::string classCode) {
     this->classCode = classCode;
 }
 
-void ClassCode::addStudent(int studentCode, std::string name) {
-    std::pair<int, std::string> student(studentCode, name);
-    students.push_back(student);
+void ClassCode::addStudent(int studentCode) {
+    //std::pair<int, std::string> student(studentCode, name);
+    students.push_back(studentCode);
 }
 
 void ClassCode::addClass(Class class_) {
@@ -38,19 +38,12 @@ void ClassCode::print_schedule() const {
 }
 
 void ClassCode::print_students() const {
-    for (std::pair<int, std::string> student : students) {
+    /*for (std::pair<int, std::string> student : students) {
         std::cout << student.first << " " << student.second << '\n';
-    }
+    }*/
 }
 
-/*void ClassCode::print_students(const AllStudents& allStudents) const {
-    for (int studentCode : students) {
-        const Student* student = allStudents.getStudent();
-        std::cout << studentCode << " " << student->getStudentCode() << '\n';
-    }
-}*/
-
-std::list<std::pair<int, std::string>> ClassCode::getStudents() const{
+std::list<int> ClassCode::getStudents() const{
     return students;
 }
 

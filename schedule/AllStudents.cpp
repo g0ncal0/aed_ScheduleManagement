@@ -34,7 +34,15 @@ void AllStudents::addStudent(Student student) {
             ClassCode& c = pair.second;
         }
     }
+}
 
+void AllStudents::students_year(char year, std::list<std::pair<int, std::string>>& studentsInYear) const {
+    for (const Student& student : students) {
+        if (student.checkYear(year)) {
+            std::pair<int, std::string> pair(student.getStudentCode(), student.getName());
+            studentsInYear.push_back(pair);
+        }
+    }
 }
 
 void AllStudents::print() const {
@@ -42,14 +50,6 @@ void AllStudents::print() const {
         std::cout << s.getStudentCode() << ' ' << s.getName() << std::endl;
         s.printSchedule();
         std::cout << std::endl;
-    }
-}
-
-void AllStudents::print_students_year(char year) const {
-    for (const Student& student : students) {
-        if (student.checkYear(year)) {
-            std::cout << student.getStudentCode() << " " << student.getName() << '\n';
-        }
     }
 }
 
