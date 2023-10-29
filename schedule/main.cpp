@@ -13,7 +13,7 @@ int main() {
     Uni uni = Uni(ucs, students);
     //uni.print_all_ucs();
     //uni.print_all_students();
-    uni.info();
+    //uni.info();
 
     //Operation op = Operation(students);
     //op.operate();

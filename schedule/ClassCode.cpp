@@ -50,3 +50,10 @@ std::list<int> ClassCode::getStudents() const{
 int ClassCode::classOccupation() const {
     return students.size();
 }
+
+void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses, std::string ucCode) const {
+    for (const Class& class_ : classes) {
+        std::pair<const Class&, std::string> pair(class_, ucCode);
+        allClasses.push_back(pair);
+    }
+}

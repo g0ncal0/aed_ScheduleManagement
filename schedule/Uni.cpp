@@ -75,6 +75,60 @@ bool Uni::compare_students_name(const std::pair<int, std::string>& p1, const std
     else return p1.first < p2.first;
 }
 
+void Uni::print_day(char weekday) const {
+    if (weekday == '0') {
+        std::cout << "   Monday:\n";
+    }
+    else if (weekday == '1') {
+        std::cout << "   Tuesday:\n";
+    }
+    else if (weekday == '2') {
+        std::cout << "   Wednesday:\n";
+    }
+    else if (weekday == '3') {
+        std::cout << "   Thursday:\n";
+    }
+    else if (weekday == '4') {
+        std::cout << "   Friday:\n";
+    }
+    else if (weekday == '5') {
+        std::cout << "   Saturday:\n";
+    }
+    else {
+        std::cout << "   Sunday:\n";
+    }
+}
+
+void Uni::print_schedule(std::list<std::pair<const Class&, std::string>>& classes) const {
+    classes.sort();
+    char weekday = '0';
+    for (std::pair<const Class&, std::string> class_ : classes) {
+        if (class_.first.getWeekday() >= weekday) {
+            weekday = class_.first.getWeekday() + 1;
+            print_day(class_.first.getWeekday());
+        }
+        float startHour = class_.first.getStartHour();
+        float endHour = startHour + class_.first.getDuration();
+        int s_h = (int)startHour;
+        int s_m = (int)(((float)startHour-s_h) * 60);
+        int e_h = (int)endHour;
+        int e_m = (int)(((float)endHour-e_h) * 60);
+        std::string type;
+        switch (class_.first.getType()) {
+            case 'T':
+                type = "T";
+                break;
+            case 'P':
+                type = "TP";
+                break;
+            case 'L':
+                type = "PL";
+                break;
+        }
+        std::cout << "      " << std::setw(2) << std::setfill('0') << s_h << ':' << std::setw(2) << std::setfill('0') << s_m << '-' << std::setw(2) << std::setfill('0') << e_h << ':' << std::setw(2) << std::setfill('0') << e_m << "   " << type << "   " << class_.second << '\n';
+    }
+}
+
 void Uni::info() {
     std::cout << "What do you want to consult?\n\n";
     std::cout << "1. Schedule of a student\n";
@@ -131,14 +185,19 @@ void Uni::print_schedule_student() const {
     int studentCode;
     std::cin >> studentCode;
     const Student* student = students.getStudent(studentCode);
-    student->printSchedule();
+    std::list<std::pair<const Class&, std::string>> classes;
+    student->getClasses(classes);
+    std::cout << "Schedule of " << studentCode << "-" << student->getName() << ":\n";
+    print_schedule(classes);
 }
 
 void Uni::print_schedule_class() const {
     const Uc& uc = consult_uc();
     const ClassCode& classCode = consult_class(uc);
+    std::list<std::pair<const Class&, std::string>> classes;
+    classCode.getClasses(classes, uc.getUcCode());
     std::cout << "\nSchedule of " << uc.getUcCode() << "-" << classCode.getClassCode() << ":\n";
-    classCode.print_schedule();
+    print_schedule(classes);
 }
 
 void Uni::print_students_class() const {

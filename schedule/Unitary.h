@@ -37,6 +37,7 @@ public:
     std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
     bool checkYear(char year) const;
     int numberClasses() const;
+    void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const;
 };
 
 class Class {
@@ -52,6 +53,7 @@ public:
     float getStartHour() const;
     char getType() const;
     float getDuration() const;
+    bool operator<(const Class& class2) const;
     void print() const;
 };
 
@@ -59,12 +61,10 @@ class ClassCode {
 private:
     std::string classCode;
     std::list<Class> classes;
-    //std::list<std::pair<int, std::string>> students;
     std::list<int> students;
 
 public:
     ClassCode(std::string classCode);
-    //void addStudent(int studentCode, std::string name);
     void addStudent(int studentCode);
     void addClass(Class class_);
     std::string getClassCode() const ;
@@ -72,9 +72,10 @@ public:
     void print() const;
     void print_schedule() const;
     void print_students() const;
-    //std::list<std::pair<int, std::string>> getStudents() const;
     std::list<int> getStudents() const;
     int classOccupation() const;
+    void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses, std::string ucCode) const;
+
 };
 
 
@@ -97,7 +98,6 @@ public:
     const std::list<ClassCode>& getClasses() const;
     void print() const;
     void print_classes() const;
-    void print_students() const;
     int ucOccupation() const;
 };
 

@@ -8,6 +8,7 @@
 #include "Unitary.h"
 #include "parse.h"
 #include <algorithm>
+#include <iomanip>
 
 class Uni {
 private:
@@ -21,6 +22,8 @@ private:
     void sort_print_students(std::list<std::pair<int, std::string>>& l_students, int aux) const;
     static bool compare_Occupation_UcCode(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
     static bool compare_students_name(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
+    void print_day(char weekday) const;
+    void print_schedule(std::list<std::pair<const Class&, std::string>>& classes) const;
 
 public:
     Uni(AllUcs ucs, AllStudents students);

@@ -65,3 +65,8 @@ int Student::numberClasses() const {
     return classes.size();
 }
 
+void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const {
+    for (const std::pair<Uc&,ClassCode&>& pair : classes) {
+        pair.second.getClasses(allClasses, pair.first.getUcCode());
+    }
+}

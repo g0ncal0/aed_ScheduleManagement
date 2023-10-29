@@ -28,7 +28,12 @@ float Class::getDuration() const{
     return duration;
 }
 
-
 void Class::print() const {
     std::cout << "      " << weekday << ' ' << startHour << ' ' << duration << ' ' << type << std::endl;
+}
+
+bool Class::operator<(const Class& class2) const {
+    if (weekday != class2.weekday) return weekday < class2.weekday;
+    else if (startHour != class2.startHour) return startHour < class2.startHour;
+    else return duration < class2.duration;
 }

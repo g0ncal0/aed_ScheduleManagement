@@ -10,12 +10,11 @@
 #include <iostream>
 
 
-bool compare_class (const Class& first, const Class& second);
-
+/*bool compare_class(const Class& first, const Class& second);
 std::list<Class> order_classes(std::list<Class> classes);
+void printSchedule(std::list<std::pair<const Uc&,const Class&>> classes);*/
 
 
-void printSchedule(std::list<std::pair<Uc*,Class*>> classes);
 
 
 

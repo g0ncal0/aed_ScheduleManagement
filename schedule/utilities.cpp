@@ -7,13 +7,14 @@
 #include "utilities.h"
 
 
-bool compare_class (const std::pair<Uc*,Class*>& first, const std::pair<Uc*,Class*>& second)
+/*
+bool compare_class(const std::pair<const Uc&,const Class&>& first, const std::pair<const Uc&,const Class&>& second)
 {
-    if(first.second->getWeekday() < second.second->getWeekday()){
+    if(first.second.getWeekday() < second.second.getWeekday()){
         return true;
     }
-    if(first.second->getWeekday() == second.second->getWeekday()){
-        if(first.second->getStartHour() < second.second->getStartHour()){
+    if(first.second.getWeekday() == second.second.getWeekday()){
+        if(first.second.getStartHour() < second.second.getStartHour()){
             return true;
         }
     }
@@ -37,3 +38,5 @@ void printSchedule(std::list<std::pair<Uc*,Class*>> classes){
         std::cout << "Starting: " << el.second->getStartHour() << " | Duration: " << el.second->getDuration() << "\n";
     }
 }
+*/
+
