@@ -9,11 +9,11 @@ void History::addRequest(Activity *request) {
 }
 
 History::History() {
-    history.push(new Activity(0, "Start of History"));
+
 }
 
-Activity History::lastHistory() const {
-    if(!history.empty()) return *(history.top());
+std::string History::lastHistory() const {
+    if(!history.empty()) return history.top()->getMessage();
 }
 
 void History::removeHistory() {
@@ -24,8 +24,18 @@ void History::removeHistory() {
     }
 }
 
-Activity* History::lastRequest() const {
-    return requests.front();
+Activity* History::lastRequestPtr() const {
+    if(!requests.empty()){
+        return requests.front();
+    }
+    return nullptr;
+}
+
+std::string History::lastRequest() const {
+    if(requests.empty()){
+        return "No requests Available";
+    }
+    return requests.front()->getMessage();
 }
 
 void History::requestAccepted() {

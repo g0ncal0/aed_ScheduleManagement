@@ -3,7 +3,6 @@
 
 #include "History.h"
 #include "parse.h"
-#include "Operation.h"
 #include "Uni.h"
 
 int main() {
@@ -13,7 +12,7 @@ int main() {
     Uni uni = Uni(ucs, students);
     //uni.print_all_ucs();
     //uni.print_all_students();
-    //uni.info();
+    uni.login();
 
     //Operation op = Operation(students);
     //op.operate();

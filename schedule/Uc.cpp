@@ -73,3 +73,33 @@ int Uc::ucOccupation() const {
     }
     return res;
 }
+/**
+ *
+ * @return ocupação da turma com menos alunos
+ */
+int Uc::minOcupation(){
+    int min = 1000; // not the greatest initialization. Think about putting a constant of max value of int
+    for(ClassCode c : classes){
+        int numberstudentsinclass = c.classOccupation();
+        if(numberstudentsinclass < min){
+            min = numberstudentsinclass;
+        }
+    }
+    return min;
+}
+
+/**
+ *
+ * @param student Student to change
+ * @param exit ClassCode to exit
+ * @param enter ClassCode to enter
+ * @return true if change is done and possible. false if change is not possible
+ */
+bool Uc::changeClass(Student* student, ClassCode* exit, ClassCode* enter){
+    if(enter->classOccupation() >= MAX_STUDENTS_CLASS and abs(enter->classOccupation() - minOcupation()) < DIFFERENCE_ACCEPTABLE_EQULIBRIUM){ // MUST INCLUDE SOMETHING TO CHECK LOGIC
+        return false;
+    }
+    exit->removeStudent(student->getStudentCode());
+    enter->addStudent(student->getStudentCode());
+    return true;
+}

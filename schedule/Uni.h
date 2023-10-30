@@ -7,13 +7,21 @@
 
 #include "Unitary.h"
 #include "parse.h"
+#include "History.h"
 #include <algorithm>
 #include <iomanip>
+
+
+
 
 class Uni {
 private:
     AllUcs ucs;
     AllStudents students;
+    bool isAdmin, loggedIn = false;
+    int student_id_loggedin = 0;
+    History history;
+
 
     const Uc& consult_uc() const;
     const ClassCode& consult_class(const Uc& uc) const;
@@ -40,6 +48,11 @@ public:
     void print_uc_occupation() const;
     void print_year_occupation() const;
     void print_ucs_more_students() const;
+    void actionsforadmin();
+
+    void login();
+
+    bool act(Activity *activity);
 };
 
 

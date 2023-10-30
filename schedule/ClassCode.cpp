@@ -12,6 +12,9 @@ void ClassCode::addStudent(int studentCode) {
     //std::pair<int, std::string> student(studentCode, name);
     students.push_back(studentCode);
 }
+void ClassCode::removeStudent(int studentCode) {
+    students.remove(studentCode);
+}
 
 void ClassCode::addClass(Class class_) {
     classes.push_back(class_);

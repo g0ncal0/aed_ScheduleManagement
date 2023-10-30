@@ -36,6 +36,13 @@ void AllStudents::addStudent(Student student) {
     }
 }
 
+void AllStudents::removeStudent(int student) {
+    auto it = students.find(Student(student, ""));
+    if (it != students.end()){
+        students.erase(it);
+    }
+}
+
 void AllStudents::students_year(char year, std::list<std::pair<int, std::string>>& studentsInYear) const {
     for (const Student& student : students) {
         if (student.checkYear(year)) {

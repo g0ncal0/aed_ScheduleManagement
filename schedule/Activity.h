@@ -11,63 +11,24 @@
 
 
 class Activity {
-private:
     int code;
-    std::string description;
-    bool changeMade;
-
-public:
-    Activity(int code, std::string description);
-    int getCode() const;
-    std::string getDescription() const;
-
-    //virtual void revertChanges();
-};
-
-
-class CreateStudent : protected Activity {
-public:
-    CreateStudent(int code, std::string description);
-};
-
-class CreateUc : protected Activity {
-public:
-    CreateUc(int code, std::string description, Uc* uc);
-};
-
-class AssignClassToUc : protected Activity {
-private:
-    Class* course;
-    Uc* uc;
-public:
-    AssignClassToUc(int code, std::string description, Class* course, Uc* uc);
-};
-
-class AddClass : protected Activity {
-private:
-    Class* course;
-public:
-    AddClass(int code, std::string description, Class* course);
-};
-
-class RemoveClass : protected Activity {
-private:
-    Class* course;
-public:
-    RemoveClass(int code, std::string description, Class* course);
-};
-
-class StudentClassChange : protected Activity {
-private:
-
     Student* student;
-    Class* old;
-    Class* current;
-
+    ClassCode* old = nullptr;
+    ClassCode* current = nullptr;
+    Uc* uc = nullptr;
+    std::string message;
 public:
-    StudentClassChange(int code, std::string description, Student *student, Class *old, Class *current);
-    //void revertChanges() override;
+    Activity(bool in, Student* student); // Student inserted
+    Activity(Student* student, ClassCode* old, ClassCode* current, Uc* uc); // Class change
+    Activity(bool in, Student* student,ClassCode* c, Uc* uc); // Class insertion (true) or deletion (false)
+    int getcode() const { return code;}
+    Student* getStudent(){return student;}
+    ClassCode* getOldClassCode(){return old;}
+    ClassCode* getClassCode(){return current;}
+    Uc* getUc(){ return uc;}
+    std::string getMessage();
 };
+
 
 
 

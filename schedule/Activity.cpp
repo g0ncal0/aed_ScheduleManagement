@@ -4,36 +4,39 @@
 
 #include "Activity.h"
 
-Activity::Activity(int code, std::string description) {
-    this->code = code;
-    this->description = description;
-    this->changeMade = false;
+
+Activity::Activity(bool in, Student *student) {
+    this->student = student;
+    if(in){
+        code = 0;
+    } else{
+        code = 1;
+    }
 }
 
-int Activity::getCode() const{
-    return code;
-}
-
-std::string Activity::getDescription() const{
-    return description;
-}
-
-
-StudentClassChange::StudentClassChange(int code, std::string description, Student* student, Class* old, Class* current) : Activity(code, description) {
+Activity::Activity(Student *student, ClassCode *old, ClassCode *current, Uc* uc) {
     this->student = student;
     this->old = old;
     this->current = current;
+    this->uc = uc;
+    code = 2;
+}
+
+Activity::Activity(bool in, Student *student, ClassCode *c, Uc* uc) {
+    this->student = student;
+    this->current = c;
+    this->uc = uc;
+    if(in){
+        code = 3;
+    }else{
+        code = 4;
+    }
 }
 
 
-// We have to implement here something for actually doing the changes, after being approved by admins. We should also have
-// a private member that checks whether we have already executed this change.
-
-/*
-void StudentClassChange::revertChanges(){
-    // Revert the changes
-
-}*/
-
-
-
+std::string Activity::getMessage() {
+    if(!message.empty()){
+        return message;
+    }
+    return student->getName();
+}

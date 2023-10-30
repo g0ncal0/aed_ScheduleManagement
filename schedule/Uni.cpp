@@ -4,9 +4,16 @@
 
 #include "Uni.h"
 
+
+const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), create new UCs (2), assign Classes to UCs (3) and check students' requests (4) . \nFor more information, you can also list all the information.\n To see all students, insert 20. To see all classes in a UC, insert 21. To see all Ucs, insert 22.";
+const std::string USER_PERMISSIONS = "A student can make a request to add a class (1), remove a class (2) and switch classes(3).";
+
+
+
 Uni::Uni(AllUcs ucs, AllStudents students) {
     this->ucs = ucs;
     this->students = students;
+    history = History();
 }
 
 void Uni::print_all_ucs() const {
@@ -140,7 +147,10 @@ void Uni::info() {
     std::cout << "7. Class occupation\n";
     std::cout << "8. Course occupation\n";
     std::cout << "9. Year occupation\n";
-    std::cout << "10. Consult the UCs with the greatest number of students\n\n";
+    std::cout << "10. Consult the UCs with the greatest number of students\n";
+    std::cout << "11. Process Requests and Make Changes\n";
+    std::cout << "12. All Students \n\n";
+
 
     std::cout << "Enter a number: ";
     int op;
@@ -176,6 +186,12 @@ void Uni::info() {
             break;
         case 10:
             print_ucs_more_students();
+            break;
+        case 11:
+            actionsforadmin();
+            break;
+        case 12:
+            print_all_students();
             break;
     }
 }
@@ -270,3 +286,136 @@ void Uni::print_ucs_more_students() const {
         std::cout << pair.second << " - " << pair.first << " students\n";
     }
 }
+
+
+
+
+/**
+ * Helper function that understands what admin wants to do and acts.
+ */
+void Uni::actionsforadmin(){
+    bool notdone = true;
+    while(notdone){
+        std::cout << "0. To break\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n";
+        std::cout << "Enter a number: ";
+        int op;
+        std::cin >> op;
+
+        std::string var;
+        switch(op){
+        case 0:
+
+            notdone = false;
+            break;
+        case 1:
+            std::cout << history.lastRequest();
+            break;
+        case 2:
+            if(act(history.lastRequestPtr())){
+                history.requestAccepted();
+                std::cout << "Successfully done.\n";
+            }else{
+                std::cout << "Request doesn't fit rules. Removed.\n";
+                history.requestDenied();
+            }
+            break;
+        case 3:
+            history.requestDenied();
+            break;
+        case 4:
+            std::cout << history.lastHistory() << std::endl;
+            break;
+        case 5:
+            int id;
+            std::cout << "name:";
+            std::cin >> var;
+            std::cout << "id:";
+            std::cin >> id;
+            history.addRequest(new Activity(true, new Student(id, var)));
+            break;
+    }
+    }
+}
+
+bool Uni::act(Activity* activity){
+    bool done = true;
+    switch(activity->getcode()){
+        case 0:
+            students.addStudent(activity->getStudent()->getStudentCode(), activity->getStudent()->getName());
+            break;
+        case 1:
+            students.removeStudent(activity->getStudent()->getStudentCode());
+            break;
+        case 2:
+            done = activity->getUc()->changeClass(activity->getStudent(), activity->getOldClassCode(), activity->getClassCode());
+            // check if we can continue changing the class in the user level.
+            if(done){
+                activity->getStudent()->removeClass(activity->getClassCode()->getClassCode());
+            }
+            break;
+        case 3:
+            if(abs(activity->getUc()->minOcupation() - activity->getClassCode()->classOccupation()) < 4){
+                activity->getClassCode()->addStudent(activity->getStudent()->getStudentCode());
+                activity->getStudent()->addClass(*activity->getUc(), *activity->getClassCode());
+            }else{done = false;}
+            break;
+    }
+    return done;
+}
+
+
+
+
+
+
+
+
+
+void Uni::login() {
+    char answer;
+    bool isValidInput = false;
+    while (!isValidInput) {
+        std::cout << "Are you a student? s/n" << std::endl;
+        std::cin >> answer;
+        answer = tolower(answer);
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        if (answer == 's' || answer == 'n') {
+            isValidInput = true; // A entrada é válida, sai do loop
+        } else {
+            std::cout << "Invalid input. Please enter 's' or 'n'." << std::endl;
+        }
+    }
+    if (answer == 's') {
+        isAdmin = false;
+        int studentCode;
+        std::cout << "What is your student code?" << std::endl;
+        bool isValidCode = false;
+        do {
+            if (std::cin >> studentCode && !std::cin.fail() && studentCode > 0) isValidCode = true;
+            else {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar a entrada inválida
+                std::cout << "Invalid input. Please enter a valid positive integer." << std::endl;
+            }
+        } while (!isValidCode);
+        const Student *findStudent = students.getStudent(studentCode);
+
+
+        if (findStudent != nullptr) {
+            student_id_loggedin = studentCode;
+            std::cout << "Welcome, " << findStudent->getName() << std::endl;
+        }
+        if (findStudent == nullptr) {
+            std::cout << "It seems that we don't have that student code in our Database." << std::endl;
+        }
+
+    } else {
+            isAdmin = true;
+            student_id_loggedin = 0;
+    }
+
+    if(isAdmin){
+        info();
+    }
+    }

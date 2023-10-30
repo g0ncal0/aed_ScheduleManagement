@@ -21,6 +21,8 @@ public:
     void print() const;
     int studentsInNUcs(int n) const;
     int yearOccupation(char year) const;
+
+    void removeStudent(int student);
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

@@ -20,8 +20,10 @@ public:
     void removeHistory();
     void requestAccepted();
     void requestDenied();
-    Activity lastHistory() const;
-    Activity* lastRequest() const;
+    std::string lastHistory() const;
+    std::string lastRequest() const;
+
+    Activity *lastRequestPtr() const;
 };
 
 

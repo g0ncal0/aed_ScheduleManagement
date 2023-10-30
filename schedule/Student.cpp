@@ -29,9 +29,13 @@ void Student::addClass(Uc& uc, ClassCode& class_) {
     classes.push_back(pair<Uc&, ClassCode&>(uc, class_));
 }
 
-void Student::removeClass(Class& class_) {
+void Student::removeClass(std::string class_) {
     // HAS TO BE BETTER IMPLEMENTED: Find the pair whose class uses that class and remove that pair
-    // classes.remove(class_);
+    for(auto it = classes.begin(); it != classes.end(); it++){
+        if(class_ == it->second.getClassCode()){
+            classes.erase(it);
+        }
+    }
 }
 
 

@@ -12,6 +12,9 @@
 #include <set>
 #include <utility>
 
+const int DIFFERENCE_ACCEPTABLE_EQULIBRIUM = 4;
+const int MAX_STUDENTS_CLASS = 30;
+
 class Uc;
 class Student;
 class ClassCode;
@@ -32,12 +35,12 @@ public:
     void addClass(Uc& uc, ClassCode& class_);
     void addClass(std::pair<Uc&, ClassCode&> class_);
     std::pair<Uc&, ClassCode&> getFirstClass() const;
-    void removeClass(Class& class_);
     void printSchedule() const;
     std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
     bool checkYear(char year) const;
     int numberClasses() const;
     void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const;
+    void removeClass(std::string class_);
 };
 
 class Class {
@@ -66,6 +69,7 @@ private:
 public:
     ClassCode(std::string classCode);
     void addStudent(int studentCode);
+    void removeStudent(int studentCode);
     void addClass(Class class_);
     std::string getClassCode() const ;
     Class& getFirstClass();
@@ -99,6 +103,14 @@ public:
     void print() const;
     void print_classes() const;
     int ucOccupation() const;
+
+    bool checkequilibrium();
+
+    bool changeClass(Student *student, ClassCode exit, ClassCode enter);
+
+    int minOcupation();
+
+    bool changeClass(Student *student, ClassCode *exit, ClassCode *enter);
 };
 
 #endif //UNISCHEDULE_UNITARY_H
