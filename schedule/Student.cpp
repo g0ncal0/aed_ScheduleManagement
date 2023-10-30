@@ -12,6 +12,10 @@ Student::Student(int studentCode, std::string name) {
     this->name = name;
 }
 
+/**
+ * getter of student name
+ * @return student name
+ */
 string Student::getName() const {
     return name;
 }
