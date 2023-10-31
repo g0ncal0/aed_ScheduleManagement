@@ -43,6 +43,7 @@ public:
     void removeClass(std::string class_);
 
     const ClassCode &getClassCode(std::string uc) const;
+
 };
 
 class Class {

@@ -45,6 +45,7 @@ void Student::removeClass(std::string class_) {
 }
 
 
+
 void Student::printSchedule() const {
     for(pair<Uc&, ClassCode&> c : classes){
         std::cout << "   " << c.first.getUcCode() << "\n" << "  ";

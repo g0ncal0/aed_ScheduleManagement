@@ -26,6 +26,8 @@ public:
     void changeClassStudent(int student, ClassCode &oldclass, ClassCode &newclass, Uc &uc);
 
     void removeClassStudent(int student, ClassCode &oldclass, Uc &uc);
+
+    void addClassStudent(int student, ClassCode &newclass, Uc &uc);
 };
 
 #endif //UNISCHEDULE_ALLSTUDENTS_H

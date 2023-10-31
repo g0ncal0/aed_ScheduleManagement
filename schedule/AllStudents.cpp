@@ -93,7 +93,16 @@ void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode
 void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
     auto updating = students.find(Student(student,""));
     Student newstudent = *updating;
-    newstudent.removeClass(oldclass.getClassCode());
     students.erase(updating);
+    newstudent.removeClass(oldclass.getClassCode());
+    students.insert(newstudent);
+}
+
+
+void AllStudents::addClassStudent(int student, ClassCode& newclass, Uc& uc){
+    auto updating = students.find(Student(student,""));
+    Student newstudent = *updating;
+    students.erase(updating);
+    newstudent.addClass(uc,newclass);
     students.insert(newstudent);
 }

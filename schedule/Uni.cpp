@@ -320,7 +320,6 @@ void Uni::enterClass(){
 void Uni::leaveUC(){
     Uc& uc = consult_uc();  // uc we will work with
     const ClassCode& classcode = students.getStudent(student_id_loggedin)->getClassCode(uc.getUcCode());
-    students.getStudent(student_id_loggedin);
     history.addRequest(Activity(false,student_id_loggedin,classcode.getClassCode(),&uc));
 }
 /**
@@ -355,12 +354,15 @@ void Uni::actionsforuser(){
  * Helper function that understands what admin wants to do and acts.
  */
 void Uni::actionsforadmin(){
-
+    if(!isAdmin){
+        return;
+    }
     std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n";
     std::cout << "Enter a number: ";
     int op;
     std::cin >> op;
 
+    bool done = false;
     switch(op){
     case 0:
         break;
@@ -368,13 +370,19 @@ void Uni::actionsforadmin(){
         std::cout << history.lastRequest() << "\n";
         break;
     case 2:
-        if(act(history.lastRequestAct())){
-            history.requestAccepted();
+        try{
+            done = act(history.lastRequestAct());
             std::cout << "Successfully done.\n";
-        }else{
+            history.requestAccepted();
+        }catch (...) {
+            std::cout << "Exception occurred.";
+        }
+        if(!done){
             std::cout << "Request doesn't fit rules. Removed.\n";
             history.requestDenied();
+
         }
+
         break;
     case 3:
         history.requestDenied();
@@ -400,35 +408,40 @@ void Uni::actionsforadmin(){
 }
 
 bool Uni::actleaveUC(Activity activity){
-    activity.getUc()->getClassCode(activity.getClassCode()).removeStudent(activity.getcode());
+    activity.getUc()->getClassCode(activity.getClassCode()).removeStudent(activity.getStudent());
     ClassCode& old = activity.getUc()->getClassCode(activity.getClassCode());
     students.removeClassStudent(activity.getStudent(),old, *activity.getUc());
+    return true;
 }
 
 bool Uni::act(Activity activity){
     bool done = true;
     switch(activity.getcode()){
         case 2:
-            done = activity.getUc()->changeClass(activity.getStudent(), activity.getOldClassCode(), activity.getClassCode());
-            // check if we can continue changing the class in the user level.
-            if(done){
-                ClassCode& old = activity.getUc()->getClassCode(activity.getOldClassCode());
-                ClassCode& future = activity.getUc()->getClassCode(activity.getOldClassCode());
-                students.changeClassStudent(activity.getStudent(),old, future, *activity.getUc());
+            if(students.getStudent(activity.getStudent())->numberClasses() < 7 ){
+                done = activity.getUc()->changeClass(activity.getStudent(), activity.getOldClassCode(), activity.getClassCode());
+                // check if we can continue changing the class in the user level.
+                if(done){
+                    ClassCode& old = activity.getUc()->getClassCode(activity.getOldClassCode());
+                    ClassCode& future = activity.getUc()->getClassCode(activity.getOldClassCode());
+                    students.changeClassStudent(activity.getStudent(),old, future, *activity.getUc());
+                }
+            }else{
+                done = false;
             }
             break;
         case 4:
             // leave class
-            actleaveUC(activity);
+            done = actleaveUC(activity);
+            break;
         case 3:
+            // join a class
             ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
-            const Student* dataStudent = students.getStudent(activity.getStudent());
             if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4){
                 classC.addStudent(activity.getStudent());
+                students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
             }else{done = false;}
             break;
-
-
 
     }
     return done;
