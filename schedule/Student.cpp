@@ -31,9 +31,11 @@ void Student::addClass(Uc& uc, ClassCode& class_) {
 
 void Student::removeClass(std::string class_) {
     // HAS TO BE BETTER IMPLEMENTED: Find the pair whose class uses that class and remove that pair
+
     for(auto it = classes.begin(); it != classes.end(); it++){
         if(class_ == it->second.getClassCode()){
             classes.erase(it);
+            break;
         }
     }
 }
@@ -72,5 +74,13 @@ int Student::numberClasses() const {
 void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const {
     for (const std::pair<Uc&,ClassCode&>& pair : classes) {
         pair.second.getClasses(allClasses, pair.first.getUcCode());
+    }
+}
+
+const ClassCode& Student::getClassCode(std::string uc) const{
+    for(auto el: classes){
+        if(el.first.getUcCode() == uc){
+            return el.second;
+        }
     }
 }

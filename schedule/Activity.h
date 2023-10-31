@@ -12,21 +12,20 @@
 
 class Activity {
     int code;
-    Student* student;
-    ClassCode* old = nullptr;
-    ClassCode* current = nullptr;
+    int student;
+    std::string old;
+    std::string current;
     Uc* uc = nullptr;
-    std::string message;
 public:
-    Activity(bool in, Student* student); // Student inserted
-    Activity(Student* student, ClassCode* old, ClassCode* current, Uc* uc); // Class change
-    Activity(bool in, Student* student,ClassCode* c, Uc* uc); // Class insertion (true) or deletion (false)
+    Activity(bool in, int student); // Student inserted
+    Activity(int student, std::string old, std::string current, Uc* uc); // Class change
+    Activity(bool in, int student,std::string classcode, Uc* uc); // Class insertion (true) or deletion (false)
     int getcode() const { return code;}
-    Student* getStudent(){return student;}
-    ClassCode* getOldClassCode(){return old;}
-    ClassCode* getClassCode(){return current;}
+    int getStudent(){return student;}
+    std::string getOldClassCode(){return old;}
+    std::string getClassCode(){return current;}
     Uc* getUc(){ return uc;}
-    std::string getMessage();
+    const std::string getMessage() const;
 };
 
 

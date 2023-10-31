@@ -14,6 +14,8 @@ const Student* AllStudents::getStudent(int id) const{
     return nullptr;
 }
 
+
+
 void AllStudents::addStudent(int studentCode, std::string name){
     Student student(studentCode, name);
     students.insert(student);
@@ -76,4 +78,22 @@ int AllStudents::yearOccupation(char year) const {
         }
     }
     return res;
+}
+
+
+void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode& newclass, Uc& uc){
+    auto updating = students.find(Student(student,""));
+    Student newstudent = *updating;
+    newstudent.removeClass(newclass.getClassCode());
+    newstudent.addClass(std::pair<Uc&,ClassCode&>(uc,newclass));
+    students.erase(updating);
+    students.insert(newstudent);
+}
+
+void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
+    auto updating = students.find(Student(student,""));
+    Student newstudent = *updating;
+    newstudent.removeClass(oldclass.getClassCode());
+    students.erase(updating);
+    students.insert(newstudent);
 }

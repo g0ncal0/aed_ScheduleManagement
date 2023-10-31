@@ -41,6 +41,8 @@ public:
     int numberClasses() const;
     void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const;
     void removeClass(std::string class_);
+
+    const ClassCode &getClassCode(std::string uc) const;
 };
 
 class Class {
@@ -104,13 +106,9 @@ public:
     void print_classes() const;
     int ucOccupation() const;
 
-    bool checkequilibrium();
-
-    bool changeClass(Student *student, ClassCode exit, ClassCode enter);
-
+    bool changeClass(int student, std::string leave, std::string current);
     int minOcupation();
 
-    bool changeClass(Student *student, ClassCode *exit, ClassCode *enter);
 };
 
 #endif //UNISCHEDULE_UNITARY_H

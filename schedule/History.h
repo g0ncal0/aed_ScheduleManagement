@@ -11,17 +11,18 @@
 
 class History {
 private:
-    std::stack<Activity*> history;
-    std::queue<Activity*> requests;
+    std::stack<Activity> history;
+    std::queue<Activity> requests;
 
 public:
     History();
-    void addRequest(Activity* request);
+    void addRequest(Activity request);
     void removeHistory();
     void requestAccepted();
     void requestDenied();
     std::string lastHistory() const;
     std::string lastRequest() const;
+    Activity lastRequestAct() const;
 
     Activity *lastRequestPtr() const;
 };

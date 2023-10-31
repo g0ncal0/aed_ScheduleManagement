@@ -4,7 +4,8 @@
 
 #include "History.h"
 
-void History::addRequest(Activity *request) {
+void History::addRequest(Activity request) {
+
     requests.push(request);
 }
 
@@ -13,33 +14,31 @@ History::History() {
 }
 
 std::string History::lastHistory() const {
-    if(!history.empty()) return history.top()->getMessage();
+    if(!history.empty()) return history.top().getMessage();
+    return "No history available";
 }
 
 void History::removeHistory() {
     if(!history.empty()) {
-        auto toRemove = history.top();
-        delete toRemove;
         history.pop();
     }
 }
 
-Activity* History::lastRequestPtr() const {
-    if(!requests.empty()){
-        return requests.front();
-    }
-    return nullptr;
-}
+
 
 std::string History::lastRequest() const {
     if(requests.empty()){
         return "No requests Available";
     }
-    return requests.front()->getMessage();
+    return requests.front().getMessage();
+}
+Activity History::lastRequestAct() const{
+    return requests.front();
 }
 
+
 void History::requestAccepted() {
-    Activity* accepted = requests.front();
+    Activity accepted = requests.front();
     history.push(accepted);
     requests.pop();
 }

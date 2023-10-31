@@ -12,7 +12,9 @@ int main() {
     Uni uni = Uni(ucs, students);
     //uni.print_all_ucs();
     //uni.print_all_students();
-    uni.login();
+    while(true){
+        uni.login();
+    }
 
     //Operation op = Operation(students);
     //op.operate();

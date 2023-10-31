@@ -73,6 +73,7 @@ int Uc::ucOccupation() const {
     }
     return res;
 }
+
 /**
  *
  * @return ocupação da turma com menos alunos
@@ -91,15 +92,17 @@ int Uc::minOcupation(){
 /**
  *
  * @param student Student to change
- * @param exit ClassCode to exit
- * @param enter ClassCode to enter
+ * @param leave ClassCode to exit
+ * @param current ClassCode to enter
  * @return true if change is done and possible. false if change is not possible
  */
-bool Uc::changeClass(Student* student, ClassCode* exit, ClassCode* enter){
-    if(enter->classOccupation() >= MAX_STUDENTS_CLASS and abs(enter->classOccupation() - minOcupation()) < DIFFERENCE_ACCEPTABLE_EQULIBRIUM){ // MUST INCLUDE SOMETHING TO CHECK LOGIC
+bool Uc::changeClass(int student, std::string leave, std::string current){
+    ClassCode& exit = getClassCode(leave);
+    ClassCode& enter = getClassCode(current);
+    if(enter.classOccupation() >= MAX_STUDENTS_CLASS and abs(enter.classOccupation() - minOcupation()) < DIFFERENCE_ACCEPTABLE_EQULIBRIUM){ // MUST INCLUDE SOMETHING TO CHECK LOGIC
         return false;
     }
-    exit->removeStudent(student->getStudentCode());
-    enter->addStudent(student->getStudentCode());
+    exit.removeStudent(student);
+    enter.addStudent(student);
     return true;
 }

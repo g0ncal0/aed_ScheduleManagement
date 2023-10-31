@@ -24,7 +24,15 @@ void Uni::print_all_students() const {
     students.print();
 }
 
-const Uc& Uni::consult_uc() const {
+const Uc & Uni::consult_uc() const {
+    std::cout << "List of UCs:\n\n";
+    ucs.print_ucs();
+    std::cout << "\nPlease enter the UC you want to consult: ";
+    std::string ucCode;
+    std::cin >> ucCode;
+    return ucs.getUc(ucCode);
+}
+Uc & Uni::consult_uc() {
     std::cout << "List of UCs:\n\n";
     ucs.print_ucs();
     std::cout << "\nPlease enter the UC you want to consult: ";
@@ -149,7 +157,7 @@ void Uni::info() {
     std::cout << "9. Year occupation\n";
     std::cout << "10. Consult the UCs with the greatest number of students\n";
     std::cout << "11. Process Requests and Make Changes\n";
-    std::cout << "12. All Students \n\n";
+    std::cout << "12. See All Students \n\n";
 
 
     std::cout << "Enter a number: ";
@@ -290,75 +298,138 @@ void Uni::print_ucs_more_students() const {
 
 
 
+void Uni::changeClass(){
+    Uc& uc = consult_uc();  // uc we will work with
+    std::string old, current;
+    std::cout << "Class to leave:";
+    std::cin >> old;
+    std::cout << "Class to enter:";
+    std::cin >> current;
+
+    history.addRequest(Activity(student_id_loggedin, old, current, &uc));
+}
+
+void Uni::enterClass(){
+    Uc& uc = consult_uc();  // uc we will work with
+    std::string current;
+    std::cout << "Class to enter:";
+    std::cin >> current;
+    history.addRequest( Activity(true, student_id_loggedin, current, &uc));
+}
+
+void Uni::leaveUC(){
+    Uc& uc = consult_uc();  // uc we will work with
+    const ClassCode& classcode = students.getStudent(student_id_loggedin)->getClassCode(uc.getUcCode());
+    students.getStudent(student_id_loggedin);
+    history.addRequest(Activity(false,student_id_loggedin,classcode.getClassCode(),&uc));
+}
+/**
+ * Helper function to guide student to actions he can perform
+ */
+void Uni::actionsforuser(){
+
+    std::cout << "0. Change Class in UC\n1. Enter new UC\n2. Leave a UC\n\n";
+    std::cout << "Enter a number: ";
+    int op;
+    std::cin >> op;
+    switch(op){
+        case 0:
+            changeClass();
+            break;
+        case 1:
+            enterClass();
+            break;
+        case 2:
+            leaveUC();
+            break;
+
+    }
+
+
+}
+
+
+
+
 /**
  * Helper function that understands what admin wants to do and acts.
  */
 void Uni::actionsforadmin(){
-    bool notdone = true;
-    while(notdone){
-        std::cout << "0. To break\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n";
-        std::cout << "Enter a number: ";
-        int op;
-        std::cin >> op;
 
-        std::string var;
-        switch(op){
-        case 0:
+    std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n";
+    std::cout << "Enter a number: ";
+    int op;
+    std::cin >> op;
 
-            notdone = false;
-            break;
-        case 1:
-            std::cout << history.lastRequest();
-            break;
-        case 2:
-            if(act(history.lastRequestPtr())){
-                history.requestAccepted();
-                std::cout << "Successfully done.\n";
-            }else{
-                std::cout << "Request doesn't fit rules. Removed.\n";
-                history.requestDenied();
-            }
-            break;
-        case 3:
+    switch(op){
+    case 0:
+        break;
+    case 1:
+        std::cout << history.lastRequest() << "\n";
+        break;
+    case 2:
+        if(act(history.lastRequestAct())){
+            history.requestAccepted();
+            std::cout << "Successfully done.\n";
+        }else{
+            std::cout << "Request doesn't fit rules. Removed.\n";
             history.requestDenied();
-            break;
-        case 4:
-            std::cout << history.lastHistory() << std::endl;
-            break;
-        case 5:
-            int id;
-            std::cout << "name:";
-            std::cin >> var;
-            std::cout << "id:";
-            std::cin >> id;
-            history.addRequest(new Activity(true, new Student(id, var)));
-            break;
-    }
-    }
+        }
+        break;
+    case 3:
+        history.requestDenied();
+        break;
+    case 4:
+        std::cout << history.lastHistory() << std::endl;
+        break;
+    case 5:
+        int id;
+        std::cout << "first name:";
+        std::string first;
+        std::cin >> first;
+        std::cout << "last name:";
+        std::string last;
+        std::cin >> last;
+        std::cout << "id:";
+        std::cin >> id;
+        history.addRequest(Activity(true, id));
+        students.addStudent(id, first + last);
+        history.requestAccepted();
+        break;
+}
 }
 
-bool Uni::act(Activity* activity){
+bool Uni::actleaveUC(Activity activity){
+    activity.getUc()->getClassCode(activity.getClassCode()).removeStudent(activity.getcode());
+    ClassCode& old = activity.getUc()->getClassCode(activity.getClassCode());
+    students.removeClassStudent(activity.getStudent(),old, *activity.getUc());
+}
+
+bool Uni::act(Activity activity){
     bool done = true;
-    switch(activity->getcode()){
-        case 0:
-            students.addStudent(activity->getStudent()->getStudentCode(), activity->getStudent()->getName());
-            break;
-        case 1:
-            students.removeStudent(activity->getStudent()->getStudentCode());
-            break;
+    switch(activity.getcode()){
         case 2:
-            done = activity->getUc()->changeClass(activity->getStudent(), activity->getOldClassCode(), activity->getClassCode());
+            done = activity.getUc()->changeClass(activity.getStudent(), activity.getOldClassCode(), activity.getClassCode());
             // check if we can continue changing the class in the user level.
             if(done){
-                activity->getStudent()->removeClass(activity->getClassCode()->getClassCode());
+                ClassCode& old = activity.getUc()->getClassCode(activity.getOldClassCode());
+                ClassCode& future = activity.getUc()->getClassCode(activity.getOldClassCode());
+                students.changeClassStudent(activity.getStudent(),old, future, *activity.getUc());
             }
             break;
+        case 4:
+            // leave class
+            actleaveUC(activity);
         case 3:
-            if(abs(activity->getUc()->minOcupation() - activity->getClassCode()->classOccupation()) < 4){
-                activity->getClassCode()->addStudent(activity->getStudent()->getStudentCode());
-                activity->getStudent()->addClass(*activity->getUc(), *activity->getClassCode());
+            ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
+            const Student* dataStudent = students.getStudent(activity.getStudent());
+            if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4){
+                classC.addStudent(activity.getStudent());
             }else{done = false;}
             break;
+
+
+
     }
     return done;
 }
@@ -417,5 +488,8 @@ void Uni::login() {
 
     if(isAdmin){
         info();
+    }else{
+        actionsforuser();
     }
+    std::cout << "YOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
     }

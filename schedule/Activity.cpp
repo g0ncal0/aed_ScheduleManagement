@@ -5,7 +5,7 @@
 #include "Activity.h"
 
 
-Activity::Activity(bool in, Student *student) {
+Activity::Activity(bool in, int student) {
     this->student = student;
     if(in){
         code = 0;
@@ -14,7 +14,7 @@ Activity::Activity(bool in, Student *student) {
     }
 }
 
-Activity::Activity(Student *student, ClassCode *old, ClassCode *current, Uc* uc) {
+Activity::Activity(int student, std::string old, std::string current, Uc* uc) {
     this->student = student;
     this->old = old;
     this->current = current;
@@ -22,9 +22,9 @@ Activity::Activity(Student *student, ClassCode *old, ClassCode *current, Uc* uc)
     code = 2;
 }
 
-Activity::Activity(bool in, Student *student, ClassCode *c, Uc* uc) {
+Activity::Activity(bool in, int student, std::string classcode, Uc* uc) {
     this->student = student;
-    this->current = c;
+    this->current = classcode;
     this->uc = uc;
     if(in){
         code = 3;
@@ -34,9 +34,18 @@ Activity::Activity(bool in, Student *student, ClassCode *c, Uc* uc) {
 }
 
 
-std::string Activity::getMessage() {
-    if(!message.empty()){
-        return message;
+const std::string Activity::getMessage() const{
+    switch(code){
+        case 0:
+            return "Creation of student " + std::to_string(student);
+        case 1:
+            return "Deletion of student " + std::to_string(student);
+        case 2:
+            return "Student " + std::to_string(student) + " changed from " + old + " to " + current + " at " + uc->getUcCode();
+        case 3:
+            return "Student " + std::to_string(student)  + " joined the class " + current + " at " + uc->getUcCode();
+        case 4:
+            return "Student " +std::to_string(student)+ " left the class " + current + " at " + uc->getUcCode();
     }
-    return student->getName();
+    return "Activity not recognized";
 }

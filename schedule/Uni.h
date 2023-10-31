@@ -23,7 +23,8 @@ private:
     History history;
 
 
-    const Uc& consult_uc() const;
+    const Uc & consult_uc() const;
+    Uc & consult_uc();
     const ClassCode& consult_class(const Uc& uc) const;
     void students_class(const ClassCode& classCode, std::list<std::pair<int, std::string>>& studentsInClass) const;
     void students_course(const Uc& uc, std::list<std::pair<int, std::string>>& studentsInYear) const;
@@ -32,6 +33,12 @@ private:
     static bool compare_students_name(const std::pair<int, std::string>& p1, const std::pair<int, std::string>& p2);
     void print_day(char weekday) const;
     void print_schedule(std::list<std::pair<const Class&, std::string>>& classes) const;
+    bool act(Activity activity);
+    void actionsforadmin();
+    void actionsforuser();
+    void enterClass();
+    void changeClass();
+
 
 public:
     Uni(AllUcs ucs, AllStudents students);
@@ -48,11 +55,12 @@ public:
     void print_uc_occupation() const;
     void print_year_occupation() const;
     void print_ucs_more_students() const;
-    void actionsforadmin();
 
     void login();
 
-    bool act(Activity *activity);
+    void leaveUC();
+
+    bool actleaveUC(Activity activity);
 };
 
 
