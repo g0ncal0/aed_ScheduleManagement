@@ -106,7 +106,7 @@ void AllStudents::addClassStudent(int student, ClassCode& newclass, Uc& uc){
 }
 
 void AllStudents::save_changes() const {
-    std::ofstream changes("parser/changes.csv"); //a ideia era pôr aqui parser/changes.csv mas ele não encontra nada. Assim ele corre e faz o que é suposto mas as alterações não ficam visiveis
+    std::ofstream changes("../parser/changes.csv");
 
     if (!changes.is_open()) {
         std::cout << "not ok";
@@ -120,12 +120,4 @@ void AllStudents::save_changes() const {
         }
     }
     changes.close();
-
-    std::ifstream test("parser/changes.csv");
-    std::string linha;
-    while (std::getline(test, linha)) {
-        std::cout << linha << '\n';
-    }
-
-    test.close();
 }
