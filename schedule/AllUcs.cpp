@@ -33,6 +33,15 @@ const Uc& AllUcs::getUc(std::string ucCode) const {
     }
 }
 
+bool AllUcs::ucExists(std::string ucCode) const {
+    for(const Uc &u : ucs){
+        if(u.getUcCode() == ucCode){
+            return true;
+        }
+    }
+    return false;
+}
+
 void AllUcs::print() const {
     for (Uc uc: ucs) {
         uc.print();

@@ -25,29 +25,39 @@ void Uni::print_all_students() const {
 }
 
 const Uc & Uni::consult_uc() const {
-    std::cout << "List of UCs:\n\n";
-    ucs.print_ucs();
-    std::cout << "\nPlease enter the UC you want to consult: ";
-    std::string ucCode;
-    std::cin >> ucCode;
-    return ucs.getUc(ucCode);
+    do {
+        std::cout << "List of UCs:\n\n";
+        ucs.print_ucs();
+        std::cout << "\nPlease enter the UC you want to consult: ";
+        std::string ucCode;
+        std::cin >> ucCode;
+        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
+        std::cout << "\nThat UC doesn't exists.\n\n";
+    } while (true);
 }
+
 Uc & Uni::consult_uc() {
-    std::cout << "List of UCs:\n\n";
-    ucs.print_ucs();
-    std::cout << "\nPlease enter the UC you want to consult: ";
-    std::string ucCode;
-    std::cin >> ucCode;
-    return ucs.getUc(ucCode);
+    do {
+        std::cout << "List of UCs:\n\n";
+        ucs.print_ucs();
+        std::cout << "\n enter the UC you want to consult: ";
+        std::string ucCode;
+        std::cin >> ucCode;
+        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
+        std::cout << "That UC doesn't exists.\n\n";
+    } while(true);
 }
 
 const ClassCode& Uni::consult_class(const Uc& uc) const {
-    std::cout << "\nList of classes:\n\n";
-    uc.print_classes();
-    std::cout << "\nPlease enter the class you want to consult: ";
-    std::string classCode;
-    std::cin >> classCode;
-    return uc.getClassCode(classCode);
+    do {
+        std::cout << "\nList of classes:\n\n";
+        uc.print_classes();
+        std::cout << "\nPlease enter the class you want to consult: ";
+        std::string classCode;
+        std::cin >> classCode;
+        if (uc.classCodeExists(classCode)) return uc.getClassCode(classCode);
+        std::cout << "That class doesn't exists.\n\n";
+    } while (true);
 }
 
 void Uni::students_class(const ClassCode& classCode, std::list<std::pair<int, std::string>>& studentsInClass) const {
@@ -438,7 +448,6 @@ bool Uni::act(Activity activity){
             // join a class
             ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
             if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4){
-                classC.addStudent(activity.getStudent());
                 students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
             }else{done = false;}
             break;

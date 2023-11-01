@@ -103,6 +103,7 @@ public:
     const ClassCode& getClassCode(std::string classCode) const;
     ClassCode getFirstClassCode() const;
     const std::list<ClassCode>& getClasses() const;
+    bool classCodeExists(std::string classCode) const;
     void print() const;
     void print_classes() const;
     int ucOccupation() const;

@@ -53,6 +53,15 @@ const std::list<ClassCode>& Uc::getClasses() const {
     return classes;
 }
 
+bool Uc::classCodeExists(std::string classCode) const {
+    for(const ClassCode &el : classes){
+        if(el.getClassCode() == classCode){
+            return true;
+        }
+    }
+    return false;
+}
+
 void Uc::print() const {
     std::cout << ucCode << std::endl;
     for (const ClassCode& classCode : classes) {
