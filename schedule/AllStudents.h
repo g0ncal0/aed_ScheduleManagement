@@ -8,6 +8,9 @@
 #include "Unitary.h"
 #include <set>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 class AllStudents {
 private:
@@ -22,6 +25,7 @@ public:
     int studentsInNUcs(int n) const;
     int yearOccupation(char year) const;
     void removeStudent(int student);
+    void save_changes() const;
 
     void changeClassStudent(int student, ClassCode &oldclass, ClassCode &newclass, Uc &uc);
 

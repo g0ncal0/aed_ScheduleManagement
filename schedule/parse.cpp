@@ -2,13 +2,8 @@
 // Created by goncalo on 18-10-2023.
 //
 
-#include <set>
 #include "parse.h"
 #include <iostream>
-
-void parse() {
-    parse_classes();
-}
 
 char weekdayToChar(const std::string& weekday) {
     if (weekday == "Monday") {

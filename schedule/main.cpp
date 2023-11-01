@@ -12,9 +12,12 @@ int main() {
     Uni uni = Uni(ucs, students);
     //uni.print_all_ucs();
     //uni.print_all_students();
-    while(true){
+    char check;
+    do {
         uni.login();
-    }
+        std::cout << "\nDo you want to exit? s/n ";
+        std::cin >> check;
+    } while (check != 's');
 
     //Operation op = Operation(students);
     //op.operate();

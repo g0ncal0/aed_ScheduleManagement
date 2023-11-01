@@ -57,6 +57,10 @@ std::list<std::pair<Uc&, ClassCode&>> Student::getAllClasses(){
     return classes;
 }
 
+const std::list<std::pair<Uc&, ClassCode&>>& Student::getAllClasses() const {
+    return classes;
+}
+
 std::pair<Uc&, ClassCode&> Student::getFirstClass() const {
     return classes.front();
 }

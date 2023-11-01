@@ -40,7 +40,7 @@ Uc & Uni::consult_uc() {
     do {
         std::cout << "List of UCs:\n\n";
         ucs.print_ucs();
-        std::cout << "\n enter the UC you want to consult: ";
+        std::cout << "\nPlease enter the UC you want to consult: ";
         std::string ucCode;
         std::cin >> ucCode;
         if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
@@ -367,54 +367,57 @@ void Uni::actionsforadmin(){
     if(!isAdmin){
         return;
     }
-    std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n";
+    std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n6. Save changes\n";
     std::cout << "Enter a number: ";
     int op;
     std::cin >> op;
 
     bool done = false;
     switch(op){
-    case 0:
-        break;
-    case 1:
-        std::cout << history.lastRequest() << "\n";
-        break;
-    case 2:
-        try{
-            done = act(history.lastRequestAct());
-            std::cout << "Successfully done.\n";
-            history.requestAccepted();
-        }catch (...) {
-            std::cout << "Exception occurred.";
-        }
-        if(!done){
-            std::cout << "Request doesn't fit rules. Removed.\n";
+        case 6:
+            students.save_changes();
+            break;
+        case 0:
+            break;
+        case 1:
+            std::cout << history.lastRequest() << "\n";
+            break;
+        case 2:
+            try{
+                done = act(history.lastRequestAct());
+                std::cout << "Successfully done.\n";
+                history.requestAccepted();
+            }catch (...) {
+                std::cout << "Exception occurred.";
+            }
+            if(!done){
+                std::cout << "Request doesn't fit rules. Removed.\n";
+                history.requestDenied();
+
+            }
+
+            break;
+        case 3:
             history.requestDenied();
-
-        }
-
-        break;
-    case 3:
-        history.requestDenied();
-        break;
-    case 4:
-        std::cout << history.lastHistory() << std::endl;
-        break;
-    case 5:
-        int id;
-        std::cout << "first name:";
-        std::string first;
-        std::cin >> first;
-        std::cout << "last name:";
-        std::string last;
-        std::cin >> last;
-        std::cout << "id:";
-        std::cin >> id;
-        history.addRequest(Activity(true, id));
-        students.addStudent(id, first + last);
-        history.requestAccepted();
-        break;
-}
+            break;
+        case 4:
+            std::cout << history.lastHistory() << std::endl;
+            break;
+        case 5:
+            int id;
+            std::cout << "first name:";
+            std::string first;
+            std::cin >> first;
+            std::cout << "last name:";
+            std::string last;
+            std::cin >> last;
+            std::cout << "id:";
+            std::cin >> id;
+            history.addRequest(Activity(true, id));
+            students.addStudent(id, first + last);
+            history.requestAccepted();
+            break;
+    }
 }
 
 bool Uni::actleaveUC(Activity activity){
@@ -455,14 +458,6 @@ bool Uni::act(Activity activity){
     }
     return done;
 }
-
-
-
-
-
-
-
-
 
 void Uni::login() {
     char answer;
@@ -515,3 +510,4 @@ void Uni::login() {
     }
     std::cout << "YOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
 }
+

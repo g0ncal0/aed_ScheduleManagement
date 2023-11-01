@@ -32,3 +32,4 @@ add_executable(UNISchedule schedule/main.cpp schedule/AllUcs.h schedule/Activity
 file(COPY parser/classes.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY parser/classes_per_uc.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY parser/students_classes.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY parser/changes.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

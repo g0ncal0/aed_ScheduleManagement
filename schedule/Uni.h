@@ -12,8 +12,6 @@
 #include <iomanip>
 #include <limits>
 
-
-
 class Uni {
 private:
     AllUcs ucs;

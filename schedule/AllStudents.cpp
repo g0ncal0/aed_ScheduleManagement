@@ -3,8 +3,6 @@
 //
 
 #include "AllStudents.h"
-#include <algorithm>
-
 
 const Student* AllStudents::getStudent(int id) const{
     auto it = std::find_if(students.begin(), students.end(), [id](const Student& student){
@@ -105,4 +103,29 @@ void AllStudents::addClassStudent(int student, ClassCode& newclass, Uc& uc){
     students.erase(updating);
     newstudent.addClass(uc,newclass);
     students.insert(newstudent);
+}
+
+void AllStudents::save_changes() const {
+    std::ofstream changes("parser/changes.csv"); //a ideia era pôr aqui parser/changes.csv mas ele não encontra nada. Assim ele corre e faz o que é suposto mas as alterações não ficam visiveis
+
+    if (!changes.is_open()) {
+        std::cout << "not ok";
+    }
+
+    changes << "StudentCode,StudentName,UcCode,ClassCode\n";
+    for (const Student& student : students) {
+        const std::list<std::pair<Uc&, ClassCode&>>& classes = student.getAllClasses();
+        for (const std::pair<Uc&, ClassCode&>& pair : classes) {
+            changes << student.getStudentCode() << ',' << student.getName() << ',' << pair.first.getUcCode() << ',' << pair.second.getClassCode() << '\n';
+        }
+    }
+    changes.close();
+
+    std::ifstream test("parser/changes.csv");
+    std::string linha;
+    while (std::getline(test, linha)) {
+        std::cout << linha << '\n';
+    }
+
+    test.close();
 }

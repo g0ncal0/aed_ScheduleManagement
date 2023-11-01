@@ -37,6 +37,7 @@ public:
     std::pair<Uc&, ClassCode&> getFirstClass() const;
     void printSchedule() const;
     std::list<std::pair<Uc&, ClassCode&>> getAllClasses();
+    const std::list<std::pair<Uc&, ClassCode&>>& getAllClasses() const;
     bool checkYear(char year) const;
     int numberClasses() const;
     void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const;
