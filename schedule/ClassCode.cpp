@@ -60,3 +60,9 @@ void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allC
         allClasses.push_back(pair);
     }
 }
+
+Class* ClassCode::getPractialClass() const {
+    for(auto lecture : classes) {
+        if(lecture.getType() != 'T') return &lecture;
+    }
+}

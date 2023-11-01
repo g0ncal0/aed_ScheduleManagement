@@ -80,7 +80,9 @@ public:
     void print() const;
     void print_schedule() const;
     void print_students() const;
+    Class* getPractialClass() const;
     std::list<int> getStudents() const;
+    bool isCompatible(Class* enter, Class* exit, Uc* uc) const;
     int classOccupation() const;
     void getClasses(std::list<std::pair<const Class&, std::string>>& allClasses, std::string ucCode) const;
 
@@ -109,7 +111,7 @@ public:
     void print_classes() const;
     int ucOccupation() const;
 
-    bool changeClass(int student, std::string leave, std::string current);
+    bool changeClass(int student, ClassCode* leave, ClassCode* current);
     int minOcupation();
 
 };

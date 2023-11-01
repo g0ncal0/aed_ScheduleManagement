@@ -87,7 +87,7 @@ void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allCla
 }
 
 const ClassCode& Student::getClassCode(std::string uc) const{
-    for(auto el: classes){
+    for(auto el: classes){ // MD turma 3, apenas tem aulas de MD
         if(el.first.getUcCode() == uc){
             return el.second;
         }
