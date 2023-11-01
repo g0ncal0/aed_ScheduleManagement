@@ -508,6 +508,6 @@ void Uni::login() {
     }else{
         actionsforuser();
     }
-    std::cout << "YOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
+    std::cout << "\nYOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
 }
 
