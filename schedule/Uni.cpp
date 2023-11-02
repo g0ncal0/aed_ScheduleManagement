@@ -420,6 +420,11 @@ void Uni::actionsforadmin(){
     }
 }
 
+/**
+ * makes the action of removing a class from a students' schedule
+ * @param the activity requested
+ * @return returns true in the end of the desired action
+ * */
 bool Uni::actleaveUC(Activity activity){
     activity.getUc()->getClassCode(activity.getClassCode()).removeStudent(activity.getStudent());
     ClassCode& old = activity.getUc()->getClassCode(activity.getClassCode());
@@ -427,6 +432,13 @@ bool Uni::actleaveUC(Activity activity){
     return true;
 }
 
+/**
+ * a function with the ability to tell if one classCode is compatible with the schedule of a student
+ * @param the studentCode
+ * @param exit a pointer to the old classCode to substitute. We have that so we can ignore it in the loop
+ * @param enter a pointer to the classCode that the student wants to enroll
+ * @return returns if we can switch
+ * */
 bool Uni::doesNotColide(int studentCode, ClassCode *exit, ClassCode *enter) const {
     float enterStartHour = enter->getPractialClass()->getStartHour();
     float enterEndHour = enterStartHour + enter->getPractialClass()->getDuration();
@@ -443,6 +455,12 @@ bool Uni::doesNotColide(int studentCode, ClassCode *exit, ClassCode *enter) cons
     return true;
 }
 
+
+/**
+ * function that calls other functions with the action, based on the code of the activity
+ * @param activity the activity that is being analyzed
+ * @return returns the boolean that says if the action was made or not
+ * */
 bool Uni::act(Activity activity){
     bool done = true;
     ClassCode exit = activity.getUc()->getClassCode(activity.getOldClassCode());
@@ -478,6 +496,9 @@ bool Uni::act(Activity activity){
     return done;
 }
 
+/**
+ * this function does the login and has the duty to tell if the user is admin or not
+ * */
 void Uni::login() {
     char answer;
     bool isValidInput = false;

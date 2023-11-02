@@ -7,7 +7,6 @@
 
 int main() {
 
-    std::cout << "ole" << std::endl;
     AllUcs ucs = parse_classes();
     AllStudents students = parse_students(ucs);
     Uni uni = Uni(ucs, students);
