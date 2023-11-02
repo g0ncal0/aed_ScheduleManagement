@@ -18,7 +18,10 @@ void AllStudents::addStudent(int studentCode, std::string name){
     Student student(studentCode, name);
     students.insert(student);
 }
-
+/**
+ * Add a student to the set of students | O(log(n))
+ * @param student
+ */
 void AllStudents::addStudent(Student student) {
     auto it = students.find(student);
 
@@ -35,7 +38,10 @@ void AllStudents::addStudent(Student student) {
         }
     }
 }
-
+/**
+ * Remove a student from the set | O(log(n))
+ * @param student Id of student
+ */
 void AllStudents::removeStudent(int student) {
     auto it = students.find(Student(student, ""));
     if (it != students.end()){
@@ -78,11 +84,17 @@ int AllStudents::yearOccupation(char year) const {
     return res;
 }
 
-
+/**
+ * Change class of student at students level. This function is not enough for the change.
+ * @param student
+ * @param oldclass
+ * @param newclass
+ * @param uc
+ */
 void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode& newclass, Uc& uc){
     auto updating = students.find(Student(student,""));
     Student newstudent = *updating;
-    newstudent.removeClass(newclass.getClassCode());
+    newstudent.removeClass(oldclass.getClassCode());
     newstudent.addClass(std::pair<Uc&,ClassCode&>(uc,newclass));
     students.erase(updating);
     students.insert(newstudent);

@@ -400,7 +400,15 @@ void Uni::actionsforadmin(){
             students.save_changes();
             break;
         case 7:
-            undoChanges(history.lastHistoryObj());
+            try{
+                undoChanges(history.lastHistoryObj());
+                history.removeHistory();
+                std::cout << "Change undone\n";
+            }catch (...){
+                std::cout << "Something went wrong\n";
+            }
+
+
             break;
         case 0:
             break;
@@ -488,36 +496,35 @@ bool Uni::doesNotColide(int studentCode, ClassCode *exit, ClassCode *enter) cons
  * */
 bool Uni::act(Activity activity){
     bool done = true;
-    ClassCode exit = activity.getUc()->getClassCode(activity.getOldClassCode());
-    ClassCode enter = activity.getUc()->getClassCode(activity.getClassCode());
-    switch(activity.getcode()){
-        case 2:
 
-            // a partir daqui, chamar a função compatível que recebe os classcodes e a uc
-            if(students.getStudent(activity.getStudent())->numberClasses() < 7  && doesNotColide(activity.getStudent(), &exit, &enter)){
+      if(activity.getcode() == 2){
+          ClassCode& exit = activity.getUc()->getClassCode(activity.getOldClassCode());
+          ClassCode& enter = activity.getUc()->getClassCode(activity.getClassCode());
 
-                done = activity.getUc()->changeClass(activity.getStudent(), &exit, &enter);
-                // check if we can continue changing the class in the user level.
-                if(done){
-                    students.changeClassStudent(activity.getStudent(),exit, enter, *activity.getUc());
-                }
-            }else{
-                done = false;
+          // a partir daqui, chamar a função compatível que recebe os classcodes e a uc
+        if(students.getStudent(activity.getStudent())->numberClasses() < 7  && doesNotColide(activity.getStudent(), &exit, &enter)){
+
+            done = activity.getUc()->changeClass(activity.getStudent(), &exit, &enter);
+            // check if we can continue changing the class in the user level.
+            if(done){
+                students.changeClassStudent(activity.getStudent(),exit, enter, *activity.getUc());
             }
-            break;
-        case 4:
-            // leave class
-            done = actleaveUC(activity);
-            break;
-        case 3:
-            // join a class
-            ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
-            if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4 || classC.classOccupation() <= activity.getUc()->maxOcupation()){
-                students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
-            }else{done = false;}
-            break;
-
+        }else{
+            done = false;
+        }
     }
+      if(activity.getcode() == 3){
+          // join a class
+          ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
+          if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4 || classC.classOccupation() <= activity.getUc()->maxOcupation()){
+              students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
+          }else{done = false;}
+      }
+      if(activity.getcode() == 4){
+          // leave class
+          done = actleaveUC(activity);
+      }
+
     return done;
 }
 

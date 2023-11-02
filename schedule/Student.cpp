@@ -38,7 +38,6 @@ void Student::addClass(Uc& uc, ClassCode& class_) {
  * @param class_ class to remove from the classes than the student goes
  * */
 void Student::removeClass(std::string class_) {
-    // HAS TO BE BETTER IMPLEMENTED: Find the pair whose class uses that class and remove that pair
 
     for(auto it = classes.begin(); it != classes.end(); it++){
         if(class_ == it->second.getClassCode()){

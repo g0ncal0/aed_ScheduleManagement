@@ -26,13 +26,9 @@ public:
     int yearOccupation(char year) const;
     void removeStudent(int student);
     void save_changes() const;
-
     void changeClassStudent(int student, ClassCode &oldclass, ClassCode &newclass, Uc &uc);
-
     void removeClassStudent(int student, ClassCode &oldclass, Uc &uc);
-
     void addClassStudent(int student, ClassCode &newclass, Uc &uc);
-
     void deleteStudent(int id);
 };
 
