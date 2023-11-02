@@ -100,6 +100,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printSchedule</b> () 
 <tr class="memitem:ab943592eec27195cf32bbbbffcb13d34"><td class="memItemLeft" align="right" valign="top"><a id="ab943592eec27195cf32bbbbffcb13d34"></a>
 std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a class="el" href="class_class_code.html">ClassCode</a> &amp; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllClasses</b> ()</td></tr>
 <tr class="separator:ab943592eec27195cf32bbbbffcb13d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe57b657bb93ff5f1eb41e561792e1f"><td class="memItemLeft" align="right" valign="top"><a id="a2fe57b657bb93ff5f1eb41e561792e1f"></a>
+const std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a class="el" href="class_class_code.html">ClassCode</a> &amp; &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllClasses</b> () const</td></tr>
+<tr class="separator:a2fe57b657bb93ff5f1eb41e561792e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae6074c15e0f2bfa4a980014617ed361"><td class="memItemLeft" align="right" valign="top"><a id="aae6074c15e0f2bfa4a980014617ed361"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkYear</b> (char year) const</td></tr>
 <tr class="separator:aae6074c15e0f2bfa4a980014617ed361"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,9 +112,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberClasses</b> () c
 <tr class="memitem:ac30b5f5a2baadf4c63a28f1d73035223"><td class="memItemLeft" align="right" valign="top"><a id="ac30b5f5a2baadf4c63a28f1d73035223"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getClasses</b> (std::list&lt; std::pair&lt; const <a class="el" href="class_class.html">Class</a> &amp;, std::string &gt;&gt; &amp;allClasses) const</td></tr>
 <tr class="separator:ac30b5f5a2baadf4c63a28f1d73035223"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1fd157330c52bae483550626ec8bcfd"><td class="memItemLeft" align="right" valign="top"><a id="ae1fd157330c52bae483550626ec8bcfd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeClass</b> (std::string class_)</td></tr>
+<tr class="memitem:ae1fd157330c52bae483550626ec8bcfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_student.html#ae1fd157330c52bae483550626ec8bcfd">removeClass</a> (std::string class_)</td></tr>
 <tr class="separator:ae1fd157330c52bae483550626ec8bcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6dc14369bde4d4349fcd31ba481578f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_class_code.html">ClassCode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_student.html#ad6dc14369bde4d4349fcd31ba481578f">getClassCode</a> (std::string uc) const</td></tr>
+<tr class="separator:ad6dc14369bde4d4349fcd31ba481578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -126,6 +130,31 @@ std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a 
 <tr class="separator:a3aa7197ce5d5e6253cd7bc9610ff682a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad6dc14369bde4d4349fcd31ba481578f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6dc14369bde4d4349fcd31ba481578f">&#9670;&nbsp;</a></span>getClassCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_class_code.html">ClassCode</a> &amp; Student::getClassCode </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>based on one uc, it gets the classcode that the student attends </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uc</td><td>the uc that we want to have more information </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the classcode of that uc, const reference </dd></dl>
+
+</div>
+</div>
 <a id="a1df6c28e6416e20d338b9ff11bdc1e04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1df6c28e6416e20d338b9ff11bdc1e04">&#9670;&nbsp;</a></span>getName()</h2>
 
@@ -141,6 +170,30 @@ std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a 
       </table>
 </div><div class="memdoc">
 <p>getter of student name </p><dl class="section return"><dt>Returns</dt><dd>student name </dd></dl>
+
+</div>
+</div>
+<a id="ae1fd157330c52bae483550626ec8bcfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1fd157330c52bae483550626ec8bcfd">&#9670;&nbsp;</a></span>removeClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Student::removeClass </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>class_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>removes one class based on one given </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_</td><td>class to remove from the classes than the student goes </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -69,9 +69,8 @@ void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allC
 /**
  * returns the practical class of a certain ClassCode
  * */
-Class* ClassCode::getPractialClass() const {
-    for(auto lecture : classes) {
-        if(lecture.getType() != 'T') return &lecture;
+const Class& ClassCode::getPracticalClass() const {
+    for(const Class& lecture : classes) {
+        if(lecture.getType() != 'T') return lecture;
     }
-    return nullptr;
 }

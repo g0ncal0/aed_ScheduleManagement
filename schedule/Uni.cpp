@@ -472,16 +472,16 @@ bool Uni::actleaveUC(Activity activity){
  * @param enter a pointer to the classCode that the student wants to enroll
  * @return returns if we can switch
  * */
-bool Uni::doesNotColide(int studentCode, ClassCode *exit, ClassCode *enter) const {
-    float enterStartHour = enter->getPractialClass()->getStartHour();
-    float enterEndHour = enterStartHour + enter->getPractialClass()->getDuration();
+bool Uni::doesNotColide(int studentCode, const ClassCode& exit, const ClassCode& enter) const {
 
+    float enterStartHour = enter.getPracticalClass().getStartHour();
+    float enterEndHour = enterStartHour + enter.getPracticalClass().getDuration();
 
     const Student* student = students.getStudent(studentCode);
     for(auto lecture : student->getAllClasses()) {
-        if(&lecture.second == exit) continue;
-        float lectureStartHour = lecture.second.getPractialClass()->getStartHour();
-        float lectureEndHour = lectureStartHour + lecture.second.getPractialClass()->getDuration();
+        if(lecture.second.getClassCode() == exit.getClassCode()) continue;
+        float lectureStartHour = lecture.second.getPracticalClass().getStartHour();
+        float lectureEndHour = lectureStartHour + lecture.second.getPracticalClass().getDuration();
 
         if((lectureStartHour > enterStartHour && lectureStartHour < enterEndHour) || (lectureEndHour > enterStartHour && lectureEndHour < enterEndHour)) return false;
     }
@@ -497,13 +497,12 @@ bool Uni::doesNotColide(int studentCode, ClassCode *exit, ClassCode *enter) cons
 bool Uni::act(Activity activity){
     bool done = true;
 
-      if(activity.getcode() == 2){
-          ClassCode& exit = activity.getUc()->getClassCode(activity.getOldClassCode());
-          ClassCode& enter = activity.getUc()->getClassCode(activity.getClassCode());
+    if(activity.getcode() == 2){
+        ClassCode& exit = activity.getUc()->getClassCode(activity.getOldClassCode());
+        ClassCode& enter = activity.getUc()->getClassCode(activity.getClassCode());
 
-          // a partir daqui, chamar a função compatível que recebe os classcodes e a uc
-        if(students.getStudent(activity.getStudent())->numberClasses() < 7  && doesNotColide(activity.getStudent(), &exit, &enter)){
-
+        // a partir daqui, chamar a função compatível que recebe os classcodes e a uc
+        if(doesNotColide(activity.getStudent(), exit, enter)){
             done = activity.getUc()->changeClass(activity.getStudent(), &exit, &enter);
             // check if we can continue changing the class in the user level.
             if(done){

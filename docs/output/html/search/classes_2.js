@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['history_18',['History',['../class_history.html',1,'']]]
+  ['history_32',['History',['../class_history.html',1,'']]]
 ];

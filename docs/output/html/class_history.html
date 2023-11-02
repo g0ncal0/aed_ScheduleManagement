@@ -74,9 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac067ba0d51b0d5eaa4a8fa76e1ef4aaf"><td class="memItemLeft" align="right" valign="top"><a id="ac067ba0d51b0d5eaa4a8fa76e1ef4aaf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addRequest</b> (<a class="el" href="class_activity.html">Activity</a> *request)</td></tr>
-<tr class="separator:ac067ba0d51b0d5eaa4a8fa76e1ef4aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b9c3c3c913a7486b6149a8dd6ff9b0"><td class="memItemLeft" align="right" valign="top"><a id="a79b9c3c3c913a7486b6149a8dd6ff9b0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addRequest</b> (<a class="el" href="class_activity.html">Activity</a> request)</td></tr>
+<tr class="separator:a79b9c3c3c913a7486b6149a8dd6ff9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a309968311f0ace2ba41d394d289e7863"><td class="memItemLeft" align="right" valign="top"><a id="a309968311f0ace2ba41d394d289e7863"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeHistory</b> ()</td></tr>
 <tr class="separator:a309968311f0ace2ba41d394d289e7863"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,18 +92,24 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>lastHistory</b
 <tr class="memitem:a76d38d385b12001f53e96220ffb96243"><td class="memItemLeft" align="right" valign="top"><a id="a76d38d385b12001f53e96220ffb96243"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>lastRequest</b> () const</td></tr>
 <tr class="separator:a76d38d385b12001f53e96220ffb96243"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3cea644f85581df3b1267c9efddc82d"><td class="memItemLeft" align="right" valign="top"><a id="ac3cea644f85581df3b1267c9efddc82d"></a>
+<tr class="memitem:a848199fbc6fa011b32a5beba9d22fdb7"><td class="memItemLeft" align="right" valign="top"><a id="a848199fbc6fa011b32a5beba9d22fdb7"></a>
+<a class="el" href="class_activity.html">Activity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lastRequestAct</b> () const</td></tr>
+<tr class="separator:a848199fbc6fa011b32a5beba9d22fdb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb1e3cee15f1b8afcc7dbd00f9c3e98"><td class="memItemLeft" align="right" valign="top"><a id="aebb1e3cee15f1b8afcc7dbd00f9c3e98"></a>
 <a class="el" href="class_activity.html">Activity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>lastRequestPtr</b> () const</td></tr>
-<tr class="separator:ac3cea644f85581df3b1267c9efddc82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aebb1e3cee15f1b8afcc7dbd00f9c3e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17ed96a2b9032df1c9627907652e0a2d"><td class="memItemLeft" align="right" valign="top"><a id="a17ed96a2b9032df1c9627907652e0a2d"></a>
+<a class="el" href="class_activity.html">Activity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lastHistoryObj</b> ()</td></tr>
+<tr class="separator:a17ed96a2b9032df1c9627907652e0a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:af79fcce9ad6ca09215fe0243b9aa2fe9"><td class="memItemLeft" align="right" valign="top"><a id="af79fcce9ad6ca09215fe0243b9aa2fe9"></a>
-std::stack&lt; <a class="el" href="class_activity.html">Activity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>history</b></td></tr>
-<tr class="separator:af79fcce9ad6ca09215fe0243b9aa2fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7834a54a3f0658a1a4b4a919b824df6c"><td class="memItemLeft" align="right" valign="top"><a id="a7834a54a3f0658a1a4b4a919b824df6c"></a>
-std::queue&lt; <a class="el" href="class_activity.html">Activity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>requests</b></td></tr>
-<tr class="separator:a7834a54a3f0658a1a4b4a919b824df6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a5512af64396f563ea1cd5cb86e372"><td class="memItemLeft" align="right" valign="top"><a id="a92a5512af64396f563ea1cd5cb86e372"></a>
+std::stack&lt; <a class="el" href="class_activity.html">Activity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>history</b></td></tr>
+<tr class="separator:a92a5512af64396f563ea1cd5cb86e372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7152fce85c678523d4e9f19b587a1e1a"><td class="memItemLeft" align="right" valign="top"><a id="a7152fce85c678523d4e9f19b587a1e1a"></a>
+std::queue&lt; <a class="el" href="class_activity.html">Activity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>requests</b></td></tr>
+<tr class="separator:a7152fce85c678523d4e9f19b587a1e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/goncalo/Desktop/AED/aed_project/schedule/<a class="el" href="_history_8h_source.html">History.h</a></li>

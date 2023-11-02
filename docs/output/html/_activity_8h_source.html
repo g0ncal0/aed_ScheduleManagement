@@ -85,31 +85,29 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_activity.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_activity.html">Activity</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> code;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_student.html">Student</a>* student;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_class_code.html">ClassCode</a>* old = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_class_code.html">ClassCode</a>* current = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> student;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::string old;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::string current;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_uc.html">Uc</a>* uc = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string message;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<span class="keywordtype">bool</span> in, <a class="code" href="class_student.html">Student</a>* student); <span class="comment">// Student inserted</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<a class="code" href="class_student.html">Student</a>* student, <a class="code" href="class_class_code.html">ClassCode</a>* old, <a class="code" href="class_class_code.html">ClassCode</a>* current, <a class="code" href="class_uc.html">Uc</a>* uc); <span class="comment">// Class change</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<span class="keywordtype">bool</span> in, <a class="code" href="class_student.html">Student</a>* student,<a class="code" href="class_class_code.html">ClassCode</a>* c, <a class="code" href="class_uc.html">Uc</a>* uc); <span class="comment">// Class insertion (true) or deletion (false)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> getcode()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_student.html">Student</a>* getStudent(){<span class="keywordflow">return</span> student;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_class_code.html">ClassCode</a>* getOldClassCode(){<span class="keywordflow">return</span> old;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_class_code.html">ClassCode</a>* getClassCode(){<span class="keywordflow">return</span> current;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_uc.html">Uc</a>* getUc(){ <span class="keywordflow">return</span> uc;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string getMessage();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<span class="keywordtype">bool</span> in, <span class="keywordtype">int</span> student); <span class="comment">// Student inserted</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<span class="keywordtype">int</span> student, std::string old, std::string current, <a class="code" href="class_uc.html">Uc</a>* uc); <span class="comment">// Class change</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_activity.html">Activity</a>(<span class="keywordtype">bool</span> in, <span class="keywordtype">int</span> student,std::string classcode, <a class="code" href="class_uc.html">Uc</a>* uc); <span class="comment">// Class insertion (true) or deletion (false)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> getcode()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> getStudent(){<span class="keywordflow">return</span> student;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::string getOldClassCode(){<span class="keywordflow">return</span> old;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::string getClassCode(){<span class="keywordflow">return</span> current;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_uc.html">Uc</a>* getUc(){ <span class="keywordflow">return</span> uc;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="class_activity.html#af9977451518f0b82244c49c44aeebd5e">getMessage</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//UNISCHEDULE_ACTIVITY_H</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//UNISCHEDULE_ACTIVITY_H</span></div>
 <div class="ttc" id="aclass_activity_html"><div class="ttname"><a href="class_activity.html">Activity</a></div><div class="ttdef"><b>Definition:</b> Activity.h:13</div></div>
-<div class="ttc" id="aclass_class_code_html"><div class="ttname"><a href="class_class_code.html">ClassCode</a></div><div class="ttdef"><b>Definition:</b> Unitary.h:63</div></div>
-<div class="ttc" id="aclass_student_html"><div class="ttname"><a href="class_student.html">Student</a></div><div class="ttdef"><b>Definition:</b> Unitary.h:24</div></div>
-<div class="ttc" id="aclass_uc_html"><div class="ttname"><a href="class_uc.html">Uc</a></div><div class="ttdef"><b>Definition:</b> Unitary.h:87</div></div>
+<div class="ttc" id="aclass_activity_html_af9977451518f0b82244c49c44aeebd5e"><div class="ttname"><a href="class_activity.html#af9977451518f0b82244c49c44aeebd5e">Activity::getMessage</a></div><div class="ttdeci">const std::string getMessage() const</div><div class="ttdef"><b>Definition:</b> Activity.cpp:40</div></div>
+<div class="ttc" id="aclass_uc_html"><div class="ttname"><a href="class_uc.html">Uc</a></div><div class="ttdef"><b>Definition:</b> Unitary.h:93</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

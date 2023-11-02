@@ -98,6 +98,8 @@ const <a class="el" href="class_class_code.html">ClassCode</a> &amp;&#160;</td><
 <tr class="memitem:ae839415019867eb35ae7caed45a94d58"><td class="memItemLeft" align="right" valign="top"><a id="ae839415019867eb35ae7caed45a94d58"></a>
 const std::list&lt; <a class="el" href="class_class_code.html">ClassCode</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClasses</b> () const</td></tr>
 <tr class="separator:ae839415019867eb35ae7caed45a94d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8446caf83d17061ec42ac8ff824d0da1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_uc.html#a8446caf83d17061ec42ac8ff824d0da1">classCodeExists</a> (std::string classCode) const</td></tr>
+<tr class="separator:a8446caf83d17061ec42ac8ff824d0da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a013955f4e89edc26507e5991421739f8"><td class="memItemLeft" align="right" valign="top"><a id="a013955f4e89edc26507e5991421739f8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> () const</td></tr>
 <tr class="separator:a013955f4e89edc26507e5991421739f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,16 +109,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_classes</b> () 
 <tr class="memitem:a067f9ee3480c2219edabcb91f1baa080"><td class="memItemLeft" align="right" valign="top"><a id="a067f9ee3480c2219edabcb91f1baa080"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ucOccupation</b> () const</td></tr>
 <tr class="separator:a067f9ee3480c2219edabcb91f1baa080"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1cc0d5b63f0c87a3b72541caf2de554"><td class="memItemLeft" align="right" valign="top"><a id="af1cc0d5b63f0c87a3b72541caf2de554"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkequilibrium</b> ()</td></tr>
-<tr class="separator:af1cc0d5b63f0c87a3b72541caf2de554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d098ef82acb33e0ec511dcc638e184a"><td class="memItemLeft" align="right" valign="top"><a id="a7d098ef82acb33e0ec511dcc638e184a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>changeClass</b> (<a class="el" href="class_student.html">Student</a> *student, <a class="el" href="class_class_code.html">ClassCode</a> exit, <a class="el" href="class_class_code.html">ClassCode</a> enter)</td></tr>
-<tr class="separator:a7d098ef82acb33e0ec511dcc638e184a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4200fdd64f2edebf9341129adce03d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_uc.html#aab4200fdd64f2edebf9341129adce03d">changeClass</a> (int student, <a class="el" href="class_class_code.html">ClassCode</a> *leave, <a class="el" href="class_class_code.html">ClassCode</a> *current)</td></tr>
+<tr class="separator:aab4200fdd64f2edebf9341129adce03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00f6b76b249dc5d32f913dd9d632d6f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_uc.html#a00f6b76b249dc5d32f913dd9d632d6f4">minOcupation</a> ()</td></tr>
 <tr class="separator:a00f6b76b249dc5d32f913dd9d632d6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af74dd1c5c5409def92f526dd72537a7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_uc.html#af74dd1c5c5409def92f526dd72537a7e">changeClass</a> (<a class="el" href="class_student.html">Student</a> *student, <a class="el" href="class_class_code.html">ClassCode</a> *exit, <a class="el" href="class_class_code.html">ClassCode</a> *enter)</td></tr>
-<tr class="separator:af74dd1c5c5409def92f526dd72537a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c917b35d141ce3a35c07fdf3d85b19d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_uc.html#a9c917b35d141ce3a35c07fdf3d85b19d">maxOcupation</a> ()</td></tr>
+<tr class="separator:a9c917b35d141ce3a35c07fdf3d85b19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -128,8 +126,8 @@ std::list&lt; <a class="el" href="class_class_code.html">ClassCode</a> &gt;&#160
 <tr class="separator:aa925670dca6efc22ad86e17fbbc6600f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af74dd1c5c5409def92f526dd72537a7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af74dd1c5c5409def92f526dd72537a7e">&#9670;&nbsp;</a></span>changeClass()</h2>
+<a id="aab4200fdd64f2edebf9341129adce03d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4200fdd64f2edebf9341129adce03d">&#9670;&nbsp;</a></span>changeClass()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,14 +135,14 @@ std::list&lt; <a class="el" href="class_class_code.html">ClassCode</a> &gt;&#160
         <tr>
           <td class="memname">bool Uc::changeClass </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_student.html">Student</a> *&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>student</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_class_code.html">ClassCode</a> *&#160;</td>
-          <td class="paramname"><em>exit</em>, </td>
+          <td class="paramname"><em>leave</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -161,13 +159,55 @@ std::list&lt; <a class="el" href="class_class_code.html">ClassCode</a> &gt;&#160
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">student</td><td><a class="el" href="class_student.html">Student</a> to change </td></tr>
-    <tr><td class="paramname">exit</td><td><a class="el" href="class_class_code.html">ClassCode</a> to exit </td></tr>
-    <tr><td class="paramname">enter</td><td><a class="el" href="class_class_code.html">ClassCode</a> to enter </td></tr>
+    <tr><td class="paramname">student</td><td>studentCode of the student to change </td></tr>
+    <tr><td class="paramname">leave</td><td><a class="el" href="class_class_code.html">ClassCode</a> to exit </td></tr>
+    <tr><td class="paramname">current</td><td><a class="el" href="class_class_code.html">ClassCode</a> to enter </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if change is done and possible. false if change is not possible </dd></dl>
+
+</div>
+</div>
+<a id="a8446caf83d17061ec42ac8ff824d0da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8446caf83d17061ec42ac8ff824d0da1">&#9670;&nbsp;</a></span>classCodeExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Uc::classCodeExists </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>classCode</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>checks if the classcode already exists </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">classCode</td><td>string that identifies the classcode </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c917b35d141ce3a35c07fdf3d85b19d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c917b35d141ce3a35c07fdf3d85b19d">&#9670;&nbsp;</a></span>maxOcupation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Uc::maxOcupation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the number of students in the most populated class </dd></dl>
 
 </div>
 </div>
@@ -185,7 +225,7 @@ std::list&lt; <a class="el" href="class_class_code.html">ClassCode</a> &gt;&#160
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>ocupação da turma com menos alunos </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of students in the least populated class </dd></dl>
 
 </div>
 </div>

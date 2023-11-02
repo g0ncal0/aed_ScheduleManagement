@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getname_7',['getName',['../class_student.html#a1df6c28e6416e20d338b9ff11bdc1e04',1,'Student']]]
+  ['doesnotcolide_13',['doesNotColide',['../class_uni.html#ac64afd2d3cf547b1c44acf325d61e031',1,'Uni']]]
 ];

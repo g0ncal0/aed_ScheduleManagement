@@ -78,7 +78,13 @@ AllUcs parse_classes() {
 
 
 AllStudents parse_students(AllUcs& ucs){
-    std::ifstream classes("students_classes.csv");
+    std::string filename;
+    char aux;
+    std::cout << "Do you want to use the saved changes? s/n ";
+    std::cin >> aux;
+    if (aux == 's') filename = "../parser/changes.csv";
+    else filename = "students_classes.csv";
+    std::ifstream classes(filename);
     std::string line;
 
     AllStudents students;

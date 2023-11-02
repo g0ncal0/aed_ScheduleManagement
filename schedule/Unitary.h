@@ -80,7 +80,7 @@ public:
     void print() const;
     void print_schedule() const;
     void print_students() const;
-    Class* getPractialClass() const;
+    const Class& getPracticalClass() const;
     std::list<int> getStudents() const;
     bool isCompatible(Class* enter, Class* exit, Uc* uc) const;
     int classOccupation() const;

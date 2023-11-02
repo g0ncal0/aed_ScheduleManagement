@@ -36,7 +36,7 @@ private:
     void actionsforuser();
     void enterClass();
     void changeClass();
-    bool doesNotColide(int studentCode, ClassCode* exit, ClassCode* enter) const;
+    bool doesNotColide(int studentCode, const ClassCode& exit, const ClassCode& enter) const;
 
 
 public:
