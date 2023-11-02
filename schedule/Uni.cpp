@@ -515,7 +515,7 @@ bool Uni::act(Activity activity){
       if(activity.getcode() == 3){
           // join a class
           ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
-          if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4 || classC.classOccupation() <= activity.getUc()->maxOcupation()){
+          if((abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4 || classC.classOccupation() <= activity.getUc()->maxOcupation()) && students.getStudent(activity.getStudent())->numberClasses() < 7){
               students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
           }else{done = false;}
       }
