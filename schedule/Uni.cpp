@@ -332,6 +332,7 @@ void Uni::leaveUC(){
     const ClassCode& classcode = students.getStudent(student_id_loggedin)->getClassCode(uc.getUcCode());
     history.addRequest(Activity(false,student_id_loggedin,classcode.getClassCode(),&uc));
 }
+
 /**
  * Helper function to guide student to actions he can perform
  */
@@ -385,15 +386,15 @@ void Uni::actionsforadmin(){
         case 2:
             try{
                 done = act(history.lastRequestAct());
-                std::cout << "Successfully done.\n";
-                history.requestAccepted();
             }catch (...) {
                 std::cout << "Exception occurred.";
             }
             if(!done){
                 std::cout << "Request doesn't fit rules. Removed.\n";
                 history.requestDenied();
-
+            }else{
+                std::cout << "Successfully done.\n";
+                history.requestAccepted();
             }
 
             break;

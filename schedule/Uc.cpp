@@ -94,7 +94,7 @@ int Uc::ucOccupation() const {
 
 /**
  *
- * @return ocupação da turma com menos alunos
+ * @return Number of students in the least populated class
  */
 int Uc::minOcupation(){
     int min = 1000; // not the greatest initialization. Think about putting a constant of max value of int
@@ -106,6 +106,23 @@ int Uc::minOcupation(){
     }
     return min;
 }
+
+
+/**
+ *
+ * @return the number of students in the most populated class
+ */
+int Uc::maxOcupation(){
+    int max = 0;
+    for(ClassCode c : classes){
+        int numberstudentsinclass = c.classOccupation();
+        if(numberstudentsinclass > max){
+            max = numberstudentsinclass;
+        }
+    }
+    return max;
+}
+
 
 /**
  *
@@ -119,7 +136,7 @@ bool Uc::changeClass(int student, ClassCode* leave, ClassCode* enter){
     // classcode é apenas de uma uc
     // função chamada a partir de Uni
 
-    if(enter->classOccupation() >= MAX_STUDENTS_CLASS || abs(enter->classOccupation() - minOcupation()) < DIFFERENCE_ACCEPTABLE_EQULIBRIUM){ // MUST INCLUDE SOMETHING TO CHECK LOGIC
+    if(enter->classOccupation() >= MAX_STUDENTS_CLASS || ((abs(enter->classOccupation() - minOcupation()) > DIFFERENCE_ACCEPTABLE_EQULIBRIUM && enter->classOccupation() >= maxOcupation()))){
         return false;
     }
     leave->removeStudent(student);

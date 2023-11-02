@@ -3,7 +3,6 @@
 //
 
 #include "Unitary.h"
-#include "utilities.h"
 
 using namespace std;
 

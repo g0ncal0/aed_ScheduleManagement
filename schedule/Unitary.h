@@ -114,6 +114,7 @@ public:
     bool changeClass(int student, ClassCode* leave, ClassCode* current);
     int minOcupation();
 
+    int maxOcupation();
 };
 
 #endif //UNISCHEDULE_UNITARY_H

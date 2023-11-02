@@ -33,7 +33,10 @@ Activity::Activity(bool in, int student, std::string classcode, Uc* uc) {
     }
 }
 
-
+/**
+ * Get a summary of the Activity
+ * @return String with a brief description
+ */
 const std::string Activity::getMessage() const{
     switch(code){
         case 0:
