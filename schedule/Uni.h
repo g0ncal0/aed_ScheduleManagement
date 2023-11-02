@@ -60,6 +60,8 @@ public:
     void leaveUC();
 
     bool actleaveUC(Activity activity);
+
+    void undoChanges(Activity activity);
 };
 
 

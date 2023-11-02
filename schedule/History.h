@@ -25,6 +25,8 @@ public:
     Activity lastRequestAct() const;
 
     Activity *lastRequestPtr() const;
+
+    Activity lastHistoryObj();
 };
 
 

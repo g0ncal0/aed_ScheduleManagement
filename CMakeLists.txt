@@ -25,7 +25,7 @@ else(DOXYGEN_FOUND)
     message("Doxygen needs to be installed to generate the documentation.")
 endif(DOXYGEN_FOUND)
 
-add_executable(UNISchedule schedule/main.cpp schedule/AllUcs.h schedule/Activity.cpp schedule/Activity.h  schedule/Student.cpp schedule/Class.cpp schedule/History.cpp schedule/History.h schedule/AllStudents.cpp schedule/AllStudents.h schedule/ClassCode.cpp schedule/utilities.cpp schedule/utilities.cpp schedule/utilities.cpp schedule/utilities.cpp schedule/parse.h schedule/parse.cpp schedule/utilities.h schedule/Uc.cpp  schedule/AllUcs.cpp schedule/Unitary.h
+add_executable(UNISchedule schedule/main.cpp schedule/AllUcs.h schedule/Activity.cpp schedule/Activity.h  schedule/Student.cpp schedule/Class.cpp schedule/History.cpp schedule/History.h schedule/AllStudents.cpp schedule/AllStudents.h schedule/ClassCode.cpp schedule/parse.h schedule/parse.cpp schedule/Uc.cpp  schedule/AllUcs.cpp schedule/Unitary.h
         schedule/Uni.h
         schedule/Uni.cpp)
 

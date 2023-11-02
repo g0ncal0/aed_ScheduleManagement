@@ -360,6 +360,27 @@ void Uni::actionsforuser(){
 
 
 
+void Uni::undoChanges(Activity activity){
+    if(activity.getcode() == 0){
+        // revert the creation (delete student)
+        students.deleteStudent(activity.getStudent());
+    }
+    if(activity.getcode() == 1){
+        std::cout << "Please, create the student using the student creation tool.";
+    }
+    if(activity.getcode() == 2){
+        Activity undo = Activity(activity.getStudent(),activity.getClassCode(), activity.getOldClassCode(), activity.getUc());
+        act(undo);
+    }
+    if(activity.getcode() == 3){
+        Activity undo = Activity(false,activity.getStudent(),activity.getClassCode(), activity.getUc());
+        act(undo);
+    }
+    if(activity.getcode() == 4){
+        Activity undo = Activity(true, activity.getStudent(), activity.getClassCode(), activity.getUc());
+    }
+}
+
 
 /**
  * Helper function that understands what admin wants to do and acts.
@@ -368,7 +389,7 @@ void Uni::actionsforadmin(){
     if(!isAdmin){
         return;
     }
-    std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n6. Save changes\n";
+    std::cout << "0. Do nothing\n1. Check last Request\n2. Accept last Request\n3. Reject last Request\n4. Check last History Activity\n5. Add new student\n6. Save changes\n7. Undo Last Change\n";
     std::cout << "Enter a number: ";
     int op;
     std::cin >> op;
@@ -377,6 +398,9 @@ void Uni::actionsforadmin(){
     switch(op){
         case 6:
             students.save_changes();
+            break;
+        case 7:
+            undoChanges(history.lastHistoryObj());
             break;
         case 0:
             break;
@@ -488,7 +512,7 @@ bool Uni::act(Activity activity){
         case 3:
             // join a class
             ClassCode& classC = activity.getUc()->getClassCode(activity.getClassCode());
-            if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4){
+            if(abs(activity.getUc()->minOcupation() - classC.classOccupation()) < 4 || classC.classOccupation() <= activity.getUc()->maxOcupation()){
                 students.addClassStudent(activity.getStudent(), classC, *activity.getUc());
             }else{done = false;}
             break;

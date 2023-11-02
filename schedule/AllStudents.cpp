@@ -121,3 +121,9 @@ void AllStudents::save_changes() const {
     }
     changes.close();
 }
+
+
+void AllStudents::deleteStudent(int id){
+    auto s = students.find(Student(id, ""));
+    students.erase(s);
+}

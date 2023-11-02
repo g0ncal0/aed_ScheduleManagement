@@ -18,6 +18,10 @@ std::string History::lastHistory() const {
     return "No history available";
 }
 
+Activity History::lastHistoryObj() {
+    return history.top();
+}
+
 void History::removeHistory() {
     if(!history.empty()) {
         history.pop();
