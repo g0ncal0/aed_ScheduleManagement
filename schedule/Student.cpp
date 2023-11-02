@@ -33,6 +33,11 @@ void Student::addClass(Uc& uc, ClassCode& class_) {
     classes.push_back(pair<Uc&, ClassCode&>(uc, class_));
 }
 
+
+/**
+ * removes one class based on one given
+ * @param class_ class to remove from the classes than the student goes
+ * */
 void Student::removeClass(std::string class_) {
     // HAS TO BE BETTER IMPLEMENTED: Find the pair whose class uses that class and remove that pair
 
@@ -80,14 +85,23 @@ int Student::numberClasses() const {
     return classes.size();
 }
 
+/**
+ *
+ *
+ * */
 void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const {
     for (const std::pair<Uc&,ClassCode&>& pair : classes) {
         pair.second.getClasses(allClasses, pair.first.getUcCode());
     }
 }
 
+/**
+ * based on one uc, it gets the classcode that the student attends
+ * @param uc the uc that we want to have more information
+ * @return the classcode of that uc, const reference
+ * */
 const ClassCode& Student::getClassCode(std::string uc) const{
-    for(auto el: classes){ // MD turma 3, apenas tem aulas de MD
+    for(auto el: classes){
         if(el.first.getUcCode() == uc){
             return el.second;
         }

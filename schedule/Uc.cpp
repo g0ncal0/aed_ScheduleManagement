@@ -12,8 +12,10 @@ Uc::Uc(std::string ucCode) {
 std::string Uc::getUcCode() const {
     return ucCode;
 }
+
+
+
 void Uc::addClassCode(ClassCode classCode) {
-    //classes.push_back(classcode);
 
     auto aux = classes.begin();
     while ((aux != classes.end()) && (aux->getClassCode() != classCode.getClassCode())) aux++;
@@ -24,6 +26,8 @@ void Uc::addClassCode(ClassCode classCode) {
         aux->addClass(classCode.getFirstClass());
     }
 }
+
+
 
 ClassCode& Uc::getClassCode(std::string classCode) {
     for(ClassCode &el : classes){
@@ -53,6 +57,11 @@ const std::list<ClassCode>& Uc::getClasses() const {
     return classes;
 }
 
+
+/**
+ * checks if the classcode already exists
+ *  @param classCode string that identifies the classcode
+ * */
 bool Uc::classCodeExists(std::string classCode) const {
     for(const ClassCode &el : classes){
         if(el.getClassCode() == classCode){
@@ -100,7 +109,7 @@ int Uc::minOcupation(){
 
 /**
  *
- * @param student Student to change
+ * @param student studentCode of the student to change
  * @param leave ClassCode to exit
  * @param current ClassCode to enter
  * @return true if change is done and possible. false if change is not possible

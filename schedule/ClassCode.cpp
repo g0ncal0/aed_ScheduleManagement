@@ -54,6 +54,11 @@ int ClassCode::classOccupation() const {
     return students.size();
 }
 
+
+/**
+ *
+ *
+ * */
 void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses, std::string ucCode) const {
     for (const Class& class_ : classes) {
         std::pair<const Class&, std::string> pair(class_, ucCode);
@@ -61,8 +66,12 @@ void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allC
     }
 }
 
+/**
+ * returns the practical class of a certain ClassCode
+ * */
 Class* ClassCode::getPractialClass() const {
     for(auto lecture : classes) {
         if(lecture.getType() != 'T') return &lecture;
     }
+    return nullptr;
 }
