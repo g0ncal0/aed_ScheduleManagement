@@ -54,11 +54,11 @@ int ClassCode::classOccupation() const {
     return students.size();
 }
 
-
 /**
- *
- *
- * */
+ * Get classes of a UC | O(n)
+ * @param allClasses Variable where all the classes will be stored
+ * @param ucCode UC to search
+ */
 void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses, std::string ucCode) const {
     for (const Class& class_ : classes) {
         std::pair<const Class&, std::string> pair(class_, ucCode);
@@ -67,7 +67,7 @@ void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allC
 }
 
 /**
- * returns the practical class of a certain ClassCode
+ * returns the practical class of a certain ClassCode | O(n)
  * */
 const Class& ClassCode::getPracticalClass() const {
     for(const Class& lecture : classes) {

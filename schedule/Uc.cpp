@@ -59,7 +59,7 @@ const std::list<ClassCode>& Uc::getClasses() const {
 
 
 /**
- * checks if the classcode already exists
+ * checks if the classcode already exists | O(n)
  *  @param classCode string that identifies the classcode
  * */
 bool Uc::classCodeExists(std::string classCode) const {
@@ -93,7 +93,7 @@ int Uc::ucOccupation() const {
 }
 
 /**
- *
+ * O(n)
  * @return Number of students in the least populated class
  */
 int Uc::minOcupation(){

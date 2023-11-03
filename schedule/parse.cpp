@@ -38,7 +38,10 @@ char typeToChar(const std::string& type) {
         return 'L';
     }
 }
-
+/**
+ * Parses the classes used in the classes.csv file | In the best case cenario: O(n)
+ * @return
+ */
 AllUcs parse_classes() {
     std::ifstream classes("classes.csv");
     std::string line;
@@ -76,7 +79,11 @@ AllUcs parse_classes() {
     return ucs;
 }
 
-
+/**
+ * Parse data about students either from the original file or from the last saved changes file into the data structures. | Best case scenario: O(n)
+ * @param ucs List of the UCs parsed previously. This data structure may be modified.
+ * @return
+ */
 AllStudents parse_students(AllUcs& ucs){
     std::string filename;
     char aux;

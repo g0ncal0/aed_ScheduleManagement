@@ -154,6 +154,10 @@ void Uni::print_day(char weekday) const {
     }
 }
 
+/**
+ * Prints the schedule based on data inserted on parameters | O(n)
+ * @param classes
+ */
 void Uni::print_schedule(std::list<std::pair<const Class&, std::string>>& classes) const {
     classes.sort();
     char weekday = '0';
@@ -399,7 +403,10 @@ void Uni::actionsforuser(){
 }
 
 
-
+/**
+ * Function that converts an activity to its undo activity and acts. It's not possible to create student.
+ * @param activity
+ */
 void Uni::undoChanges(Activity activity){
     if(activity.getcode() == 0){
         // revert the creation (delete student)
@@ -418,6 +425,7 @@ void Uni::undoChanges(Activity activity){
     }
     if(activity.getcode() == 4){
         Activity undo = Activity(true, activity.getStudent(), activity.getClassCode(), activity.getUc());
+        act(undo);
     }
 }
 
@@ -507,7 +515,7 @@ bool Uni::actleaveUC(Activity activity){
 }
 
 /**
- * a function with the ability to tell if one classCode is compatible with the schedule of a student
+ * a function with the ability to tell if one classCode is compatible with the schedule of a student | O(n)
  * @param the studentCode
  * @param exit a pointer to the old classCode to substitute. We have that so we can ignore it in the loop
  * @param enter a pointer to the classCode that the student wants to enroll
@@ -622,7 +630,12 @@ void Uni::login() {
     }
     std::cout << "\nYOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
 }
-
+/**
+ * Checks if a string is in the list of strings | O(n)
+ * @param ucs_in
+ * @param ucCode
+ * @return Boolean indicating if present (true) or not (false).
+ */
 bool Uni::exists(const std::list<std::string>& ucs_in, const std::string& ucCode) const {
     for (std::string ucCode2 : ucs_in) if (ucCode == ucCode2) return true;
     return false;

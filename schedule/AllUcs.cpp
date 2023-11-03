@@ -33,6 +33,11 @@ std::list<std::string> AllUcs::getUcCodes() const {
     return allUcs;
 }
 
+/**
+ * Function to get the object UC using its code. | O(n)
+ * @param ucCode
+ * @return
+ */
 const Uc& AllUcs::getUc(std::string ucCode) const {
     for(const Uc &u : ucs){
         if(u.getUcCode() == ucCode){
@@ -40,7 +45,11 @@ const Uc& AllUcs::getUc(std::string ucCode) const {
         }
     }
 }
-
+/**
+ * O(n)
+ * @param ucCode
+ * @return Returns a boolean indicating if a uc exists in the list of UCs
+ */
 bool AllUcs::ucExists(std::string ucCode) const {
     for(const Uc &u : ucs){
         if(u.getUcCode() == ucCode){

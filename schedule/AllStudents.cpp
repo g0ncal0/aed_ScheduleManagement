@@ -85,11 +85,11 @@ int AllStudents::yearOccupation(char year) const {
 }
 
 /**
- * Change class of student at students level. This function is not enough for the change.
- * @param student
- * @param oldclass
- * @param newclass
- * @param uc
+ * Change class of the student. This change affects solely the student. | O(log(n))
+ * @param student id of student to be modified
+ * @param oldclass class to leave
+ * @param newclass class to enter
+ * @param uc uc where change is being made
  */
 void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode& newclass, Uc& uc){
     auto updating = students.find(Student(student,""));
@@ -99,7 +99,12 @@ void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode
     students.erase(updating);
     students.insert(newstudent);
 }
-
+/**
+ * Remove class of a student. This change affects solely the student. | O(log(n)
+ * @param student id of the student to modify
+ * @param oldclass class where student will be removed
+ * @param uc
+ */
 void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
     auto updating = students.find(Student(student,""));
     Student newstudent = *updating;
@@ -108,7 +113,12 @@ void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
     students.insert(newstudent);
 }
 
-
+/**
+ * Add class to a student. This change affects solely the student. | O(log(n)
+ * @param student  id of the student to modify
+ * @param newclass class where student will be added
+ * @param uc
+ */
 void AllStudents::addClassStudent(int student, ClassCode& newclass, Uc& uc){
     auto updating = students.find(Student(student,""));
     Student newstudent = *updating;
