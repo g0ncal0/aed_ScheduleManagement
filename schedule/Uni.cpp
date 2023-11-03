@@ -345,6 +345,10 @@ void Uni::changeClass(){
     do {
         std::cout << "Class to enter:";
         std::cin >> current;
+        if (current == old) {
+            std::cout << "You are already in that class.\n\n";
+            continue;
+        }
         if (uc.classCodeExists(current)) break;
         std::cout << "That class doesn't exists.\n\n";
     } while (true);
@@ -434,6 +438,7 @@ void Uni::actionsforadmin(){
     switch(op){
         case 6:
             students.save_changes();
+            std::cout << "Successfully done.\n";
             break;
         case 7:
             try{
@@ -570,7 +575,7 @@ void Uni::login() {
     char answer;
     bool isValidInput = false;
     while (!isValidInput) {
-        std::cout << "Are you a student? s/n" << std::endl;
+        std::cout << "Are you a student? s/n ";
         std::cin >> answer;
         answer = tolower(answer);
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -599,7 +604,7 @@ void Uni::login() {
 
         if (findStudent != nullptr) {
             student_id_loggedin = studentCode;
-            std::cout << "Welcome, " << findStudent->getName() << std::endl;
+            std::cout << "\nWelcome, " << findStudent->getName() << std::endl;
         }
         if (findStudent == nullptr) {
             std::cout << "It seems that we don't have that student code in our Database." << std::endl;
