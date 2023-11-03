@@ -9,7 +9,6 @@ const std::string ADMIN_PERMISSIONS = "An admin can create new students (1), cre
 const std::string USER_PERMISSIONS = "A student can make a request to add a class (1), remove a class (2) and switch classes(3).";
 
 
-
 Uni::Uni(AllUcs ucs, AllStudents students) {
     this->ucs = ucs;
     this->students = students;
@@ -156,7 +155,7 @@ void Uni::print_day(char weekday) const {
 
 /**
  * Prints the schedule based on data inserted on parameters | O(n)
- * @param classes
+ * @param classes classes we want to print in the schedule
  */
 void Uni::print_schedule(std::list<std::pair<const Class&, std::string>>& classes) const {
     classes.sort();
@@ -405,7 +404,7 @@ void Uni::actionsforuser(){
 
 /**
  * Function that converts an activity to its undo activity and acts. It's not possible to create student.
- * @param activity
+ * @param activity the activity we want to undo
  */
 void Uni::undoChanges(Activity activity){
     if(activity.getcode() == 0){
@@ -503,9 +502,9 @@ void Uni::actionsforadmin(){
 }
 
 /**
- * makes the action of removing a class from a students' schedule
- * @param the activity requested
- * @return returns true in the end of the desired action
+ * Makes the action of removing a class from a students' schedule
+ * @param activity the activity requested
+ * @return true in the end of the desired action
  * */
 bool Uni::actleaveUC(Activity activity){
     activity.getUc()->getClassCode(activity.getClassCode()).removeStudent(activity.getStudent());
@@ -515,8 +514,8 @@ bool Uni::actleaveUC(Activity activity){
 }
 
 /**
- * a function with the ability to tell if one classCode is compatible with the schedule of a student | O(n)
- * @param the studentCode
+ * A function with the ability to tell if one classCode is compatible with the schedule of a student | O(n)
+ * @param studentCode the student code
  * @param exit a pointer to the old classCode to substitute. We have that so we can ignore it in the loop
  * @param enter a pointer to the classCode that the student wants to enroll
  * @return returns if we can switch
@@ -539,9 +538,9 @@ bool Uni::doesNotColide(int studentCode, const ClassCode& exit, const ClassCode&
 
 
 /**
- * function that calls other functions with the action, based on the code of the activity
+ * A function that calls other functions with the action, based on the code of the activity
  * @param activity the activity that is being analyzed
- * @return returns the boolean that says if the action was made or not
+ * @return the boolean that says if the action was made or not
  * */
 bool Uni::act(Activity activity){
     bool done = true;
@@ -577,7 +576,7 @@ bool Uni::act(Activity activity){
 }
 
 /**
- * this function does the login and has the duty to tell if the user is admin or not
+ * This function does the login and has the duty to tell if the user is admin or not
  * */
 void Uni::login() {
     char answer;
@@ -632,8 +631,8 @@ void Uni::login() {
 }
 /**
  * Checks if a string is in the list of strings | O(n)
- * @param ucs_in
- * @param ucCode
+ * @param ucs_in list of uc codes in which the student is enrolled
+ * @param ucCode the uc we want to check if exists
  * @return Boolean indicating if present (true) or not (false).
  */
 bool Uni::exists(const std::list<std::string>& ucs_in, const std::string& ucCode) const {

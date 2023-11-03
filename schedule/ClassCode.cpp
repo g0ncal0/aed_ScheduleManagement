@@ -55,7 +55,7 @@ int ClassCode::classOccupation() const {
 }
 
 /**
- * Get classes of a UC | O(n)
+ * Get the classes of a UC | O(n)
  * @param allClasses Variable where all the classes will be stored
  * @param ucCode UC to search
  */
@@ -67,8 +67,9 @@ void ClassCode::getClasses(std::list<std::pair<const Class&, std::string>>& allC
 }
 
 /**
- * returns the practical class of a certain ClassCode | O(n)
- * */
+ * Function to get only the practical class of a class
+ * @return the practical class
+ */
 const Class& ClassCode::getPracticalClass() const {
     for(const Class& lecture : classes) {
         if(lecture.getType() != 'T') return lecture;

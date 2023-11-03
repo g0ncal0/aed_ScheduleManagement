@@ -20,7 +20,7 @@ void AllStudents::addStudent(int studentCode, std::string name){
 }
 /**
  * Add a student to the set of students | O(log(n))
- * @param student
+ * @param student the student we want to add
  */
 void AllStudents::addStudent(Student student) {
     auto it = students.find(student);
@@ -103,7 +103,7 @@ void AllStudents::changeClassStudent(int student, ClassCode& oldclass, ClassCode
  * Remove class of a student. This change affects solely the student. | O(log(n)
  * @param student id of the student to modify
  * @param oldclass class where student will be removed
- * @param uc
+ * @param uc uc where student will be removed
  */
 void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
     auto updating = students.find(Student(student,""));
@@ -117,7 +117,7 @@ void AllStudents::removeClassStudent(int student, ClassCode& oldclass, Uc& uc){
  * Add class to a student. This change affects solely the student. | O(log(n)
  * @param student  id of the student to modify
  * @param newclass class where student will be added
- * @param uc
+ * @param uc uc where student will be added
  */
 void AllStudents::addClassStudent(int student, ClassCode& newclass, Uc& uc){
     auto updating = students.find(Student(student,""));

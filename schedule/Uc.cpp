@@ -59,8 +59,8 @@ const std::list<ClassCode>& Uc::getClasses() const {
 
 
 /**
- * checks if the classcode already exists | O(n)
- *  @param classCode string that identifies the classcode
+ *  Checks if the classCode already exists | O(n)
+ *  @param classCode string that identifies the classCode
  * */
 bool Uc::classCodeExists(std::string classCode) const {
     for(const ClassCode &el : classes){
@@ -93,11 +93,11 @@ int Uc::ucOccupation() const {
 }
 
 /**
- * O(n)
- * @return Number of students in the least populated class
+ * Function to get the minimum occupation of all the classes of the UC | O(n)
+ * @return the number of students in the least populated class
  */
 int Uc::minOcupation(){
-    int min = 1000; // not the greatest initialization. Think about putting a constant of max value of int
+    int min = 1000;
     for(ClassCode c : classes){
         int numberstudentsinclass = c.classOccupation();
         if(numberstudentsinclass < min){
@@ -109,7 +109,7 @@ int Uc::minOcupation(){
 
 
 /**
- *
+ * Function to get the maximum occupation of all the classes of the UC | O(n)
  * @return the number of students in the most populated class
  */
 int Uc::maxOcupation(){
@@ -125,7 +125,7 @@ int Uc::maxOcupation(){
 
 
 /**
- *
+ * Function to do the operation of a class change
  * @param student studentCode of the student to change
  * @param leave ClassCode to exit
  * @param current ClassCode to enter

@@ -109,13 +109,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkYear</b> (char y
 <tr class="memitem:acde85ce4c2b6947e21d721b5b41627b9"><td class="memItemLeft" align="right" valign="top"><a id="acde85ce4c2b6947e21d721b5b41627b9"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>numberClasses</b> () const</td></tr>
 <tr class="separator:acde85ce4c2b6947e21d721b5b41627b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac30b5f5a2baadf4c63a28f1d73035223"><td class="memItemLeft" align="right" valign="top"><a id="ac30b5f5a2baadf4c63a28f1d73035223"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getClasses</b> (std::list&lt; std::pair&lt; const <a class="el" href="class_class.html">Class</a> &amp;, std::string &gt;&gt; &amp;allClasses) const</td></tr>
+<tr class="memitem:ac30b5f5a2baadf4c63a28f1d73035223"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_student.html#ac30b5f5a2baadf4c63a28f1d73035223">getClasses</a> (std::list&lt; std::pair&lt; const <a class="el" href="class_class.html">Class</a> &amp;, std::string &gt;&gt; &amp;allClasses) const</td></tr>
 <tr class="separator:ac30b5f5a2baadf4c63a28f1d73035223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1fd157330c52bae483550626ec8bcfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_student.html#ae1fd157330c52bae483550626ec8bcfd">removeClass</a> (std::string class_)</td></tr>
 <tr class="separator:ae1fd157330c52bae483550626ec8bcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6dc14369bde4d4349fcd31ba481578f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_class_code.html">ClassCode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_student.html#ad6dc14369bde4d4349fcd31ba481578f">getClassCode</a> (std::string uc) const</td></tr>
 <tr class="separator:ad6dc14369bde4d4349fcd31ba481578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add825427d315d9b64e80d161b7651f35"><td class="memItemLeft" align="right" valign="top"><a id="add825427d315d9b64e80d161b7651f35"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printUcs</b> () const</td></tr>
+<tr class="separator:add825427d315d9b64e80d161b7651f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee1079474d5940eab0d5e2740138fc0"><td class="memItemLeft" align="right" valign="top"><a id="abee1079474d5940eab0d5e2740138fc0"></a>
+std::list&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getUcCodes</b> () const</td></tr>
+<tr class="separator:abee1079474d5940eab0d5e2740138fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -145,13 +150,37 @@ std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>based on one uc, it gets the classcode that the student attends </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Based on one uc, it gets the classCode that the student attends </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uc</td><td>the uc that we want to have more information </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the classcode of that uc, const reference </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the classCode of that uc, const reference </dd></dl>
+
+</div>
+</div>
+<a id="ac30b5f5a2baadf4c63a28f1d73035223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac30b5f5a2baadf4c63a28f1d73035223">&#9670;&nbsp;</a></span>getClasses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Student::getClasses </td>
+          <td>(</td>
+          <td class="paramtype">std::list&lt; std::pair&lt; const <a class="el" href="class_class.html">Class</a> &amp;, std::string &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>allClasses</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to get all the classes in which the student is enrolled </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">allClasses</td><td>the list where the function is going to put the classes </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -169,7 +198,7 @@ std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>getter of student name </p><dl class="section return"><dt>Returns</dt><dd>student name </dd></dl>
+<p>Getter of the student name </p><dl class="section return"><dt>Returns</dt><dd>student name </dd></dl>
 
 </div>
 </div>
@@ -188,7 +217,7 @@ std::list&lt; std::pair&lt; <a class="el" href="class_uc.html">Uc</a> &amp;, <a 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>removes one class based on one given </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Removes one class based on one given </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">class_</td><td>class to remove from the classes than the student goes </td></tr>
   </table>

@@ -12,7 +12,7 @@ Student::Student(int studentCode, std::string name) {
 }
 
 /**
- * getter of student name
+ * Getter of the student name
  * @return student name
  */
 string Student::getName() const {
@@ -34,7 +34,7 @@ void Student::addClass(Uc& uc, ClassCode& class_) {
 
 
 /**
- * removes one class based on one given
+ * Removes one class based on one given
  * @param class_ class to remove from the classes than the student goes
  * */
 void Student::removeClass(std::string class_) {
@@ -84,9 +84,9 @@ int Student::numberClasses() const {
 }
 
 /**
- *
- *
- * */
+ * Function to get all the classes in which the student is enrolled
+ * @param allClasses the list where the function is going to put the classes
+ */
 void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allClasses) const {
     for (const std::pair<Uc&,ClassCode&>& pair : classes) {
         pair.second.getClasses(allClasses, pair.first.getUcCode());
@@ -94,9 +94,9 @@ void Student::getClasses(std::list<std::pair<const Class&, std::string>>& allCla
 }
 
 /**
- * based on one uc, it gets the classcode that the student attends
+ * Based on one uc, it gets the classCode that the student attends
  * @param uc the uc that we want to have more information
- * @return the classcode of that uc, const reference
+ * @return the classCode of that uc, const reference
  * */
 const ClassCode& Student::getClassCode(std::string uc) const{
     for(auto el: classes){

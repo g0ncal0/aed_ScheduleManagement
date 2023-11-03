@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['maxocupation_20',['maxOcupation',['../class_uc.html#a9c917b35d141ce3a35c07fdf3d85b19d',1,'Uc']]],
-  ['minocupation_21',['minOcupation',['../class_uc.html#a00f6b76b249dc5d32f913dd9d632d6f4',1,'Uc']]]
+  ['login_23',['login',['../class_uni.html#ab6bd5585a2fe0419c14e7798d830fb64',1,'Uni']]]
 ];
