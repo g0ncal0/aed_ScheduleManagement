@@ -24,7 +24,7 @@ void Uni::print_all_students() const {
     students.print();
 }
 
-const Uc & Uni::consult_uc() const {
+const Uc& Uni::consult_uc() const {
     do {
         std::cout << "List of UCs:\n\n";
         ucs.print_ucs();
@@ -36,10 +36,39 @@ const Uc & Uni::consult_uc() const {
     } while (true);
 }
 
-Uc & Uni::consult_uc() {
+Uc& Uni::consult_uc() {
     do {
         std::cout << "List of UCs:\n\n";
         ucs.print_ucs();
+        std::cout << "\nPlease enter the UC you want to consult: ";
+        std::string ucCode;
+        std::cin >> ucCode;
+        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
+        std::cout << "That UC doesn't exists.\n\n";
+    } while(true);
+}
+
+Uc& Uni::consult_ucs_student() {
+    const Student* student = students.getStudent(student_id_loggedin);
+    do {
+        std::cout << "List of UCs:\n\n";
+        student->printUcs();
+        std::cout << "\nPlease enter the UC you want to consult: ";
+        std::string ucCode;
+        std::cin >> ucCode;
+        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
+        std::cout << "That UC doesn't exists.\n\n";
+    } while(true);
+}
+
+Uc& Uni::consult_ucs_not_student() {
+    std::list<std::string> ucs_not = ucs.getUcCodes();
+    const Student* student = students.getStudent(student_id_loggedin);
+    std::list<std::string> ucs_in = student->getUcCodes();
+    for (std::string ucCode : ucs_in) ucs_not.remove(ucCode);
+    do {
+        std::cout << "List of UCs:\n\n";
+        for (std::string ucC : ucs_not) std::cout << ucC << '\n';
         std::cout << "\nPlease enter the UC you want to consult: ";
         std::string ucCode;
         std::cin >> ucCode;
@@ -309,7 +338,7 @@ void Uni::print_ucs_more_students() const {
 
 
 void Uni::changeClass(){
-    Uc& uc = consult_uc();  // uc we will work with
+    Uc& uc = consult_ucs_student();  // uc we will work with
     std::string old, current;
     std::cout << "Class to leave:";
     std::cin >> old;
@@ -320,7 +349,7 @@ void Uni::changeClass(){
 }
 
 void Uni::enterClass(){
-    Uc& uc = consult_uc();  // uc we will work with
+    Uc& uc = consult_ucs_not_student();  // uc we will work with
     std::string current;
     std::cout << "Class to enter:";
     std::cin >> current;
@@ -328,7 +357,7 @@ void Uni::enterClass(){
 }
 
 void Uni::leaveUC(){
-    Uc& uc = consult_uc();  // uc we will work with
+    Uc& uc = consult_ucs_student();  // uc we will work with
     const ClassCode& classcode = students.getStudent(student_id_loggedin)->getClassCode(uc.getUcCode());
     history.addRequest(Activity(false,student_id_loggedin,classcode.getClassCode(),&uc));
 }

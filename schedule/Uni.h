@@ -21,8 +21,10 @@ private:
     History history;
 
 
-    const Uc & consult_uc() const;
-    Uc & consult_uc();
+    const Uc& consult_uc() const;
+    Uc& consult_uc();
+    Uc& consult_ucs_student();
+    Uc& consult_ucs_not_student();
     const ClassCode& consult_class(const Uc& uc) const;
     void students_class(const ClassCode& classCode, std::list<std::pair<int, std::string>>& studentsInClass) const;
     void students_course(const Uc& uc, std::list<std::pair<int, std::string>>& studentsInYear) const;

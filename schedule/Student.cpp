@@ -105,3 +105,17 @@ const ClassCode& Student::getClassCode(std::string uc) const{
         }
     }
 }
+
+void Student::printUcs() const {
+    for (std::pair<Uc&,ClassCode&> pair : classes) {
+        std::cout << pair.first.getUcCode() << '\n';
+    }
+}
+
+std::list<std::string> Student::getUcCodes() const {
+    std::list<std::string> allUcs;
+    for (std::pair<Uc&,ClassCode&> pair : classes) {
+        allUcs.push_back(pair.first.getUcCode());
+    }
+    return allUcs;
+}

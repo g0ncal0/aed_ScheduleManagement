@@ -44,7 +44,8 @@ public:
     void removeClass(std::string class_);
 
     const ClassCode &getClassCode(std::string uc) const;
-
+    void printUcs() const;
+    std::list<std::string> getUcCodes() const;
 };
 
 class Class {
