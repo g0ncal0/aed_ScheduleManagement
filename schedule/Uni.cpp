@@ -50,14 +50,15 @@ Uc& Uni::consult_uc() {
 
 Uc& Uni::consult_ucs_student() {
     const Student* student = students.getStudent(student_id_loggedin);
+    std::list<std::string> ucs_in = student->getUcCodes();
     do {
         std::cout << "List of UCs:\n\n";
-        student->printUcs();
+        for (std::string ucC : ucs_in) std::cout << ucC << '\n';
         std::cout << "\nPlease enter the UC you want to consult: ";
         std::string ucCode;
         std::cin >> ucCode;
-        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
-        std::cout << "That UC doesn't exists.\n\n";
+        if (exists(ucs_in, ucCode)) return ucs.getUc(ucCode);
+        std::cout << "That UC doesn't exists in this student.\n\n";
     } while(true);
 }
 
@@ -72,8 +73,8 @@ Uc& Uni::consult_ucs_not_student() {
         std::cout << "\nPlease enter the UC you want to consult: ";
         std::string ucCode;
         std::cin >> ucCode;
-        if (ucs.ucExists(ucCode)) return ucs.getUc(ucCode);
-        std::cout << "That UC doesn't exists.\n\n";
+        if (exists(ucs_not, ucCode)) return ucs.getUc(ucCode);
+        std::cout << "That UC doesn't exists in this student.\n\n";
     } while(true);
 }
 
@@ -339,20 +340,26 @@ void Uni::print_ucs_more_students() const {
 
 void Uni::changeClass(){
     Uc& uc = consult_ucs_student();  // uc we will work with
-    std::string old, current;
-    std::cout << "Class to leave:";
-    std::cin >> old;
-    std::cout << "Class to enter:";
-    std::cin >> current;
-
+    std::string old = students.getStudent(student_id_loggedin)->getClassCode(uc.getUcCode()).getClassCode();
+    std::string current;
+    do {
+        std::cout << "Class to enter:";
+        std::cin >> current;
+        if (uc.classCodeExists(current)) break;
+        std::cout << "That class doesn't exists.\n\n";
+    } while (true);
     history.addRequest(Activity(student_id_loggedin, old, current, &uc));
 }
 
 void Uni::enterClass(){
     Uc& uc = consult_ucs_not_student();  // uc we will work with
     std::string current;
-    std::cout << "Class to enter:";
-    std::cin >> current;
+    do {
+        std::cout << "Class to enter:";
+        std::cin >> current;
+        if (uc.classCodeExists(current)) break;
+        std::cout << "That class doesn't exists.\n\n";
+    } while (true);
     history.addRequest( Activity(true, student_id_loggedin, current, &uc));
 }
 
@@ -611,3 +618,7 @@ void Uni::login() {
     std::cout << "\nYOU WERE LOGGED OUT OF YOUR ACCOUNT \n";
 }
 
+bool Uni::exists(const std::list<std::string>& ucs_in, const std::string& ucCode) const {
+    for (std::string ucCode2 : ucs_in) if (ucCode == ucCode2) return true;
+    return false;
+}

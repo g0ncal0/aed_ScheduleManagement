@@ -39,6 +39,7 @@ private:
     void enterClass();
     void changeClass();
     bool doesNotColide(int studentCode, const ClassCode& exit, const ClassCode& enter) const;
+    bool exists(const std::list<std::string>& ucs_in, const std::string& ucCode) const;
 
 
 public:
